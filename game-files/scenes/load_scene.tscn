@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu4h040kg82ue"]
+
+[ext_resource type="Texture2D" uid="uid://bfcpwtl4aw3xa" path="res://sprites/resolution-test.png" id="1_1dbbh"]
+
+[node name="Load Scene" type="Node2D"]
+
+[node name="Resolution-test" type="Sprite2D" parent="."]
+position = Vector2(80, 72)
+texture = ExtResource("1_1dbbh")
