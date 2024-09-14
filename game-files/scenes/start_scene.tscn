@@ -1,10 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1obfcxhn54mx"]
+[gd_scene load_steps=6 format=3 uid="uid://b1obfcxhn54mx"]
 
 [ext_resource type="PackedScene" uid="uid://cf6ar5dxqu7h2" path="res://scenes/goodguy.tscn" id="1_0e5dl"]
 [ext_resource type="Script" path="res://scripts/start_scene.gd" id="1_0uf1s"]
+[ext_resource type="Texture2D" uid="uid://doudup5mvad4r" path="res://sprites/placeholder-background.png" id="2_j23eo"]
+[ext_resource type="PackedScene" uid="uid://d2dk6axl8a5gy" path="res://scenes/bad_guy.tscn" id="3_7leiu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhfnp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j23eo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Start Scene" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_0uf1s")
 player = NodePath("Good Guy")
 
+[node name="Background" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qhfnp")
+centered = false
+
 [node name="Good Guy" parent="." instance=ExtResource("1_0e5dl")]
+position = Vector2(80, 73)
+
+[node name="Bad Guy" parent="." instance=ExtResource("3_7leiu")]
+position = Vector2(78, 12)
