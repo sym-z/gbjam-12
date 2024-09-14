@@ -31,6 +31,7 @@
 - [ ] Fire Noise
 - [ ] Menu Select
 - [ ] Player Death
+- [ ] Level Music
 - [ ] Enemy Death
 - [ ] Start Music
 - [ ] Win Music
