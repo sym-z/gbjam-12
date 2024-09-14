@@ -34,14 +34,18 @@
 - [ ] Next Level Jingle
 
 ## CODE
-- [ ] Shoot Projectile 
+- [ ] Shoot Projectile (Line-Trace Collide with Enemy)
 - [ ] Aim and Shoot 
 - [ ] Spawn Enemy
 - [ ] Kill Enemy
 - [ ] Add to Score
-- [ ] Kill Player
+- [ ] Kill Player 
 - [ ] Respawn Player
 - [ ] Spawn Enemy Randomly
 - [ ] Next Level
-
+- [ ] Spline Movement for Enemies
+- [ ] Random Enemy Spawn Locations
+- [ ] Enemies Spawn at Random Times
+- [ ] Enemies Move Toward Player (Simple Movement)
+- [ ] Enemies Touch Player (Enemy Collide with Player)
 

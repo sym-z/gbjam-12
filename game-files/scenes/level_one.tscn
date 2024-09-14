@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://d164o0t7vod04"]
+
+[ext_resource type="Script" path="res://scripts/level_one.gd" id="1_bmkg0"]
+[ext_resource type="Texture2D" uid="uid://doudup5mvad4r" path="res://sprites/placeholder-background.png" id="2_gsi3j"]
+[ext_resource type="PackedScene" uid="uid://cf6ar5dxqu7h2" path="res://scenes/goodguy.tscn" id="3_6i0ce"]
+[ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="5_cdm3v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s2qrt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gsi3j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Level One" type="Node2D" node_paths=PackedStringArray("player", "Nmark", "Smark", "Emark", "Wmark")]
+script = ExtResource("1_bmkg0")
+player = NodePath("Good Guy")
+Nmark = NodePath("Markers/NORTH")
+Smark = NodePath("Markers/SOUTH")
+Emark = NodePath("Markers/EAST")
+Wmark = NodePath("Markers/WEST")
+spwn_offset = -10
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s2qrt")
+centered = false
+
+[node name="Good Guy" parent="." instance=ExtResource("3_6i0ce")]
+position = Vector2(80, 72)
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="NORTH" type="Marker2D" parent="Markers"]
+
+[node name="DEBUG" type="Sprite2D" parent="Markers/NORTH"]
+visible = false
+texture = ExtResource("5_cdm3v")
+
+[node name="SOUTH" type="Marker2D" parent="Markers"]
+
+[node name="DEBUG" type="Sprite2D" parent="Markers/SOUTH"]
+visible = false
+texture = ExtResource("5_cdm3v")
+
+[node name="EAST" type="Marker2D" parent="Markers"]
+
+[node name="DEBUG" type="Sprite2D" parent="Markers/EAST"]
+visible = false
+texture = ExtResource("5_cdm3v")
+
+[node name="WEST" type="Marker2D" parent="Markers"]
+
+[node name="DEBUG" type="Sprite2D" parent="Markers/WEST"]
+visible = false
+texture = ExtResource("5_cdm3v")

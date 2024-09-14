@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2dk6axl8a5gy"]
+[gd_scene load_steps=4 format=3 uid="uid://d2dk6axl8a5gy"]
 
+[ext_resource type="Script" path="res://scripts/bad_guy.gd" id="1_qcadk"]
 [ext_resource type="Texture2D" uid="uid://7du3l0187s11" path="res://sprites/placeholder-bad-guy.png" id="1_tjmsa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xfng4"]
@@ -14,6 +15,7 @@ animations = [{
 }]
 
 [node name="Bad Guy" type="Node2D"]
+script = ExtResource("1_qcadk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xfng4")
