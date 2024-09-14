@@ -40,10 +40,10 @@ func _process(_delta):
 	pass
 func position_actors():
 	### ASSIGN VALUES FOR POSITIONING ###
-	var SCREENX = get_viewport_rect().size.x
-	var SCREENY = get_viewport_rect().size.y 
-	var CENTERX = get_viewport_rect().size.x / 2
-	var CENTERY = get_viewport_rect().size.y / 2
+	SCREENX = get_viewport_rect().size.x
+	SCREENY = get_viewport_rect().size.y 
+	CENTERX = get_viewport_rect().size.x / 2
+	CENTERY = get_viewport_rect().size.y / 2
 	
 	### CENTER PLAYER ###
 	player.position.y = CENTERY
@@ -65,7 +65,6 @@ func position_actors():
 	# WEST SPAWNER #
 	Wmark.position.x = -spwn_offset
 	Wmark.position.y = CENTERY
-	pass
 
 func spawn_enemies():
 	# EVENTUALLY WILL DO RANDOM SPAWN AT RANDOM TIMES, WITH SPLINES

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2dk6axl8a5gy"]
+[gd_scene load_steps=5 format=3 uid="uid://d2dk6axl8a5gy"]
 
 [ext_resource type="Script" path="res://scripts/bad_guy.gd" id="1_qcadk"]
 [ext_resource type="Texture2D" uid="uid://7du3l0187s11" path="res://sprites/placeholder-bad-guy.png" id="1_tjmsa"]
@@ -14,8 +14,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nuiqs"]
+radius = 6.0
+
 [node name="Bad Guy" type="Node2D"]
 script = ExtResource("1_qcadk")
+speed = 15
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xfng4")
+
+[node name="Hit Box" type="Area2D" parent="." groups=["Enemies"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Box"]
+shape = SubResource("CircleShape2D_nuiqs")

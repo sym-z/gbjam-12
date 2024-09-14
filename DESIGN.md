@@ -10,7 +10,9 @@
 - [ ] Character Aiming in 4 Directions
 - [ ] Character Firing Animation
 - [ ] Character Hurt Animation
+- [ ] Character Death Animation
 - [ ] Enemy Hurt Animations
+- [ ] Enemy Death Animations
 - [ ] Enemy (Light)
 - [ ] Enemy (Medium)
 - [ ] Enemy (Hard)
@@ -18,6 +20,7 @@
 - [ ] Projectile 
 - [ ] Main Menu 
 - [ ] Pause Menu 
+- [ ] Controls or How to Play Menu 
 - [ ] Credits Menu 
 - [ ] Spooky Font? *Will find out file type*
 - [ ] Inverted Color Versions of Character, Enemy and Background for flash frames
@@ -35,17 +38,20 @@
 
 ## CODE
 - [ ] Shoot Projectile (Line-Trace Collide with Enemy)
+- [ ] Main Menu
+- [ ] Credits Menu
+- [ ] Controls Menu
 - [ ] Aim and Shoot 
 - [ ] Spawn Enemy
 - [ ] Kill Enemy
 - [ ] Add to Score
-- [ ] Kill Player 
+- [x] Kill Player 
 - [ ] Respawn Player
 - [ ] Spawn Enemy Randomly
 - [ ] Next Level
 - [ ] Spline Movement for Enemies
 - [ ] Random Enemy Spawn Locations
 - [ ] Enemies Spawn at Random Times
-- [ ] Enemies Move Toward Player (Simple Movement)
-- [ ] Enemies Touch Player (Enemy Collide with Player)
+- [x] Enemies Move Toward Player (Simple Movement)
+- [x] Enemies Touch Player (Enemy Collide with Player)
 

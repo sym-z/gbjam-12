@@ -35,12 +35,14 @@ position = Vector2(80, 72)
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="NORTH" type="Marker2D" parent="Markers"]
+position = Vector2(80, 0)
 
 [node name="DEBUG" type="Sprite2D" parent="Markers/NORTH"]
 visible = false
 texture = ExtResource("5_cdm3v")
 
 [node name="SOUTH" type="Marker2D" parent="Markers"]
+position = Vector2(80, 144)
 
 [node name="DEBUG" type="Sprite2D" parent="Markers/SOUTH"]
 visible = false

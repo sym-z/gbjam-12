@@ -13,6 +13,9 @@ var sel_but : bool = false
 var srt_but : bool = false
 # # # # # # # # # # # #
 
+### PLAYER HEALTH ###
+@export var health : int = 4
+
 func _ready():
 	pass 
 
@@ -68,3 +71,18 @@ func input_handler(DEBUG = false):
 			print("S T A R T")
 	else:
 		srt_but = false
+
+func _on_hurtbox_area_entered(area):
+	# Check to see if collider is an enemy
+	if area.is_in_group("Enemies"):
+		# Owner grabs the root node of the tree.
+		var attacker = area.owner
+		health -= attacker.damage
+		if health <= 0:
+			die()
+		# Destroy the enemy last!
+		attacker.destroy()
+
+func die():
+	print("YOU DIED")
+	queue_free()
