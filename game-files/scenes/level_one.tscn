@@ -16,7 +16,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Level One" type="Node2D" node_paths=PackedStringArray("player", "Nmark", "Smark", "Emark", "Wmark")]
+[node name="Level One" type="Node2D" node_paths=PackedStringArray("player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock")]
 script = ExtResource("1_bmkg0")
 player = NodePath("Good Guy")
 Nmark = NodePath("Markers/NORTH")
@@ -24,6 +24,7 @@ Smark = NodePath("Markers/SOUTH")
 Emark = NodePath("Markers/EAST")
 Wmark = NodePath("Markers/WEST")
 spwn_offset = -10
+spawn_clock = NodePath("Spawn Timer")
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s2qrt")
@@ -59,3 +60,8 @@ texture = ExtResource("5_cdm3v")
 [node name="DEBUG" type="Sprite2D" parent="Markers/WEST"]
 visible = false
 texture = ExtResource("5_cdm3v")
+
+[node name="Spawn Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]

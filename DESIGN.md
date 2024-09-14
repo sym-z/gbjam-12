@@ -42,17 +42,17 @@
 - [ ] Credits Menu
 - [ ] Controls Menu
 - [x] Aim and Shoot 
-- [ ] Spawn Enemy
+- [x] Spawn Enemy
 - [x] Kill Enemy
 - [ ] New Enemy Types
 - [ ] Add to Score
 - [x] Kill Player 
 - [ ] Respawn Player
-- [ ] Spawn Enemy Randomly
+- [x] Spawn Enemy Randomly
 - [ ] Next Level
-- [ ] Spline Movement for Enemies
-- [ ] Random Enemy Spawn Locations
-- [ ] Enemies Spawn at Random Times
+- [ ] Spline Movement for Harder Enemies (PathFollow2D)
+- [x] Random Enemy Spawn Locations
+- [x] Enemies Spawn at Random Times
 - [x] Enemies Move Toward Player (Simple Movement)
 - [x] Enemies Touch Player (Enemy Collide with Player)
 
