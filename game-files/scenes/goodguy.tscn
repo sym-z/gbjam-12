@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf6ar5dxqu7h2"]
+
+[ext_resource type="Texture2D" uid="uid://bkysxr1ib3rse" path="res://sprites/dummy-ship.png" id="1_kc67u"]
+[ext_resource type="Script" path="res://scripts/goodguy.gd" id="1_q0ltr"]
+
+[node name="Good Guy" type="Node2D"]
+script = ExtResource("1_q0ltr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kc67u")
