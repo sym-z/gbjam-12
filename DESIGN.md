@@ -7,6 +7,8 @@
 
 ## FINAL ART
 - [ ] Character
+- [ ] Icons for Health
+- [ ] Icons for Lives
 - [ ] Character Aiming in 4 Directions
 - [ ] Character Firing Animation
 - [ ] Character Hurt Animation
