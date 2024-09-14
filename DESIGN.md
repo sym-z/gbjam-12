@@ -17,6 +17,7 @@
 - [ ] Background 
 - [ ] Projectile 
 - [ ] Main Menu 
+- [ ] Pause Menu 
 - [ ] Credits Menu 
 - [ ] Spooky Font? *Will find out file type*
 - [ ] Inverted Color Versions of Character, Enemy and Background for flash frames
@@ -26,6 +27,11 @@
 - [ ] Menu Select
 - [ ] Player Death
 - [ ] Enemy Death
+- [ ] Start Music
+- [ ] Win Music
+- [ ] Death Music
+- [ ] Pause Music
+- [ ] Next Level Jingle
 
 ## CODE
 - [ ] Shoot Projectile 
