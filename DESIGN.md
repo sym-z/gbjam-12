@@ -45,9 +45,12 @@
 - [x] Spawn Enemy
 - [x] Kill Enemy
 - [ ] New Enemy Types
-- [ ] Add to Score
+- [x] Add to Score
 - [x] Kill Player 
-- [ ] Respawn Player
+- [x] Respawn Player after timer
+- [x] Restart Game on Death
+- [x] Pause Before Restart
+- [ ] Lives System
 - [x] Spawn Enemy Randomly
 - [ ] Next Level
 - [ ] Spline Movement for Harder Enemies (PathFollow2D)

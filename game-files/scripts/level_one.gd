@@ -93,8 +93,7 @@ func spawn_enemy():
 		DIR.WEST:
 			enemy_inst.direction = Vector2.RIGHT
 
-
 func _on_spawn_timer_timeout():
-	spawn_enemy()
-	spawn_clock.wait_time = randf_range(min_spawn_time, max_spawn_time)
-	pass # Replace with function body.
+	if(!player.dead):
+		spawn_enemy()
+		spawn_clock.wait_time = randf_range(min_spawn_time, max_spawn_time)

@@ -17,12 +17,16 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0cfp"]
 radius = 16.0
 
-[node name="Good Guy" type="Node2D" node_paths=PackedStringArray("NORTH_GUN", "SOUTH_GUN", "EAST_GUN", "WEST_GUN")]
+[node name="Good Guy" type="Node2D" node_paths=PackedStringArray("NORTH_GUN", "SOUTH_GUN", "EAST_GUN", "WEST_GUN", "hurtbox", "sprite", "respawn_clock")]
 script = ExtResource("1_q0ltr")
 NORTH_GUN = NodePath("Firing Directions/NORTH")
 SOUTH_GUN = NodePath("Firing Directions/SOUTH")
 EAST_GUN = NodePath("Firing Directions/EAST")
 WEST_GUN = NodePath("Firing Directions/WEST")
+health = 1
+hurtbox = NodePath("Hurtbox")
+sprite = NodePath("AnimatedSprite2D")
+respawn_clock = NodePath("Respawn Timer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v3ou4")
@@ -53,4 +57,9 @@ rotation = 1.5708
 target_position = Vector2(0, 80)
 collide_with_areas = true
 
+[node name="Respawn Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Respawn Timer" to="." method="_on_respawn_timer_timeout"]

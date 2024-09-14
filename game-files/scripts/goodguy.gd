@@ -31,6 +31,13 @@ var gun_arr
 ### WEAPON DAMAGE (FOR NOW) ###
 @export var damage : int = 1
 
+### FOR DEATH HANDLING 
+@export var hurtbox : Area2D
+@export var sprite : AnimatedSprite2D
+### FOR LEVEL RESPAWN ###
+var dead : bool = false
+
+@export var respawn_clock : Timer
 func _ready():
 	### HOLDS GUNS TO MAKE FIRING CODE EASIER ###
 	gun_arr = [NORTH_GUN,SOUTH_GUN,EAST_GUN,WEST_GUN]
@@ -97,18 +104,22 @@ func input_handler(DEBUG = false):
 
 func _on_hurtbox_area_entered(area):
 	# Check to see if collider is an enemy
-	if area.is_in_group("Enemies"):
+	if area.is_in_group("Enemies") and !dead:
 		# Owner grabs the root node of the tree.
 		var attacker = area.owner
 		health -= attacker.damage
 		if health <= 0:
 			die()
 		# Destroy the enemy last!
-		attacker.destroy()
+		attacker.destroy(false)
 
 func die():
 	print("YOU DIED")
-	queue_free()
+	dead = true
+	sprite.visible = false
+	Globals.SCORE = 0
+	call_deferred("restart_level",owner.get_tree())
+	#queue_free()
 
 func fire():
 	# Haven't decided on a fire button
@@ -125,3 +136,9 @@ func fire():
 		else:
 			#print("Enemy Miss")
 			pass
+
+func restart_level():
+	respawn_clock.start()
+
+func _on_respawn_timer_timeout():
+	owner.get_tree().reload_current_scene()
