@@ -17,8 +17,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0cfp"]
 radius = 16.0
 
-[node name="Good Guy" type="Node2D"]
+[node name="Good Guy" type="Node2D" node_paths=PackedStringArray("NORTH_GUN", "SOUTH_GUN", "EAST_GUN", "WEST_GUN")]
 script = ExtResource("1_q0ltr")
+NORTH_GUN = NodePath("Firing Directions/NORTH")
+SOUTH_GUN = NodePath("Firing Directions/SOUTH")
+EAST_GUN = NodePath("Firing Directions/EAST")
+WEST_GUN = NodePath("Firing Directions/WEST")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v3ou4")
@@ -27,5 +31,26 @@ sprite_frames = SubResource("SpriteFrames_v3ou4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_b0cfp")
+
+[node name="Firing Directions" type="Node2D" parent="."]
+
+[node name="NORTH" type="RayCast2D" parent="Firing Directions"]
+rotation = 3.14159
+target_position = Vector2(0, 80)
+collide_with_areas = true
+
+[node name="SOUTH" type="RayCast2D" parent="Firing Directions"]
+target_position = Vector2(0, 80)
+collide_with_areas = true
+
+[node name="EAST" type="RayCast2D" parent="Firing Directions"]
+rotation = 4.71239
+target_position = Vector2(0, 80)
+collide_with_areas = true
+
+[node name="WEST" type="RayCast2D" parent="Firing Directions"]
+rotation = 1.5708
+target_position = Vector2(0, 80)
+collide_with_areas = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

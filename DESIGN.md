@@ -37,13 +37,14 @@
 - [ ] Next Level Jingle
 
 ## CODE
-- [ ] Shoot Projectile (Line-Trace Collide with Enemy)
+- [x] Shoot Projectile (Line-Trace Collide with Enemy)
 - [ ] Main Menu
 - [ ] Credits Menu
 - [ ] Controls Menu
-- [ ] Aim and Shoot 
+- [x] Aim and Shoot 
 - [ ] Spawn Enemy
-- [ ] Kill Enemy
+- [x] Kill Enemy
+- [ ] New Enemy Types
 - [ ] Add to Score
 - [x] Kill Player 
 - [ ] Respawn Player
