@@ -53,7 +53,7 @@
 - [x] Respawn Player after timer
 - [x] Restart Game on Death
 - [x] Pause Before Restart
-- [ ] Lives System
+- [x] Lives System
 - [x] Spawn Enemy Randomly
 - [ ] Next Level
 - [ ] Spline Movement for Harder Enemies (PathFollow2D)

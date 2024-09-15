@@ -117,8 +117,15 @@ func die():
 	print("YOU DIED")
 	dead = true
 	sprite.visible = false
-	Globals.SCORE = 0
-	call_deferred("restart_level",owner.get_tree())
+	if Globals.LIVES == 0:
+		# GAME OVER
+		Globals.SCORE = 0
+		Globals.LIVES = 3
+	else:
+		# RESTART LEVEL
+		Globals.LIVES -= 1
+	print("LIVES: ", Globals.LIVES)
+	call_deferred("restart_level")
 	#queue_free()
 
 func fire():
