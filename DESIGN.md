@@ -15,9 +15,9 @@
 - [ ] Character Death Animation
 - [ ] Enemy Hurt Animations
 - [ ] Enemy Death Animations
-- [ ] Enemy (Light)
-- [ ] Enemy (Medium)
-- [ ] Enemy (Hard)
+- [ ] Enemy (Bad Guy (Linear Path Enemy))
+- [ ] Enemy (Worse Guy (Custom Path Follower))
+- [ ] Enemy (Radial Guy (Circle Path Enemy))
 - [ ] Background 
 - [ ] Projectile 
 - [ ] Main Menu 
