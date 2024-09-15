@@ -24,7 +24,7 @@ _data = {
 }
 point_count = 15
 
-[node name="Level One" type="Node2D" node_paths=PackedStringArray("player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock")]
+[node name="Level One" type="Node2D" node_paths=PackedStringArray("player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock", "path")]
 script = ExtResource("1_bmkg0")
 player = NodePath("Good Guy")
 Nmark = NodePath("Markers/NORTH")
@@ -33,6 +33,7 @@ Emark = NodePath("Markers/EAST")
 Wmark = NodePath("Markers/WEST")
 spwn_offset = -10
 spawn_clock = NodePath("Spawn Timer")
+path = NodePath("Worse Guy Path")
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s2qrt")

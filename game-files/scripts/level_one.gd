@@ -34,6 +34,8 @@ var total_spawns : int
 @export var min_spawn_time : float = 1.0
 @export var max_spawn_time : float = 3.0
 
+### PATH FOR SPAWNING WORSE GUY ###
+@export var path : Path2D
 func _ready():
 	position_actors()
 	### HOLD MARKERS IN ARRAY ###
@@ -77,6 +79,7 @@ func spawn_enemy():
 	# Spawn enemy at random marker
 	var rand_mark: int = randi_range(0,total_spawns-1)
 	var enemy_inst = enemy.instantiate()
+	# ALERT: DONT FORGET TO PARENT THE "WORSE GUY" TO THE PATH2D
 	add_child(enemy_inst)
 	# CHANGE THIS FOR RANDOMIZATION
 	enemy_inst.position = spawn_arr[rand_mark].position
