@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d164o0t7vod04"]
+[gd_scene load_steps=9 format=3 uid="uid://d164o0t7vod04"]
 
 [ext_resource type="Script" path="res://scripts/level_one.gd" id="1_bmkg0"]
 [ext_resource type="Texture2D" uid="uid://doudup5mvad4r" path="res://sprites/placeholder-background.png" id="2_gsi3j"]
 [ext_resource type="PackedScene" uid="uid://cf6ar5dxqu7h2" path="res://scenes/goodguy.tscn" id="3_6i0ce"]
+[ext_resource type="PackedScene" uid="uid://0rxultecbvo7" path="res://scenes/worse_guy.tscn" id="5_cb4va"]
 [ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="5_cdm3v"]
+[ext_resource type="PackedScene" uid="uid://c2ajpu1p3djgq" path="res://scenes/radial_guy.tscn" id="6_p2mir"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s2qrt"]
 animations = [{
@@ -15,6 +17,12 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Curve2D" id="Curve2D_bbhxf"]
+_data = {
+"points": PackedVector2Array(2.91352, 6.62164, -2.91352, -6.62164, 90, 16.0869, 0, 0, 0, 0, 118, 23.3359, 0, 0, 0, 0, 132, 36.7984, 0, 0, 0, 0, 141, 69.9367, 0, 0, 0, 0, 131, 111.36, 0, 0, 0, 0, 110, 124.822, 0, 0, 0, 0, 69, 130, 0, 0, 0, 0, 38, 117.573, 0, 0, 0, 0, 29, 98.9328, -1.05946, 6.8572, 1.05946, -6.8572, 25, 69.9367, 0, 0, 0, 0, 32, 48.1897, 0, 0, 0, 0, 41, 31.6205, 0, 0, 0, 0, 54, 22.3003, 0, 0, 0, 0, 71, 16.0869, 0, 0, 0, 0, 90, 16.0869)
+}
+point_count = 15
 
 [node name="Level One" type="Node2D" node_paths=PackedStringArray("player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock")]
 script = ExtResource("1_bmkg0")
@@ -63,5 +71,16 @@ texture = ExtResource("5_cdm3v")
 
 [node name="Spawn Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Worse Guy Path" type="Path2D" parent="."]
+position = Vector2(-3.8147e-06, 4.46574)
+scale = Vector2(1, 0.965648)
+curve = SubResource("Curve2D_bbhxf")
+
+[node name="Worse Guy" parent="Worse Guy Path" instance=ExtResource("5_cb4va")]
+position = Vector2(90, 16.0869)
+rotation = -1.9853
+
+[node name="Radial Guy" parent="." instance=ExtResource("6_p2mir")]
 
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]

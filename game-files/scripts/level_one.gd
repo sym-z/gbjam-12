@@ -45,10 +45,10 @@ func _process(_delta):
 	pass
 func position_actors():
 	### ASSIGN VALUES FOR POSITIONING ###
-	SCREENX = get_viewport_rect().size.x
-	SCREENY = get_viewport_rect().size.y 
-	CENTERX = get_viewport_rect().size.x / 2
-	CENTERY = get_viewport_rect().size.y / 2
+	SCREENX = floor(get_viewport_rect().size.x)
+	SCREENY = floor(get_viewport_rect().size.y) 
+	CENTERX = floor(get_viewport_rect().size.x / 2)
+	CENTERY = floor(get_viewport_rect().size.y / 2)
 	
 	### CENTER PLAYER ###
 	player.position.y = CENTERY

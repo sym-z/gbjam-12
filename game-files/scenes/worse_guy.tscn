@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://0rxultecbvo7"]
+
+[ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="1_05wgw"]
+[ext_resource type="Script" path="res://scripts/worse_guy.gd" id="1_gvq31"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pvh5r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_05wgw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xaq4j"]
+size = Vector2(16, 16)
+
+[node name="Worse Guy" type="PathFollow2D"]
+script = ExtResource("1_gvq31")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pvh5r")
+
+[node name="Hit Box" type="Area2D" parent="." groups=["Enemies"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Box"]
+shape = SubResource("RectangleShape2D_xaq4j")

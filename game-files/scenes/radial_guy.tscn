@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2ajpu1p3djgq"]
+
+[ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="1_77bqn"]
+[ext_resource type="Script" path="res://scripts/radial_guy.gd" id="1_346tb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bipq6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_77bqn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojjiy"]
+size = Vector2(16, 16)
+
+[node name="Radial Guy" type="Node2D" node_paths=PackedStringArray("body")]
+script = ExtResource("1_346tb")
+body = NodePath("Guy")
+
+[node name="Guy" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Guy"]
+sprite_frames = SubResource("SpriteFrames_bipq6")
+
+[node name="Hit Box" type="Area2D" parent="Guy" groups=["Enemies"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guy/Hit Box"]
+shape = SubResource("RectangleShape2D_ojjiy")

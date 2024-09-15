@@ -47,7 +47,9 @@
 - [x] Aim and Shoot 
 - [x] Spawn Enemy
 - [x] Kill Enemy
-- [ ] New Enemy Types
+- [x] New Enemy Types
+- [ ] Path Enemy Attack or Retreat
+- [ ] Radial Enemy Attack or Retreat
 - [x] Add to Score
 - [x] Kill Player 
 - [x] Respawn Player after timer
@@ -56,7 +58,7 @@
 - [x] Lives System
 - [x] Spawn Enemy Randomly
 - [ ] Next Level
-- [ ] Spline Movement for Harder Enemies (PathFollow2D)
+- [x] Spline Movement for Harder Enemies (PathFollow2D)
 - [x] Random Enemy Spawn Locations
 - [x] Enemies Spawn at Random Times
 - [x] Enemies Move Toward Player (Simple Movement)
