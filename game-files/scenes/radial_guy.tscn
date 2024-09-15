@@ -17,9 +17,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojjiy"]
 size = Vector2(16, 16)
 
-[node name="Radial Guy" type="Node2D" node_paths=PackedStringArray("body")]
+[node name="Radial Guy" type="Node2D" node_paths=PackedStringArray("body", "creep_clock")]
 script = ExtResource("1_346tb")
+radius = 45
 body = NodePath("Guy")
+creep_clock = NodePath("Creep Timer")
+radial_creep = 10.0
 
 [node name="Guy" type="Node2D" parent="."]
 
@@ -30,3 +33,7 @@ sprite_frames = SubResource("SpriteFrames_bipq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Guy/Hit Box"]
 shape = SubResource("RectangleShape2D_ojjiy")
+
+[node name="Creep Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Creep Timer" to="." method="_on_creep_timer_timeout"]
