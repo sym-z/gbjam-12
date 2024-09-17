@@ -2,6 +2,9 @@
 
 # TO-DO
 
+## IDEAS
+- [ ] Make an intro based off of the Gameboy's start up jingle that plays when the game starts.
+
 ## PLACEHOLDER ART
 - [ ] Projectile
 
@@ -42,8 +45,8 @@
 ## CODE
 - [x] Shoot Projectile (Line-Trace Collide with Enemy)
 - [ ] Main Menu
-- [ ] Credits Menu
-- [ ] Controls Menu
+- [ ] Credits Menu Implemented
+- [ ] Controls Menu Implemented
 - [x] Aim and Shoot 
 - [x] Spawn Enemy
 - [x] Kill Enemy
