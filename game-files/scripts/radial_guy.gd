@@ -20,6 +20,8 @@ extends Node2D
 
 # How long until the guy creeps forward
 @export var creep_time : float = 1.0
+
+
 func _ready():
 	# Start creep timer
 	creep_clock.wait_time = creep_time
@@ -31,10 +33,9 @@ func _ready():
 	# Align Orbit
 	### USED THIS FOR HELP ###
 	### https://forum.godotengine.org/t/how-to-make-ideal-circle-path2d-in-simple-way/26750 ###
+	# TODO: COULD CHANGE THIS TO PLAYER POSITION
 	position = Vector2(CENTERX,CENTERY)
 	body.position = Vector2(radius, 0)
-	
-	pass 
 
 func _process(delta):
 	move(delta)
@@ -60,4 +61,3 @@ func _on_creep_timer_timeout():
 		body.position = Vector2.ZERO
 	else:
 		body.position -= Vector2(radial_creep,0)
-	pass # Replace with function body.

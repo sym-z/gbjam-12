@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d164o0t7vod04"]
+[gd_scene load_steps=7 format=3 uid="uid://d164o0t7vod04"]
 
 [ext_resource type="Script" path="res://scripts/level_one.gd" id="1_bmkg0"]
 [ext_resource type="Texture2D" uid="uid://doudup5mvad4r" path="res://sprites/placeholder-background.png" id="2_gsi3j"]
 [ext_resource type="PackedScene" uid="uid://cf6ar5dxqu7h2" path="res://scenes/goodguy.tscn" id="3_6i0ce"]
-[ext_resource type="PackedScene" uid="uid://0rxultecbvo7" path="res://scenes/worse_guy.tscn" id="5_cb4va"]
 [ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="5_cdm3v"]
-[ext_resource type="PackedScene" uid="uid://c2ajpu1p3djgq" path="res://scenes/radial_guy.tscn" id="6_p2mir"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s2qrt"]
 animations = [{
@@ -77,11 +75,5 @@ autostart = true
 position = Vector2(-3.8147e-06, 4.46574)
 scale = Vector2(1, 0.965648)
 curve = SubResource("Curve2D_bbhxf")
-
-[node name="Worse Guy" parent="Worse Guy Path" instance=ExtResource("5_cb4va")]
-position = Vector2(90, 16.0869)
-rotation = -1.9853
-
-[node name="Radial Guy" parent="." instance=ExtResource("6_p2mir")]
 
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]

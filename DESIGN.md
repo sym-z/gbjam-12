@@ -50,8 +50,8 @@
 - [x] New Enemy Types
 - [ ] Path Enemy Attack or Retreat
 - [x] Radial Enemy Attack or Retreat
-- [ ] Radial Enemy Random Spawn
-- [ ] Path Enemy Random Spawn
+- [x] Radial Enemy Random Spawn
+- [x] Path Enemy Random Spawn
 - [x] Add to Score
 - [x] Kill Player 
 - [x] Respawn Player after timer

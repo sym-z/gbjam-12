@@ -12,6 +12,9 @@ var CENTERY : int
 
 ### LOAD ENEMY SCENES ###
 var enemy = preload("res://scenes/bad_guy.tscn")
+var enemy_pather = preload("res://scenes/worse_guy.tscn")
+var enemy_radial = preload("res://scenes/radial_guy.tscn")
+
 
 ### HOLDING SPAWNERS ###
 @export var Nmark  : Marker2D
@@ -36,12 +39,12 @@ var total_spawns : int
 
 ### PATH FOR SPAWNING WORSE GUY ###
 @export var path : Path2D
+
 func _ready():
 	position_actors()
 	### HOLD MARKERS IN ARRAY ###
 	spawn_arr = [Nmark, Smark, Emark, Wmark]
 	total_spawns = spawn_arr.size()
-	#spawn_enemy()
 
 func _process(_delta):
 	pass
@@ -74,27 +77,41 @@ func position_actors():
 	Wmark.position.y = CENTERY
 
 func spawn_enemy():
+	# ALERT: DONT FORGET TO PARENT THE "WORSE GUY" TO THE PATH2D
 	# EVENTUALLY WILL DO RANDOM SPAWN AT RANDOM TIMES, WITH SPLINES FOR THE SPECIAL FAST ENEMIES
+	# ROLL 1 - 100
+	var dice_roll : int = randi_range(1,100)
+	print("roll", dice_roll)
+	
 	### SPAWN ENEMY ###
 	# Spawn enemy at random marker
 	var rand_mark: int = randi_range(0,total_spawns-1)
-	var enemy_inst = enemy.instantiate()
-	# ALERT: DONT FORGET TO PARENT THE "WORSE GUY" TO THE PATH2D
-	add_child(enemy_inst)
-	# CHANGE THIS FOR RANDOMIZATION
-	enemy_inst.position = spawn_arr[rand_mark].position
-	### MOVE THE ENEMY TOWARDS THE CENTER ###
-	# SPAWN ENEMY AT RANDOM INDEX, MOVE THEM IN THE CORRECT DIRECTION, WILL NEED TO REFACTOR FOR SPECIAL
-	# ENEMIES
-	match rand_mark:
-		DIR.NORTH:
-			enemy_inst.direction = Vector2.DOWN
-		DIR.SOUTH:
-			enemy_inst.direction = Vector2.UP
-		DIR.EAST:
-			enemy_inst.direction = Vector2.LEFT
-		DIR.WEST:
-			enemy_inst.direction = Vector2.RIGHT
+	if dice_roll <= Globals.BASIC_ODDS:
+		var enemy_inst = enemy.instantiate()
+		add_child(enemy_inst)
+		enemy_inst.position = spawn_arr[rand_mark].position
+		### MOVE THE ENEMY TOWARDS THE CENTER ###
+		# SPAWN ENEMY AT RANDOM INDEX, MOVE THEM IN THE CORRECT DIRECTION, WILL NEED TO REFACTOR FOR SPECIAL
+		# ENEMIES
+		match rand_mark:
+			DIR.NORTH:
+				enemy_inst.direction = Vector2.DOWN
+			DIR.SOUTH:
+				enemy_inst.direction = Vector2.UP
+			DIR.EAST:
+				enemy_inst.direction = Vector2.LEFT
+			DIR.WEST:
+				enemy_inst.direction = Vector2.RIGHT
+	else:
+		dice_roll -= Globals.BASIC_ODDS
+		if dice_roll <= Globals.SPECIAL_ODDS: # SPECIAL CASE
+			var enemy_inst = enemy_pather.instantiate()
+			# ATTACH TO PATH
+			path.add_child(enemy_inst)
+		else: # RARE CASE
+			var enemy_inst = enemy_radial.instantiate()
+			add_child(enemy_inst)
+			# Could attach enemy to player here instead of using center of viewport
 
 func _on_spawn_timer_timeout():
 	if(!player.dead):

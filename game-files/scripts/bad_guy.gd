@@ -4,6 +4,7 @@ extends Node2D
 @export var damage : int = 1
 @export var health : int = 1
 @export var score_value : int = 5
+
 func _ready():
 	pass 
 
