@@ -51,7 +51,7 @@
 - [x] Spawn Enemy
 - [x] Kill Enemy
 - [x] New Enemy Types
-- [ ] Path Enemy Attack or Retreat
+- [ ] Path Enemy Attack or Retreat (Possibly Detonate after timer, if so, will need special animations)
 - [x] Radial Enemy Attack or Retreat
 - [x] Radial Enemy Random Spawn
 - [x] Path Enemy Random Spawn
