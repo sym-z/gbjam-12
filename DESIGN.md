@@ -6,7 +6,7 @@
 - [ ] Make an intro based off of the Gameboy's start up jingle that plays when the game starts.
 
 ## PLACEHOLDER ART
-- [ ] Projectile
+- [x] Projectile
 
 ## FINAL ART
 - [ ] Character
