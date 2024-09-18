@@ -142,15 +142,25 @@ func fire():
 		### PLAY ANIMATION ###
 		match aim_dir:
 			AIM.NORTH:
+				if north_anim.is_playing():
+					north_anim.frame = 0
 				north_anim.visible = true
 				north_anim.play()
-				pass
 			AIM.SOUTH:
-				pass
+				if south_anim.is_playing():
+					south_anim.frame = 0
+				south_anim.visible = true
+				south_anim.play()
 			AIM.EAST:
-				pass
+				if east_anim.is_playing():
+					east_anim.frame = 0
+				east_anim.visible = true
+				east_anim.play()
 			AIM.WEST:
-				pass
+				if west_anim.is_playing():
+					west_anim.frame = 0
+				west_anim.visible = true
+				west_anim.play()
 		### SEE WHAT IT HIT ###
 		var target = curr_gun.get_collider()
 		if target and target.is_in_group("Enemies"):
@@ -167,3 +177,13 @@ func restart_level():
 
 func _on_respawn_timer_timeout():
 	owner.get_tree().reload_current_scene()
+
+
+func _on_north_anim_animation_finished():
+	north_anim.visible = false
+func _on_south_anim_animation_finished():
+	south_anim.visible = false
+func _on_east_anim_animation_finished():
+	east_anim.visible = false
+func _on_west_anim_animation_finished():
+	west_anim.visible = false

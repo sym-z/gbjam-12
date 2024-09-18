@@ -1,5 +1,5 @@
 extends Node2D
-@export var speed : int = 5
+@export var speed : float = 3
 @export var direction : Vector2 = Vector2.ZERO
 ### CIRCLING ENEMY ###
 # FOLLOWS SET CIRCULAR PATH

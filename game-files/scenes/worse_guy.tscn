@@ -350,7 +350,7 @@ script = ExtResource("1_gvq31")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pvh5r")
 autoplay = "default"
-frame_progress = 0.678413
+frame_progress = 0.621219
 
 [node name="Hit Box" type="Area2D" parent="." groups=["Enemies"]]
 
