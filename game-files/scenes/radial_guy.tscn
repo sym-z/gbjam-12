@@ -19,7 +19,7 @@ size = Vector2(16, 16)
 
 [node name="Radial Guy" type="Node2D" node_paths=PackedStringArray("body", "creep_clock")]
 script = ExtResource("1_346tb")
-radius = 45
+radius = 55
 body = NodePath("Guy")
 creep_clock = NodePath("Creep Timer")
 radial_creep = 10.0

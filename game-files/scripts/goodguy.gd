@@ -38,6 +38,12 @@ var gun_arr
 var dead : bool = false
 
 @export var respawn_clock : Timer
+
+### Animations ###
+@export var north_anim : AnimatedSprite2D
+@export var south_anim : AnimatedSprite2D
+@export var east_anim : AnimatedSprite2D
+@export var west_anim : AnimatedSprite2D
 func _ready():
 	### HOLDS GUNS TO MAKE FIRING CODE EASIER ###
 	gun_arr = [NORTH_GUN,SOUTH_GUN,EAST_GUN,WEST_GUN]
@@ -133,6 +139,18 @@ func fire():
 	if a_but or b_but:
 		# Fire the correct gun
 		var curr_gun = gun_arr[aim_dir]
+		### PLAY ANIMATION ###
+		match aim_dir:
+			AIM.NORTH:
+				north_anim.visible = true
+				north_anim.play()
+				pass
+			AIM.SOUTH:
+				pass
+			AIM.EAST:
+				pass
+			AIM.WEST:
+				pass
 		### SEE WHAT IT HIT ###
 		var target = curr_gun.get_collider()
 		if target and target.is_in_group("Enemies"):

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf6ar5dxqu7h2"]
+[gd_scene load_steps=13 format=3 uid="uid://cf6ar5dxqu7h2"]
 
 [ext_resource type="Script" path="res://scripts/goodguy.gd" id="1_q0ltr"]
 [ext_resource type="Texture2D" uid="uid://dl3k2tm8abeka" path="res://sprites/placeholder-good-guy.png" id="2_3hi3n"]
+[ext_resource type="Texture2D" uid="uid://qpr0bxytwpg4" path="res://tilesets/fish_shot-Sheet.png" id="3_elfeb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v3ou4"]
 animations = [{
@@ -17,7 +18,57 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0cfp"]
 radius = 16.0
 
-[node name="Good Guy" type="Node2D" node_paths=PackedStringArray("NORTH_GUN", "SOUTH_GUN", "EAST_GUN", "WEST_GUN", "hurtbox", "sprite", "respawn_clock")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1v3b"]
+atlas = ExtResource("3_elfeb")
+region = Rect2(0, 0, 14, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxtd6"]
+atlas = ExtResource("3_elfeb")
+region = Rect2(14, 0, 14, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imj0v"]
+atlas = ExtResource("3_elfeb")
+region = Rect2(28, 0, 14, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ilgv"]
+atlas = ExtResource("3_elfeb")
+region = Rect2(42, 0, 14, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhfln"]
+atlas = ExtResource("3_elfeb")
+region = Rect2(56, 0, 14, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sroig"]
+atlas = ExtResource("3_elfeb")
+region = Rect2(70, 0, 14, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p7scc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1v3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxtd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imj0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ilgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhfln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sroig")
+}],
+"loop": false,
+"name": &"default",
+"speed": 21.0
+}]
+
+[node name="Good Guy" type="Node2D" node_paths=PackedStringArray("NORTH_GUN", "SOUTH_GUN", "EAST_GUN", "WEST_GUN", "hurtbox", "sprite", "respawn_clock", "north_anim", "south_anim", "east_anim", "west_anim")]
 script = ExtResource("1_q0ltr")
 NORTH_GUN = NodePath("Firing Directions/NORTH")
 SOUTH_GUN = NodePath("Firing Directions/SOUTH")
@@ -27,6 +78,10 @@ health = 1
 hurtbox = NodePath("Hurtbox")
 sprite = NodePath("AnimatedSprite2D")
 respawn_clock = NodePath("Respawn Timer")
+north_anim = NodePath("Gun Animations/North Anim")
+south_anim = NodePath("Gun Animations/South Anim")
+east_anim = NodePath("Gun Animations/East Anim")
+west_anim = NodePath("Gun Animations/West Anim")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v3ou4")
@@ -34,9 +89,11 @@ sprite_frames = SubResource("SpriteFrames_v3ou4")
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
 shape = SubResource("CircleShape2D_b0cfp")
 
 [node name="Firing Directions" type="Node2D" parent="."]
+visible = false
 
 [node name="NORTH" type="RayCast2D" parent="Firing Directions"]
 rotation = 3.14159
@@ -60,6 +117,40 @@ collide_with_areas = true
 [node name="Respawn Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="Gun Animations" type="Node2D" parent="."]
+
+[node name="North Anim" type="AnimatedSprite2D" parent="Gun Animations"]
+visible = false
+position = Vector2(0, -39)
+sprite_frames = SubResource("SpriteFrames_p7scc")
+frame = 5
+frame_progress = 1.0
+
+[node name="South Anim" type="AnimatedSprite2D" parent="Gun Animations"]
+visible = false
+position = Vector2(0, 39)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_p7scc")
+frame = 5
+frame_progress = 1.0
+
+[node name="East Anim" type="AnimatedSprite2D" parent="Gun Animations"]
+visible = false
+position = Vector2(39, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_p7scc")
+frame = 5
+frame_progress = 1.0
+
+[node name="West Anim" type="AnimatedSprite2D" parent="Gun Animations"]
+visible = false
+position = Vector2(-39, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_p7scc")
+frame = 5
+frame_progress = 1.0
+flip_v = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Respawn Timer" to="." method="_on_respawn_timer_timeout"]
