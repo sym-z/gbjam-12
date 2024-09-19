@@ -125,8 +125,7 @@ func die():
 	sprite.visible = false
 	if Globals.LIVES == 0:
 		# GAME OVER
-		Globals.SCORE = 0
-		Globals.LIVES = 3
+		Globals.reset_difficulty()
 	else:
 		# RESTART LEVEL
 		Globals.LIVES -= 1
@@ -168,17 +167,15 @@ func fire():
 			#print("Enemy Hit")
 			# Isolate the root node of the enemy, and apply damage to its health
 			target.owner.hurt(damage)
+			Globals.KILLS += 1
 		else:
 			#print("Enemy Miss")
 			pass
 
 func restart_level():
 	respawn_clock.start()
-
 func _on_respawn_timer_timeout():
 	owner.get_tree().reload_current_scene()
-
-
 func _on_north_anim_animation_finished():
 	north_anim.visible = false
 func _on_south_anim_animation_finished():

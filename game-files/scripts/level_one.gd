@@ -40,6 +40,7 @@ var total_spawns : int
 ### PATH FOR SPAWNING WORSE GUY ###
 @export var path : Path2D
 
+@export var delta_spawn : float = 0.05 # Amount that spawn interval decreases every 10 kills 
 func _ready():
 	position_actors()
 	### HOLD MARKERS IN ARRAY ###
@@ -116,4 +117,6 @@ func spawn_enemy():
 func _on_spawn_timer_timeout():
 	if(!player.dead):
 		spawn_enemy()
-		spawn_clock.wait_time = randf_range(min_spawn_time, max_spawn_time)
+		if Globals.KILLS % 10 == 0 and Globals.KILLS != 0:
+			Globals.SPAWN_INCREASE -= delta_spawn #5% Less time between spawns every 10 kills
+		spawn_clock.wait_time = randf_range(min_spawn_time, max_spawn_time) * Globals.SPAWN_INCREASE

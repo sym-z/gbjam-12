@@ -64,9 +64,9 @@
 - [x] Spawn Enemy Randomly
 - [ ] Next Level
 - [ ] Enemies spawn at faster intervals as time goes on (No Cap)
-- [ ] Enemies move faster as time goes on (With Cap)
-- [ ] Enemies higher health as time goes on (No Cap.)
-- [ ] Enemies give higher score as time goes on (No CaP.)
+- [x] Enemies move faster as time goes on (With Cap)
+- [x] Enemies higher health as time goes on (No Cap.)
+- [x] Enemies give higher score as time goes on (No CaP.)
 - [x] Spline Movement for Harder Enemies (PathFollow2D)
 - [x] Random Enemy Spawn Locations
 - [x] Enemies Spawn at Random Times
