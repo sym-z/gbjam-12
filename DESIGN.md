@@ -51,7 +51,7 @@
 - [x] Spawn Enemy
 - [x] Kill Enemy
 - [x] New Enemy Types
-- [ ] Path Enemy Attack or Retreat (Possibly Detonate after timer, if so, will need special animations)
+- [x] Path Enemy Attack or Retreat (Possibly Detonate after timer, if so, will need special animations)
 - [x] Radial Enemy Attack or Retreat
 - [x] Radial Enemy Random Spawn
 - [x] Path Enemy Random Spawn
@@ -62,8 +62,8 @@
 - [x] Pause Before Restart
 - [x] Lives System
 - [x] Spawn Enemy Randomly
-- [ ] Next Level
-- [ ] Enemies spawn at faster intervals as time goes on (No Cap)
+~~- [ ] Next Level~~
+- [x] Enemies spawn at faster intervals as time goes on (No Cap)
 - [x] Enemies move faster as time goes on (With Cap)
 - [x] Enemies higher health as time goes on (No Cap.)
 - [x] Enemies give higher score as time goes on (No CaP.)
