@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://cf6ar5dxqu7h2"]
 
 [ext_resource type="Script" path="res://scripts/goodguy.gd" id="1_q0ltr"]
-[ext_resource type="Texture2D" uid="uid://dl3k2tm8abeka" path="res://sprites/placeholder-good-guy.png" id="2_3hi3n"]
+[ext_resource type="Texture2D" uid="uid://dnim36s86wu3g" path="res://sprites/player_character.png" id="2_hv511"]
 [ext_resource type="Texture2D" uid="uid://qpr0bxytwpg4" path="res://tilesets/fish_shot-Sheet.png" id="3_elfeb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v3ou4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3hi3n")
+"texture": ExtResource("2_hv511")
 }],
 "loop": true,
 "name": &"default",
