@@ -56,6 +56,8 @@ func input_handler(DEBUG = false):
 	if Input.is_action_pressed("DPAD-DOWN"):
 		down = true
 		aim_dir = AIM.SOUTH
+		sprite.flip_v = false
+		sprite.rotation_degrees = 0
 		if(DEBUG): 
 			print("D O W N")
 	else:
@@ -63,6 +65,8 @@ func input_handler(DEBUG = false):
 	if Input.is_action_pressed("DPAD-UP"):
 		up = true
 		aim_dir = AIM.NORTH
+		sprite.rotation_degrees = 0
+		sprite.flip_v = true
 		if(DEBUG): 
 			print("U P")
 	else:
@@ -70,6 +74,8 @@ func input_handler(DEBUG = false):
 	if Input.is_action_pressed("DPAD-LEFT"):
 		left = true
 		aim_dir = AIM.WEST
+		sprite.rotation_degrees = 90
+		sprite.flip_v = false
 		if(DEBUG): 
 			print("L E F T")
 	else:
@@ -77,6 +83,8 @@ func input_handler(DEBUG = false):
 	if Input.is_action_pressed("DPAD-RIGHT"):
 		right = true
 		aim_dir = AIM.EAST
+		sprite.rotation_degrees = 270
+		sprite.flip_v = false
 		if(DEBUG): 
 			print("R I G H T")
 	else:
@@ -138,6 +146,9 @@ func fire():
 	if a_but or b_but:
 		# Fire the correct gun
 		var curr_gun = gun_arr[aim_dir]
+		if sprite.is_playing():
+			sprite.set_frame_and_progress(0,0)
+		sprite.play()
 		### PLAY ANIMATION ###
 		match aim_dir:
 			AIM.NORTH:
@@ -184,3 +195,8 @@ func _on_east_anim_animation_finished():
 	east_anim.visible = false
 func _on_west_anim_animation_finished():
 	west_anim.visible = false
+
+
+func _on_animated_sprite_2d_animation_finished():
+	sprite.set_frame_and_progress(0,0)
+
