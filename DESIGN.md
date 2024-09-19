@@ -40,7 +40,7 @@
 - [ ] Win Music
 - [ ] Death Music
 - [ ] Pause Music
-- [ ] Next Level Jingle
+~~- [ ] Next Level Jingle~~
 
 ## CODE
 - [x] Shoot Projectile (Line-Trace Collide with Enemy)
