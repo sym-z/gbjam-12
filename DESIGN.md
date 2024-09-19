@@ -10,7 +10,7 @@
 
 ## FINAL ART
 - [ ] Character
-- [ ] Icons for Health
+- [ ] ~~Icons for Health~~
 - [ ] Icons for Lives
 - [ ] Character Aiming in 4 Directions
 - [ ] Character Firing Animation
@@ -73,3 +73,5 @@
 - [x] Enemies Move Toward Player (Simple Movement)
 - [x] Enemies Touch Player (Enemy Collide with Player)
 
+## STRETCH GOALS
+- [ ] Player can change the side the hud is on

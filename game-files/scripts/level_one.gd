@@ -53,7 +53,7 @@ func position_actors():
 	### ASSIGN VALUES FOR POSITIONING ###
 	SCREENX = floor(get_viewport_rect().size.x)
 	SCREENY = floor(get_viewport_rect().size.y) 
-	CENTERX = floor(get_viewport_rect().size.x / 2)
+	CENTERX = floor(get_viewport_rect().size.x / 2) + 16
 	CENTERY = floor(get_viewport_rect().size.y / 2)
 	
 	### CENTER PLAYER ###
@@ -70,11 +70,11 @@ func position_actors():
 	Smark.position.y = SCREENY + spwn_offset
 	
 	# EAST SPAWNER #
-	Emark.position.x = SCREENX + spwn_offset
+	Emark.position.x = SCREENX + spwn_offset 
 	Emark.position.y = CENTERY
 	
 	# WEST SPAWNER #
-	Wmark.position.x = -spwn_offset
+	Wmark.position.x = -spwn_offset + 16 #ALERT CHANGE THIS
 	Wmark.position.y = CENTERY
 
 func spawn_enemy():

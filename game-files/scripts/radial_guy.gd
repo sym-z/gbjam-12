@@ -33,8 +33,8 @@ func _ready():
 	creep_clock.start()
 	
 	### ASSIGN VALUES FOR POSITIONING ###
-	var CENTERX = get_viewport_rect().size.x / 2
-	var CENTERY = get_viewport_rect().size.y / 2
+	var CENTERX = get_viewport_rect().size.x / 2 + 16 #ALERT CHANGE THIS
+	var CENTERY = get_viewport_rect().size.y / 2 
 	# Align Orbit
 	### USED THIS FOR HELP ###
 	### https://forum.godotengine.org/t/how-to-make-ideal-circle-path2d-in-simple-way/26750 ###
