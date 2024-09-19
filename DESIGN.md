@@ -62,6 +62,7 @@
 - [x] Pause Before Restart
 - [x] Lives System
 - [ ] Screenshake (Tween)
+- [ ] Remove health increase
 - [x] Spawn Enemy Randomly
 - [ ] ~~Next Level~~
 - [x] Enemies spawn at faster intervals as time goes on (No Cap)

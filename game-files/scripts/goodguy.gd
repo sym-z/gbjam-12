@@ -143,7 +143,7 @@ func die():
 
 func fire():
 	# Haven't decided on a fire button
-	if a_but or b_but:
+	if a_but or b_but and !dead:
 		# Fire the correct gun
 		var curr_gun = gun_arr[aim_dir]
 		if sprite.is_playing():

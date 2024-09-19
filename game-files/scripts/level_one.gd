@@ -53,7 +53,7 @@ func position_actors():
 	### ASSIGN VALUES FOR POSITIONING ###
 	SCREENX = floor(get_viewport_rect().size.x)
 	SCREENY = floor(get_viewport_rect().size.y) 
-	CENTERX = floor(get_viewport_rect().size.x / 2) + 16
+	CENTERX = floor(get_viewport_rect().size.x / 2) + 8
 	CENTERY = floor(get_viewport_rect().size.y / 2)
 	
 	### CENTER PLAYER ###
