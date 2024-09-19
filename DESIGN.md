@@ -40,7 +40,7 @@
 - [ ] Win Music
 - [ ] Death Music
 - [ ] Pause Music
-~~- [ ] Next Level Jingle~~
+- ~~Next Level Jingle~~
 
 ## CODE
 - [x] Shoot Projectile (Line-Trace Collide with Enemy)
@@ -62,7 +62,7 @@
 - [x] Pause Before Restart
 - [x] Lives System
 - [x] Spawn Enemy Randomly
-~~- [ ] Next Level~~
+- ~~Next Level~~
 - [x] Enemies spawn at faster intervals as time goes on (No Cap)
 - [x] Enemies move faster as time goes on (With Cap)
 - [x] Enemies higher health as time goes on (No Cap.)
