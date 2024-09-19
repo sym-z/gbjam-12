@@ -61,6 +61,7 @@
 - [x] Restart Game on Death
 - [x] Pause Before Restart
 - [x] Lives System
+- [ ] Screenshake (Tween)
 - [x] Spawn Enemy Randomly
 - [ ] ~~Next Level~~
 - [x] Enemies spawn at faster intervals as time goes on (No Cap)
