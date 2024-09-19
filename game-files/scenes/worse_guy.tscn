@@ -1,7 +1,56 @@
-[gd_scene load_steps=52 format=3 uid="uid://0rxultecbvo7"]
+[gd_scene load_steps=65 format=3 uid="uid://0rxultecbvo7"]
 
 [ext_resource type="Script" path="res://scripts/worse_guy.gd" id="1_gvq31"]
+[ext_resource type="Texture2D" uid="uid://c5awjik8e6j31" path="res://tilesets/worse_guy_death_spritesheet.png" id="2_is50l"]
 [ext_resource type="Texture2D" uid="uid://coa41vb8ql84x" path="res://tilesets/enemy-Sheet.png" id="2_o3fam"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecf61"]
+atlas = ExtResource("2_is50l")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_201yf"]
+atlas = ExtResource("2_is50l")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi7s0"]
+atlas = ExtResource("2_is50l")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b53lj"]
+atlas = ExtResource("2_is50l")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xofty"]
+atlas = ExtResource("2_is50l")
+region = Rect2(0, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxi2j"]
+atlas = ExtResource("2_is50l")
+region = Rect2(12, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpinx"]
+atlas = ExtResource("2_is50l")
+region = Rect2(24, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei7k2"]
+atlas = ExtResource("2_is50l")
+region = Rect2(36, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk3jg"]
+atlas = ExtResource("2_is50l")
+region = Rect2(0, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x33wm"]
+atlas = ExtResource("2_is50l")
+region = Rect2(12, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rda3"]
+atlas = ExtResource("2_is50l")
+region = Rect2(24, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t8m6"]
+atlas = ExtResource("2_is50l")
+region = Rect2(36, 24, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocbn8"]
 atlas = ExtResource("2_o3fam")
@@ -195,6 +244,47 @@ region = Rect2(552, 0, 12, 12)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ecf61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_201yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pi7s0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b53lj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xofty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxi2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpinx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei7k2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk3jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x33wm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rda3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t8m6")
+}],
+"loop": false,
+"name": &"death",
+"speed": 21.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ocbn8")
 }, {
 "duration": 1.0,
@@ -343,16 +433,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaq4j"]
 size = Vector2(16, 16)
 
-[node name="Worse Guy" type="PathFollow2D"]
+[node name="Worse Guy" type="PathFollow2D" node_paths=PackedStringArray("sprite")]
 rotates = false
 script = ExtResource("1_gvq31")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pvh5r")
+animation = &"death"
 autoplay = "default"
-frame_progress = 0.621219
 
 [node name="Hit Box" type="Area2D" parent="." groups=["Enemies"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Box"]
 shape = SubResource("RectangleShape2D_xaq4j")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

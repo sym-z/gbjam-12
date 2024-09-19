@@ -14,6 +14,8 @@ extends PathFollow2D
 @export var delta_health : int = 1 # Amount of health increase
 @export var delta_speed : float = 1.1 # Amount speed changes every tick
 @export var delta_score : int = 250 # Amount score changes every tick
+
+@export var sprite : AnimatedSprite2D 
 func _ready():
 	health += Globals.INCREASED_HEALTH
 
@@ -37,4 +39,10 @@ func destroy(killed):
 func hurt(dam):
 	health -= dam
 	if health <= 0:
+		sprite.animation = 'death'
+		sprite.play()
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if sprite.animation == 'death':
 		destroy(true)
