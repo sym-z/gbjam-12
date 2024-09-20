@@ -1,5 +1,5 @@
 extends Control
-
+# Code inspired from https://www.gotut.net/tweens-in-godot-4/
 @export var tex : TextureRect
 var tween : Tween
 enum AIM {NORTH, SOUTH, EAST, WEST}

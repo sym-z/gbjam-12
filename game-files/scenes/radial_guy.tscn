@@ -36,4 +36,7 @@ shape = SubResource("RectangleShape2D_ojjiy")
 
 [node name="Creep Timer" type="Timer" parent="."]
 
+[node name="Difficulty Bump" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="Creep Timer" to="." method="_on_creep_timer_timeout"]

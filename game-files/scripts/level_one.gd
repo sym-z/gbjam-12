@@ -48,6 +48,7 @@ func _ready():
 	total_spawns = spawn_arr.size()
 
 func _process(_delta):
+	#print(Globals.CAN_CHANGE)
 	pass
 func position_actors():
 	### ASSIGN VALUES FOR POSITIONING ###

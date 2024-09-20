@@ -31,7 +31,7 @@
 - [ ] Inverted Color Versions of Character, Enemy and Background for flash frames
 
 ## AUDIO
-- [ ] Fire Noise
+- [x] Fire Noise
 - [ ] Menu Select
 - [ ] Player Death
 - [ ] Level Music
@@ -61,8 +61,8 @@
 - [x] Restart Game on Death
 - [x] Pause Before Restart
 - [x] Lives System
-- [ ] Screenshake (Tween)
-- [ ] Remove health increase
+- [x] Screenshake (Tween)
+- [x] Remove health increase
 - [x] Spawn Enemy Randomly
 - [ ] ~~Next Level~~
 - [x] Enemies spawn at faster intervals as time goes on (No Cap)
@@ -74,7 +74,7 @@
 - [x] Enemies Spawn at Random Times
 - [x] Enemies Move Toward Player (Simple Movement)
 - [x] Enemies Touch Player (Enemy Collide with Player)
-- [ ] Fix double difficulty bump, could slightly pause or find a way to prevent it.
+- [x] Fix double difficulty bump, could slightly pause or find a way to prevent it.
 
 ## STRETCH GOALS
 - [ ] Player can change the side the hud is on

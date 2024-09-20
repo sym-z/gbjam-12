@@ -5,10 +5,11 @@ extends Node2D
 @export var health : int = 1
 @export var score_value : int = 250
 
-@export var difficulty_tick : int = 10 # How often difficulty tick happens
+@export var difficulty_tick : int = Globals.CHANGE_AT # How often difficulty tick happens
 @export var delta_health : int = 1 # Amount of health increase
 @export var delta_speed : float = 1.1 # Amount speed changes every tick
 @export var delta_score : int = 250 # Amount score changes every tick
+
 func _ready():
 	#health += Globals.INCREASED_HEALTH
 	pass
@@ -21,11 +22,8 @@ func move(delta):
 func destroy(killed):
 	if(killed):
 		print(Globals.KILLS)
-		if Globals.KILLS % difficulty_tick == 0 and Globals.KILLS != 0: # Every tenth kill, 
-			print(Globals.SPEED_MULT)
-			Globals.SPEED_MULT *= delta_speed # Enemies move 10% faster
-			Globals.SCORE_BUFF += delta_score  # Enemies now give 250 more points
-			print('difficulty increase')
+		if Globals.KILLS % difficulty_tick == 0 and Globals.KILLS != 0 and Globals.CAN_CHANGE: # Every tenth kill, 
+			Globals.raise_difficulty(delta_speed,delta_score)
 		Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		print("Score: ", Globals.SCORE)
 	queue_free()
@@ -34,3 +32,4 @@ func hurt(dam):
 	health -= dam
 	if health <= 0:
 		destroy(true)
+

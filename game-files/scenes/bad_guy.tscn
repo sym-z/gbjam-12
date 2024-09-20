@@ -27,3 +27,6 @@ sprite_frames = SubResource("SpriteFrames_xfng4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Box"]
 shape = SubResource("CircleShape2D_nuiqs")
+
+[node name="Difficulty Bump" type="Timer" parent="."]
+one_shot = true
