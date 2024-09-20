@@ -67,26 +67,14 @@ var basses = []
 var hihats = []
 var snares = []
 var voxes = []
+var instruments = [] # ALL INSTRUMENTS
+
 func _ready():
 	### HOLDS GUNS TO MAKE FIRING CODE EASIER ###
 	gun_arr = [NORTH_GUN,SOUTH_GUN,EAST_GUN,WEST_GUN]
 	### FOR RANDOM SOUNDS
-	
-	basses.append(bass1)
-	basses.append(bass3)
-	basses.append(bass3)
+	load_sounds()
 
-	hihats.append(hihat1)
-	hihats.append(hihat2)
-	hihats.append(hihat3)
-	
-	snares.append(snare1)
-	snares.append(snare1)
-	snares.append(snare1)
-	
-	voxes.append(vox1)
-	voxes.append(vox2)
-	voxes.append(vox3)
 
 func _process(_delta):
 	input_handler()
@@ -170,6 +158,8 @@ func die():
 	print("YOU DIED")
 	dead = true
 	sprite.visible = false
+	# Reset animation
+	sprite.frame = 0
 	if Globals.LIVES == 0:
 		# GAME OVER
 		Globals.reset_difficulty()
@@ -195,28 +185,28 @@ func fire():
 					north_anim.frame = 0
 				north_anim.visible = true
 				north_anim.play()
-				speaker.set_stream(basses[randi_range(0,basses.size()-1)])
+				speaker.set_stream(instruments[randi_range(0,instruments.size()-1)])
 				speaker.play()
 			AIM.SOUTH:
 				if south_anim.is_playing():
 					south_anim.frame = 0
 				south_anim.visible = true
 				south_anim.play()
-				speaker.set_stream(voxes[randi_range(0,voxes.size()-1)])
+				speaker.set_stream(instruments[randi_range(0,instruments.size()-1)])
 				speaker.play()
 			AIM.EAST:
 				if east_anim.is_playing():
 					east_anim.frame = 0
 				east_anim.visible = true
 				east_anim.play()
-				speaker.set_stream(snares[randi_range(0,snares.size()-1)])
+				speaker.set_stream(instruments[randi_range(0,instruments.size()-1)])
 				speaker.play()
 			AIM.WEST:
 				if west_anim.is_playing():
 					west_anim.frame = 0
 				west_anim.visible = true
 				west_anim.play()
-				speaker.set_stream(hihats[randi_range(0,hihats.size()-1)])
+				speaker.set_stream(instruments[randi_range(0,instruments.size()-1)])
 				speaker.play()
 		### SEE WHAT IT HIT ###
 		var target = curr_gun.get_collider()
@@ -249,3 +239,27 @@ func _on_west_anim_animation_finished():
 func _on_animated_sprite_2d_animation_finished():
 	sprite.set_frame_and_progress(0,0)
 
+func load_sounds():
+	instruments.append(vox1)
+	instruments.append(vox2)
+	instruments.append(vox3)
+	
+	instruments.append(bass2)
+	instruments.append(hihat2)
+	instruments.append(snare2)
+	
+	basses.append(bass1)
+	basses.append(bass3)
+	basses.append(bass3)
+
+	hihats.append(hihat1)
+	hihats.append(hihat2)
+	hihats.append(hihat3)
+	
+	snares.append(snare1)
+	snares.append(snare1)
+	snares.append(snare1)
+	
+	voxes.append(vox1)
+	voxes.append(vox2)
+	voxes.append(vox3)
