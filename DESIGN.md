@@ -74,6 +74,7 @@
 - [x] Enemies Spawn at Random Times
 - [x] Enemies Move Toward Player (Simple Movement)
 - [x] Enemies Touch Player (Enemy Collide with Player)
+- [ ] Fix double difficulty bump, could slightly pause or find a way to prevent it.
 
 ## STRETCH GOALS
 - [ ] Player can change the side the hud is on

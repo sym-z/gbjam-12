@@ -17,8 +17,8 @@ extends PathFollow2D
 
 @export var sprite : AnimatedSprite2D 
 func _ready():
-	health += Globals.INCREASED_HEALTH
-
+	#health += Globals.INCREASED_HEALTH
+	pass
 func _process(delta):
 	move(delta)
 
@@ -28,7 +28,6 @@ func move(delta):
 func destroy(killed):
 	if(killed):
 		if Globals.KILLS % difficulty_tick == 0 and Globals.KILLS != 0: # Every tenth kill, 
-			Globals.INCREASED_HEALTH += delta_health # Enemies require 1 more hit
 			Globals.SPEED_MULT *= delta_speed # Enemies move 10% faster
 			Globals.SCORE_BUFF += delta_score  # Enemies now give 250 more points
 			print('difficulty increase')

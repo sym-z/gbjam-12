@@ -177,8 +177,10 @@ func fire():
 			# Damage Enemy
 			#print("Enemy Hit")
 			# Isolate the root node of the enemy, and apply damage to its health
-			target.owner.hurt(damage)
 			Globals.KILLS += 1
+			target.owner.hurt(damage)
+			
+			#print(Globals.KILLS)
 		else:
 			#print("Enemy Miss")
 			pass

@@ -82,7 +82,7 @@ func spawn_enemy():
 	# EVENTUALLY WILL DO RANDOM SPAWN AT RANDOM TIMES, WITH SPLINES FOR THE SPECIAL FAST ENEMIES
 	# ROLL 1 - 100
 	var dice_roll : int = randi_range(1,100)
-	print("Roll: ", dice_roll)
+	#print("Roll: ", dice_roll)
 	
 	### SPAWN ENEMY ###
 	# Spawn enemy at random marker
