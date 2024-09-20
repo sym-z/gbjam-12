@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://d164o0t7vod04"]
+[gd_scene load_steps=9 format=3 uid="uid://d164o0t7vod04"]
 
 [ext_resource type="Script" path="res://scripts/level_one.gd" id="1_bmkg0"]
 [ext_resource type="Texture2D" uid="uid://dfj4l37vw4fiq" path="res://sprites/title_2.png" id="2_fo3mq"]
+[ext_resource type="Script" path="res://scripts/Tween.gd" id="2_r4d43"]
 [ext_resource type="PackedScene" uid="uid://cf6ar5dxqu7h2" path="res://scenes/goodguy.tscn" id="3_6i0ce"]
 [ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="5_cdm3v"]
 [ext_resource type="Texture2D" uid="uid://cyiqfbqejxr5u" path="res://sprites/hud_block.png" id="5_hwlwj"]
@@ -34,12 +35,30 @@ spwn_offset = -10
 spawn_clock = NodePath("Spawn Timer")
 path = NodePath("Worse Guy Path")
 
+[node name="Tween" type="Control" parent="." node_paths=PackedStringArray("tex")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -36.0
+offset_top = -40.0
+offset_right = 4.0
+script = ExtResource("2_r4d43")
+tex = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="Tween"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 240.0
+texture = ExtResource("2_fo3mq")
+
 [node name="Background" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_s2qrt")
+frame_progress = 0.647923
 offset = Vector2(96, 72)
 
-[node name="Good Guy" parent="." instance=ExtResource("3_6i0ce")]
+[node name="Good Guy" parent="." node_paths=PackedStringArray("bg") instance=ExtResource("3_6i0ce")]
 position = Vector2(96, 72)
+bg = NodePath("../Tween")
 
 [node name="Markers" type="Node2D" parent="."]
 

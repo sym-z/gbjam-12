@@ -69,6 +69,7 @@ var snares = []
 var voxes = []
 var instruments = [] # ALL INSTRUMENTS
 
+@export var bg : Control 
 func _ready():
 	### HOLDS GUNS TO MAKE FIRING CODE EASIER ###
 	gun_arr = [NORTH_GUN,SOUTH_GUN,EAST_GUN,WEST_GUN]
@@ -187,6 +188,7 @@ func fire():
 				north_anim.play()
 				speaker.set_stream(instruments[randi_range(0,instruments.size()-1)])
 				speaker.play()
+				bg.shake(aim_dir)
 			AIM.SOUTH:
 				if south_anim.is_playing():
 					south_anim.frame = 0
@@ -194,6 +196,7 @@ func fire():
 				south_anim.play()
 				speaker.set_stream(instruments[randi_range(0,instruments.size()-1)])
 				speaker.play()
+				bg.shake(aim_dir)
 			AIM.EAST:
 				if east_anim.is_playing():
 					east_anim.frame = 0
@@ -201,6 +204,7 @@ func fire():
 				east_anim.play()
 				speaker.set_stream(instruments[randi_range(0,instruments.size()-1)])
 				speaker.play()
+				bg.shake(aim_dir)
 			AIM.WEST:
 				if west_anim.is_playing():
 					west_anim.frame = 0
@@ -208,6 +212,7 @@ func fire():
 				west_anim.play()
 				speaker.set_stream(instruments[randi_range(0,instruments.size()-1)])
 				speaker.play()
+				bg.shake(aim_dir)
 		### SEE WHAT IT HIT ###
 		var target = curr_gun.get_collider()
 		if target and target.is_in_group("Enemies"):
