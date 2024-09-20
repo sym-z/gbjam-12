@@ -82,7 +82,6 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojjiy"]
-size = Vector2(16, 16)
 
 [node name="Radial Guy" type="Node2D" node_paths=PackedStringArray("body", "creep_clock", "sprite", "movement_tick")]
 script = ExtResource("1_346tb")
@@ -114,7 +113,6 @@ one_shot = true
 [node name="Move Timer" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
-autostart = true
 
 [connection signal="timeout" from="Creep Timer" to="." method="_on_creep_timer_timeout"]
 [connection signal="timeout" from="Move Timer" to="." method="_on_move_timer_timeout"]

@@ -78,8 +78,11 @@
 - [x] Jumpy Movement Tentacle
 - [ ] Jumpy Movement Eyeball
 - [x] Jumpy Movement Fish Head
+- [ ] Replace shot anim
 
 ## NEEDS TUNING
 - [ ] Fish Movement
+- [x] Hud goes over Enemies
+
 ## STRETCH GOALS
 - [ ] Player can change the side the hud is on

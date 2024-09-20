@@ -34,6 +34,7 @@ Wmark = NodePath("Markers/WEST")
 spwn_offset = -10
 spawn_clock = NodePath("Spawn Timer")
 path = NodePath("Worse Guy Path")
+delta_spawn = 0.1
 
 [node name="Tween" type="Control" parent="." node_paths=PackedStringArray("tex")]
 layout_mode = 3
@@ -99,6 +100,7 @@ scale = Vector2(1, 0.965648)
 curve = SubResource("Curve2D_bbhxf")
 
 [node name="HudBlock" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(8, 72)
 texture = ExtResource("5_hwlwj")
 

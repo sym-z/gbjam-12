@@ -16,17 +16,22 @@ extends PathFollow2D
 @export var delta_score : int = 250 # Amount score changes every tick
 
 @export var sprite : AnimatedSprite2D 
-
+@export var movement_tick : Timer
+@export var move_dist : int = 1
+@export var move_dur : float = 1.0
 
 func _ready():
 	#health += Globals.INCREASED_HEALTH
+	movement_tick.wait_time = move_dur
+	movement_tick.start()
+	progress = randi_range(0,80)
 	pass
 func _process(delta):
-	move(delta)
+	pass
 
-func move(delta):
+func move():
 	## TODO: ADD JUMPY MOVEMENT
-	progress += speed * delta * Globals.SPEED_MULT  
+	progress += move_dist
 
 func destroy(killed):
 	if(killed):
@@ -51,4 +56,8 @@ func _on_animated_sprite_2d_animation_finished():
 		destroy(true)
 
 
-
+func _on_movement_tick_timeout():
+	sprite.visible = false
+	move()
+	sprite.visible = true
+	movement_tick.start()

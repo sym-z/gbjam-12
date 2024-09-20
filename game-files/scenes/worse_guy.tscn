@@ -431,12 +431,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaq4j"]
-size = Vector2(16, 16)
+size = Vector2(18, 18)
 
-[node name="Worse Guy" type="PathFollow2D" node_paths=PackedStringArray("sprite")]
+[node name="Worse Guy" type="PathFollow2D" node_paths=PackedStringArray("sprite", "movement_tick")]
 rotates = false
 script = ExtResource("1_gvq31")
 sprite = NodePath("AnimatedSprite2D")
+movement_tick = NodePath("Movement Tick")
+move_dist = 30
+move_dur = 0.6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pvh5r")
@@ -450,4 +453,8 @@ shape = SubResource("RectangleShape2D_xaq4j")
 [node name="Difficulty Bump" type="Timer" parent="."]
 one_shot = true
 
+[node name="Movement Tick" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Movement Tick" to="." method="_on_movement_tick_timeout"]

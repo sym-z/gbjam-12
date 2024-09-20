@@ -3,40 +3,49 @@ extends Node2D
 @export var direction : Vector2 = Vector2.ZERO
 ### CIRCLING ENEMY ###
 # FOLLOWS SET CIRCULAR PATH
-# TODO: DISAPPEAR AFTER PLAYER KILL
 
 @export var damage : int = 1
 @export var health : int = 1
 @export var score_value : int = 1000
+
 @export var radius : int = 35
-# What is being rotated
+## What is being rotated
 @export var body : Node2D
 
-# The timer for the creep
+## The timer for the creep
 @export var creep_clock : Timer
 
-# How much the guy moves towards the center when the timer is up
+## How much the guy moves towards the center when the timer is up
 @export var radial_creep : float = 1.0
 
-# How long until the guy creeps forward
+## How long until the guy creeps forward
 @export var creep_time : float = 1.0
 
+## Handles difficulty increase
 @export var difficulty_tick : int = Globals.CHANGE_AT # How often difficulty tick happens
 @export var delta_health : int = 1 # Amount of health increase
+## How much the speed is affected by difficulty
 @export var delta_speed : float = 1.1 # Amount speed changes every tick
+## How much the score is affected by difficulty
 @export var delta_score : int = 250 # Amount score changes every tick
 
+## A reference to the enemy's sprite
 @export var sprite : AnimatedSprite2D 
+## How far this enemy will move in one jump
 @export var movement_distance : int = 45
-
-
+## How often this enemy jumps
+@export var move_dur : float = 0.6
+## Reference to the child timer which controls the movement ticks
 @export var movement_tick : Timer
 func _ready():
 	#health += Globals.INCREASED_HEALTH
 	# Start creep timer
+	movement_tick.wait_time = move_dur
+	movement_tick.start()
 	creep_clock.wait_time = movement_tick.wait_time * 2
 	creep_clock.start()
 	
+
 	### ASSIGN VALUES FOR POSITIONING ###
 	var CENTERX = get_viewport_rect().size.x / 2 + 16 #ALERT CHANGE THIS
 	var CENTERY = get_viewport_rect().size.y / 2 
@@ -47,6 +56,10 @@ func _ready():
 	position = Vector2(CENTERX,CENTERY)
 	body.position = Vector2(radius, 0)
 
+	var init_rot = randi_range(0,60)
+	rotation_degrees = init_rot
+	sprite.rotation_degrees -= init_rot
+	
 func _process(delta):
 	pass
 

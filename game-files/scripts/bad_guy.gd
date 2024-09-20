@@ -1,4 +1,5 @@
 extends Node2D
+@export var sprite : AnimatedSprite2D 
 @export var speed : float = 25
 @export var direction : Vector2 = Vector2.ZERO
 @export var damage : int = 1
@@ -9,14 +10,14 @@ extends Node2D
 @export var delta_health : int = 1 # Amount of health increase
 @export var delta_speed : float = 1.1 # Amount speed changes every tick
 @export var delta_score : int = 250 # Amount score changes every tick
-@export var movement_distance : int = 10
-@export var sprite : AnimatedSprite2D 
-
 @export var movement_tick : Timer
+@export var movement_distance : int = 10
+@export var move_dur : float = 0.6
 
 func _ready():
-	#health += Globals.INCREASED_HEALTH
-	pass
+	movement_tick.wait_time = move_dur
+	movement_tick.start()
+	
 func _process(delta):
 	pass
 

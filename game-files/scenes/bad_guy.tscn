@@ -132,7 +132,7 @@ sprite = NodePath("AnimatedSprite2D")
 movement_tick = NodePath("Movement Tick")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 24)
+position = Vector2(0, 19)
 sprite_frames = SubResource("SpriteFrames_xfng4")
 autoplay = "default"
 
@@ -145,7 +145,7 @@ shape = SubResource("CircleShape2D_nuiqs")
 one_shot = true
 
 [node name="Movement Tick" type="Timer" parent="."]
+wait_time = 0.6
 one_shot = true
-autostart = true
 
 [connection signal="timeout" from="Movement Tick" to="." method="_on_movement_tick_timeout"]
