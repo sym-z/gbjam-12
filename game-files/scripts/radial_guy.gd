@@ -27,7 +27,7 @@ extends Node2D
 @export var delta_score : int = 250 # Amount score changes every tick
 
 @export var sprite : AnimatedSprite2D 
-@export var movement_distance : int = 1
+@export var movement_distance : int = 45
 
 
 @export var movement_tick : Timer
@@ -52,8 +52,8 @@ func _process(delta):
 
 func move():
 
-	rotation += movement_distance 
-	sprite.rotation -= movement_distance
+	rotation_degrees += movement_distance 
+	sprite.rotation_degrees -= movement_distance
 
 
 func destroy(killed):
