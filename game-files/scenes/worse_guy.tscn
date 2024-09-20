@@ -431,7 +431,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaq4j"]
-size = Vector2(18, 18)
+size = Vector2(22, 22)
 
 [node name="Worse Guy" type="PathFollow2D" node_paths=PackedStringArray("sprite", "movement_tick")]
 rotates = false
