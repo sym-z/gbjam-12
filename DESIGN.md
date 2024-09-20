@@ -79,5 +79,7 @@
 - [ ] Jumpy Movement Eyeball
 - [x] Jumpy Movement Fish Head
 
+## NEEDS TUNING
+- [ ] Fish Movement
 ## STRETCH GOALS
 - [ ] Player can change the side the hud is on
