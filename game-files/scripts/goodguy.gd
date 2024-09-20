@@ -161,6 +161,9 @@ func die():
 	sprite.visible = false
 	# Reset animation
 	sprite.frame = 0
+	sprite.animation = "death"
+	sprite.visible = true
+	sprite.play()
 	if Globals.LIVES == 0:
 		# GAME OVER
 		Globals.reset_difficulty()
@@ -168,6 +171,7 @@ func die():
 		# RESTART LEVEL
 		Globals.LIVES -= 1
 	print("LIVES: ", Globals.LIVES)
+	
 	call_deferred("restart_level")
 	#queue_free()
 
@@ -242,7 +246,8 @@ func _on_west_anim_animation_finished():
 
 
 func _on_animated_sprite_2d_animation_finished():
-	sprite.set_frame_and_progress(0,0)
+	if sprite.animation != 'death':
+		sprite.set_frame_and_progress(0,0)
 
 func load_sounds():
 	instruments.append(vox1)
