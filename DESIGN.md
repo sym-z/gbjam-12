@@ -75,6 +75,9 @@
 - [x] Enemies Move Toward Player (Simple Movement)
 - [x] Enemies Touch Player (Enemy Collide with Player)
 - [x] Fix double difficulty bump, could slightly pause or find a way to prevent it.
+- [x] Jumpy Movement Tentacle
+- [ ] Jumpy Movement Eyeball
+- [x] Jumpy Movement Fish Head
 
 ## STRETCH GOALS
 - [ ] Player can change the side the hud is on

@@ -25,6 +25,7 @@ func _process(delta):
 	move(delta)
 
 func move(delta):
+	## TODO: ADD JUMPY MOVEMENT
 	progress += speed * delta * Globals.SPEED_MULT  
 
 func destroy(killed):

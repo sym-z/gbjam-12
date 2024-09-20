@@ -104,6 +104,7 @@ func spawn_enemy():
 				enemy_inst.direction = Vector2.LEFT
 			DIR.WEST:
 				enemy_inst.direction = Vector2.RIGHT
+		enemy_inst.align_sprite()
 	else:
 		dice_roll -= Globals.BASIC_ODDS
 		if dice_roll <= Globals.SPECIAL_ODDS: # SPECIAL CASE

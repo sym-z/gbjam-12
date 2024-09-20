@@ -1,27 +1,140 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2dk6axl8a5gy"]
+[gd_scene load_steps=21 format=3 uid="uid://d2dk6axl8a5gy"]
 
 [ext_resource type="Script" path="res://scripts/bad_guy.gd" id="1_qcadk"]
-[ext_resource type="Texture2D" uid="uid://7du3l0187s11" path="res://sprites/placeholder-bad-guy.png" id="1_tjmsa"]
+[ext_resource type="Texture2D" uid="uid://bdhxihbqpf0bw" path="res://tilesets/tentacle.png" id="2_gbfrf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flomb"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(0, 0, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywx1u"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(18, 0, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjulh"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(36, 0, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wiuot"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(54, 0, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ox1w"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(0, 58, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yov5e"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(18, 58, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2spw1"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(36, 58, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag7cr"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(54, 58, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k863"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(0, 116, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6re3"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(18, 116, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v051m"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(36, 116, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f71pi"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(54, 116, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ife7e"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(0, 174, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tunig"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(18, 174, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwvtn"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(36, 174, 18, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0buni"]
+atlas = ExtResource("2_gbfrf")
+region = Rect2(54, 174, 18, 58)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xfng4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_tjmsa")
+"texture": SubResource("AtlasTexture_flomb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywx1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjulh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wiuot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ox1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yov5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2spw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag7cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k863")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6re3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v051m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f71pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ife7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tunig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwvtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0buni")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 21.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nuiqs"]
 radius = 6.0
 
-[node name="Bad Guy" type="Node2D"]
+[node name="Bad Guy" type="Node2D" node_paths=PackedStringArray("sprite", "movement_tick")]
 script = ExtResource("1_qcadk")
+sprite = NodePath("AnimatedSprite2D")
+movement_tick = NodePath("Movement Tick")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 24)
 sprite_frames = SubResource("SpriteFrames_xfng4")
+autoplay = "default"
 
 [node name="Hit Box" type="Area2D" parent="." groups=["Enemies"]]
 
@@ -30,3 +143,9 @@ shape = SubResource("CircleShape2D_nuiqs")
 
 [node name="Difficulty Bump" type="Timer" parent="."]
 one_shot = true
+
+[node name="Movement Tick" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Movement Tick" to="." method="_on_movement_tick_timeout"]

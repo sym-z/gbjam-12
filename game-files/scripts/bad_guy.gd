@@ -9,15 +9,20 @@ extends Node2D
 @export var delta_health : int = 1 # Amount of health increase
 @export var delta_speed : float = 1.1 # Amount speed changes every tick
 @export var delta_score : int = 250 # Amount score changes every tick
+@export var movement_distance : int = 10
+@export var sprite : AnimatedSprite2D 
+
+@export var movement_tick : Timer
 
 func _ready():
 	#health += Globals.INCREASED_HEALTH
 	pass
 func _process(delta):
-	move(delta)
+	pass
 
-func move(delta):
-	position += ((speed * direction) * delta ) * Globals.SPEED_MULT
+func move():
+	print('called', direction)
+	position += movement_distance * direction 
 
 func destroy(killed):
 	if(killed):
@@ -33,3 +38,18 @@ func hurt(dam):
 	if health <= 0:
 		destroy(true)
 
+func align_sprite():
+	match direction:
+		Vector2.UP:
+			rotation_degrees = 0
+		Vector2.DOWN:
+			rotation_degrees = 180
+		Vector2.RIGHT:
+			rotation_degrees = 90
+		Vector2.LEFT:
+			rotation_degrees = 270
+
+
+func _on_movement_tick_timeout():
+	move()
+	movement_tick.start()

@@ -26,11 +26,15 @@ extends Node2D
 @export var delta_speed : float = 1.1 # Amount speed changes every tick
 @export var delta_score : int = 250 # Amount score changes every tick
 
+@export var sprite : AnimatedSprite2D 
+@export var movement_distance : int = 1
 
+
+@export var movement_tick : Timer
 func _ready():
 	#health += Globals.INCREASED_HEALTH
 	# Start creep timer
-	creep_clock.wait_time = creep_time
+	creep_clock.wait_time = movement_tick.wait_time * 2
 	creep_clock.start()
 	
 	### ASSIGN VALUES FOR POSITIONING ###
@@ -44,10 +48,13 @@ func _ready():
 	body.position = Vector2(radius, 0)
 
 func _process(delta):
-	move(delta)
+	pass
 
-func move(delta):
-	rotation += speed * delta * Globals.SPEED_MULT
+func move():
+
+	rotation += movement_distance 
+	sprite.rotation -= movement_distance
+
 
 func destroy(killed):
 	if(killed):
@@ -71,3 +78,10 @@ func _on_creep_timer_timeout():
 	else:
 		body.position -= Vector2(radial_creep,0)
 
+
+
+func _on_move_timer_timeout():
+	sprite.visible = false
+	move()
+	sprite.visible = true
+	movement_tick.start()
