@@ -9,20 +9,20 @@
 - [x] Projectile
 
 ## FINAL ART
-- [ ] Character
+- [x] Character
 - [ ] ~~Icons for Health~~
 - [ ] Icons for Lives
-- [ ] Character Aiming in 4 Directions
-- [ ] Character Firing Animation
-- [ ] Character Hurt Animation
-- [ ] Character Death Animation
-- [ ] Enemy Hurt Animations
+- [x] Character Aiming in 4 Directions
+- [x] Character Firing Animation
+- [ ] ~~Character Hurt Animation~~
+- [x] Character Death Animation
+- [ ] ~~Enemy Hurt Animations~~
 - [ ] Enemy Death Animations
-- [ ] Enemy (Bad Guy (Linear Path Enemy))
-- [ ] Enemy (Worse Guy (Custom Path Follower))
-- [ ] Enemy (Radial Guy (Circle Path Enemy))
-- [ ] Background 
-- [ ] Projectile 
+- [x] Enemy (Bad Guy (Linear Path Enemy))
+- [x] Enemy (Worse Guy (Custom Path Follower))
+- [x] Enemy (Radial Guy (Circle Path Enemy))
+- [x] Background 
+- [x] Projectile 
 - [ ] Main Menu 
 - [ ] Pause Menu 
 - [ ] Controls or How to Play Menu 
@@ -76,12 +76,13 @@
 - [x] Enemies Touch Player (Enemy Collide with Player)
 - [x] Fix double difficulty bump, could slightly pause or find a way to prevent it.
 - [x] Jumpy Movement Tentacle
-- [ ] Jumpy Movement Eyeball
+- [x] Jumpy Movement Eyeball
 - [x] Jumpy Movement Fish Head
-- [ ] Replace shot anim
+- [x] Replace shot anim
 
 ## NEEDS TUNING
 - [ ] Fish Movement
+- [ ] Spawn timing difficulty scaling
 - [x] Hud goes over Enemies
 
 ## STRETCH GOALS

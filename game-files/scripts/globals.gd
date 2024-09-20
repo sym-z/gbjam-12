@@ -37,8 +37,8 @@ func reset_difficulty():
 	SPEED_MULT = 1.0 # How much to multiply the speed by as the difficulty increases
 	SCORE_BUFF = 0 # How many extra points are added because of difficulty
 
-func raise_difficulty(delta_speed, delta_score):
-	SPEED_MULT *= delta_speed # Enemies move 10% faster
+func raise_difficulty(delta_score):
+	#SPEED_MULT *= delta_speed # Enemies move 10% faster
 	SCORE_BUFF += delta_score  # Enemies now give 250 more points
 	CAN_CHANGE = false
 	timer.start()
