@@ -4,16 +4,17 @@
 # TODO: ATTACK PLAYER OR LEAVE
 
 extends PathFollow2D
-@export var speed : float = 100
-@export var direction : Vector2 = Vector2.ZERO
+
 @export var damage : int = 1
 @export var health : int = 1
+## How much score is alloted when this enemy is killed
 @export var score_value : int = 500
 
-@export var difficulty_tick : int = Globals.CHANGE_AT # How often difficulty tick happens
-@export var delta_health : int = 1 # Amount of health increase
+## How often difficulty tick happens
+@export var difficulty_tick : int = Globals.CHANGE_AT 
 
-@export var delta_score : int = 250 # Amount score changes every tick
+## Amount score changes every tick
+@export var delta_score : int = 250 
 
 @export var sprite : AnimatedSprite2D 
 @export var movement_tick : Timer
@@ -21,16 +22,14 @@ extends PathFollow2D
 @export var move_dur : float = 1.0
 
 func _ready():
-	#health += Globals.INCREASED_HEALTH
 	movement_tick.wait_time = move_dur
 	movement_tick.start()
 	progress = randi_range(0,80)
-	pass
-func _process(delta):
+	
+func _process(_delta):
 	pass
 
 func move():
-	## TODO: ADD JUMPY MOVEMENT
 	progress += move_dist
 
 func destroy(killed):

@@ -1,13 +1,13 @@
 extends Node2D
-@export var speed : float = 3
-@export var direction : Vector2 = Vector2.ZERO
 ### CIRCLING ENEMY ###
 # FOLLOWS SET CIRCULAR PATH
 
 @export var damage : int = 1
 @export var health : int = 1
+## How much score is awarded when killed
 @export var score_value : int = 1000
 
+## Used fpr initial positioning
 @export var radius : int = 35
 ## What is being rotated
 @export var body : Node2D
@@ -23,7 +23,6 @@ extends Node2D
 
 ## Handles difficulty increase
 @export var difficulty_tick : int = Globals.CHANGE_AT # How often difficulty tick happens
-@export var delta_health : int = 1 # Amount of health increase
 
 ## How much the score is affected by difficulty
 @export var delta_score : int = 250 # Amount score changes every tick
@@ -37,7 +36,6 @@ extends Node2D
 ## Reference to the child timer which controls the movement ticks
 @export var movement_tick : Timer
 func _ready():
-	#health += Globals.INCREASED_HEALTH
 	# Start creep timer
 	movement_tick.wait_time = move_dur
 	movement_tick.start()
@@ -59,7 +57,7 @@ func _ready():
 	rotation_degrees = init_rot
 	sprite.rotation_degrees -= init_rot
 	
-func _process(delta):
+func _process(_delta):
 	pass
 
 func move():

@@ -1,15 +1,14 @@
 extends Node2D
 @export var sprite : AnimatedSprite2D 
-@export var speed : float = 25
 @export var direction : Vector2 = Vector2.ZERO
 @export var damage : int = 1
 @export var health : int = 1
+## How much score is alloted for killing this enemy
 @export var score_value : int = 250
-
-@export var difficulty_tick : int = Globals.CHANGE_AT # How often difficulty tick happens
-@export var delta_health : int = 1 # Amount of health increase
-
-@export var delta_score : int = 250 # Amount score changes every tick
+## How often difficulty tick happens
+@export var difficulty_tick : int = Globals.CHANGE_AT 
+## Amount score changes every tick
+@export var delta_score : int = 250 
 @export var movement_tick : Timer
 @export var movement_distance : int = 10
 @export var move_dur : float = 0.6
@@ -18,11 +17,10 @@ func _ready():
 	movement_tick.wait_time = move_dur
 	movement_tick.start()
 	
-func _process(delta):
+func _process(_delta):
 	pass
 
 func move():
-	print('called', direction)
 	position += movement_distance * direction 
 
 func destroy(killed):

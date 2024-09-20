@@ -48,7 +48,6 @@ func _ready():
 	total_spawns = spawn_arr.size()
 
 func _process(_delta):
-	#print(Globals.CAN_CHANGE)
 	pass
 func position_actors():
 	### ASSIGN VALUES FOR POSITIONING ###
@@ -79,11 +78,9 @@ func position_actors():
 	Wmark.position.y = CENTERY
 
 func spawn_enemy():
-	# ALERT: DONT FORGET TO PARENT THE "WORSE GUY" TO THE PATH2D
 	# EVENTUALLY WILL DO RANDOM SPAWN AT RANDOM TIMES, WITH SPLINES FOR THE SPECIAL FAST ENEMIES
 	# ROLL 1 - 100
 	var dice_roll : int = randi_range(1,100)
-	#print("Roll: ", dice_roll)
 	
 	### SPAWN ENEMY ###
 	# Spawn enemy at random marker
