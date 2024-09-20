@@ -44,10 +44,49 @@ var dead : bool = false
 @export var south_anim : AnimatedSprite2D
 @export var east_anim : AnimatedSprite2D
 @export var west_anim : AnimatedSprite2D
+
+var bass1 : AudioStream = preload("res://audio/bass1.mp3")
+var bass2 : AudioStream = preload("res://audio/bass2.mp3")
+var bass3 : AudioStream = preload("res://audio/bass3.mp3")
+
+var hihat1 : AudioStream = preload("res://audio/hihat1.mp3")
+var hihat2 : AudioStream = preload("res://audio/hihat2.mp3")
+var hihat3 : AudioStream = preload("res://audio/hihat3.mp3")
+
+var snare1 : AudioStream= preload("res://audio/snare1.mp3")
+var snare2 : AudioStream = preload("res://audio/snare2.mp3")
+var snare3 : AudioStream = preload("res://audio/snare3.mp3")
+
+var vox1 : AudioStream = preload("res://audio/vox1.mp3")
+var vox2 : AudioStream = preload("res://audio/vox2.mp3")
+var vox3 : AudioStream = preload("res://audio/vox3.mp3")
+
+@export var speaker : AudioStreamPlayer2D 
+
+var basses = []
+var hihats = []
+var snares = []
+var voxes = []
 func _ready():
 	### HOLDS GUNS TO MAKE FIRING CODE EASIER ###
 	gun_arr = [NORTH_GUN,SOUTH_GUN,EAST_GUN,WEST_GUN]
-	pass 
+	### FOR RANDOM SOUNDS
+	
+	basses.append(bass1)
+	basses.append(bass3)
+	basses.append(bass3)
+
+	hihats.append(hihat1)
+	hihats.append(hihat2)
+	hihats.append(hihat3)
+	
+	snares.append(snare1)
+	snares.append(snare1)
+	snares.append(snare1)
+	
+	voxes.append(vox1)
+	voxes.append(vox2)
+	voxes.append(vox3)
 
 func _process(_delta):
 	input_handler()
@@ -156,21 +195,29 @@ func fire():
 					north_anim.frame = 0
 				north_anim.visible = true
 				north_anim.play()
+				speaker.set_stream(basses[randi_range(0,basses.size()-1)])
+				speaker.play()
 			AIM.SOUTH:
 				if south_anim.is_playing():
 					south_anim.frame = 0
 				south_anim.visible = true
 				south_anim.play()
+				speaker.set_stream(voxes[randi_range(0,voxes.size()-1)])
+				speaker.play()
 			AIM.EAST:
 				if east_anim.is_playing():
 					east_anim.frame = 0
 				east_anim.visible = true
 				east_anim.play()
+				speaker.set_stream(snares[randi_range(0,snares.size()-1)])
+				speaker.play()
 			AIM.WEST:
 				if west_anim.is_playing():
 					west_anim.frame = 0
 				west_anim.visible = true
 				west_anim.play()
+				speaker.set_stream(hihats[randi_range(0,hihats.size()-1)])
+				speaker.play()
 		### SEE WHAT IT HIT ###
 		var target = curr_gun.get_collider()
 		if target and target.is_in_group("Enemies"):
