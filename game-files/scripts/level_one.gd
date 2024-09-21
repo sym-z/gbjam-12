@@ -35,7 +35,7 @@ var total_spawns : int
 ### TIMER ###
 @export var spawn_clock : Timer
 @export var min_spawn_time : float = 1.0
-@export var max_spawn_time : float = 3.0
+@export var max_spawn_time : float = 2.0
 
 ### PATH FOR SPAWNING WORSE GUY ###
 @export var path : Path2D
@@ -60,7 +60,6 @@ func _ready():
 	DIR.EAST  : 0,
 	DIR.WEST  : 0
 	}
-
 func _process(_delta):
 	pass
 func position_actors():
@@ -94,7 +93,6 @@ func position_actors():
 	## SET UP SCORE TEXT LINK BETWEEN PLAYER AND TEXT BOX
 	player.score_text = score_text
 	player.h_score_text = h_score_text
-
 func spawn_enemy():
 	# EVENTUALLY WILL DO RANDOM SPAWN AT RANDOM TIMES, WITH SPLINES FOR THE SPECIAL FAST ENEMIES
 	# ROLL 1 - 100
@@ -142,10 +140,9 @@ func spawn_enemy():
 			enemy_inst.player = player
 			add_child(enemy_inst)
 			# Could attach enemy to player here instead of using center of viewport
-
 func _on_spawn_timer_timeout():
 	if(!player.dead):
 		spawn_enemy()
 		if Globals.KILLS % 10 == 0 and Globals.KILLS != 0:
-			Globals.SPAWN_INCREASE -= delta_spawn #5% Less time between spawns every 10 kills
+			Globals.SPAWN_INCREASE -= delta_spawn # Less time between spawns every 10 kills
 		spawn_clock.wait_time = randf_range(min_spawn_time, max_spawn_time) * Globals.SPAWN_INCREASE

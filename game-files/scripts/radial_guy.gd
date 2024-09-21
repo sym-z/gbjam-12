@@ -84,7 +84,8 @@ func hurt(dam):
 
 # The enemy creeps toward the center every second
 func _on_creep_timer_timeout():
-	if body.position.x - radial_creep < 0:
-		body.position = Vector2.ZERO
-	else:
-		body.position -= Vector2(radial_creep,0)
+	if !player.dead:
+		if body.position.x - radial_creep < 0:
+			body.position = Vector2.ZERO
+		else:
+			body.position -= Vector2(radial_creep,0)

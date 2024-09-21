@@ -172,13 +172,15 @@ func die():
 	sprite.animation = "death"
 	sprite.visible = true
 	sprite.play()
+	Globals.LIVES -= 1
+	
 	if Globals.LIVES == 0:
 		# GAME OVER
 		Globals.reset_difficulty()
 		#Globals.HIGH_SCORE = 0
-	else:
+	#else:
 		# RESTART LEVEL
-		Globals.LIVES -= 1
+		#Globals.LIVES -= 1
 	print("LIVES: ", Globals.LIVES)
 	
 	call_deferred("restart_level")
@@ -231,7 +233,6 @@ func fire():
 ## SOURCE: https://forum.godotengine.org/t/random-beginner-question-add-0-before-single-timer-digit/11688/3
 		if target and target.is_in_group("Enemies"):
 			# Damage Enemy
-			#print("Enemy Hit")
 			# Isolate the root node of the enemy, and apply damage to its health
 			Globals.KILLS += 1
 			target.owner.hurt(damage)

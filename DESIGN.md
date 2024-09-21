@@ -32,6 +32,7 @@
 
 ## AUDIO
 - [x] Fire Noise
+- [ ] Difficulty Increase Noise
 - [ ] Menu Select
 - [ ] Player Death
 - [ ] Level Music
@@ -79,7 +80,11 @@
 - [x] Jumpy Movement Eyeball
 - [x] Jumpy Movement Fish Head
 - [x] Replace shot anim
-- [ ] High Score
+- [x] High Score
+- [ ] Lives in Hud
+- [ ] Fishhead stop after player death
+- [ ] eyeball stop after player death
+
 
 ## NEEDS TUNING
 - [ ] Fish Movement
