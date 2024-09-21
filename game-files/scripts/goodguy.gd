@@ -246,7 +246,6 @@ func fire():
 				Globals.HIGH_SCORE = Globals.SCORE
 			h_score_text.text = "%010d" % Globals.HIGH_SCORE
 			
-			#print(Globals.KILLS)
 		else:
 
 			pass
