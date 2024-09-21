@@ -86,9 +86,11 @@ func _ready():
 
 
 func _process(_delta):
-	input_handler()
+	if !dead:
+		input_handler()
 
 func input_handler(DEBUG = false):
+	
 	if Input.is_action_pressed("DPAD-DOWN"):
 		down = true
 		aim_dir = AIM.SOUTH

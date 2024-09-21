@@ -90,6 +90,7 @@
 - [ ] Fish Movement
 - [ ] Spawn timing difficulty scaling
 - [x] Hud goes over Enemies
+- [x] FIX SHOOTING AFTER DEATH
 
 ## STRETCH GOALS
 - [ ] Player can change the side the hud is on

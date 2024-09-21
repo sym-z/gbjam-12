@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d164o0t7vod04"]
+[gd_scene load_steps=11 format=3 uid="uid://d164o0t7vod04"]
 
 [ext_resource type="Script" path="res://scripts/level_one.gd" id="1_bmkg0"]
 [ext_resource type="Texture2D" uid="uid://b7cr4mssud7j0" path="res://sprites/life_can.png" id="2_5vfvv"]
@@ -8,17 +8,6 @@
 [ext_resource type="FontFile" uid="uid://ddp7ms5o882hh" path="res://tilesets/large.png" id="3_8oh36"]
 [ext_resource type="FontFile" uid="uid://c3ogr0b34lgr" path="res://tilesets/small.png" id="4_fbjmb"]
 [ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="5_cdm3v"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_r6du0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_5vfvv")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s2qrt"]
 animations = [{
@@ -51,28 +40,27 @@ delta_spawn = 0.1
 score_text = NodePath("HUD/Score/RichTextLabel")
 h_score_text = NodePath("HUD/High Score/RichTextLabel")
 
-[node name="Life Icons" type="Node2D" parent="."]
+[node name="Life Icons" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
 
-[node name="One" type="AnimatedSprite2D" parent="Life Icons"]
-z_index = 4
+[node name="VBoxContainer" type="VBoxContainer" parent="Life Icons"]
+layout_mode = 0
+offset_right = 14.0
+offset_bottom = 11.0
+
+[node name="TextureRect" type="TextureRect" parent="Life Icons/VBoxContainer"]
+z_index = 10
 texture_filter = 3
-position = Vector2(8, 137.125)
-sprite_frames = SubResource("SpriteFrames_r6du0")
+layout_mode = 2
+texture = ExtResource("2_5vfvv")
 
-[node name="One2" type="AnimatedSprite2D" parent="Life Icons"]
-z_index = 4
+[node name="TextureRect2" type="TextureRect" parent="Life Icons/VBoxContainer"]
+z_index = 10
 texture_filter = 3
-position = Vector2(8, 125)
-sprite_frames = SubResource("SpriteFrames_r6du0")
-
-[node name="One3" type="AnimatedSprite2D" parent="Life Icons"]
-process_thread_group = 1
-process_thread_group_order = 0
-process_thread_messages = 0
-z_index = 4
-texture_filter = 1
-position = Vector2(8, 113)
-sprite_frames = SubResource("SpriteFrames_r6du0")
+layout_mode = 2
+texture = ExtResource("2_5vfvv")
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
