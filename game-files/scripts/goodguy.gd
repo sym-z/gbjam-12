@@ -17,7 +17,7 @@ var srt_but : bool = false
 # For match statements
 enum AIM {NORTH, SOUTH, EAST, WEST}
 # Default aim direction is north!
-var aim_dir = AIM.NORTH
+var aim_dir = AIM.SOUTH
 @export var NORTH_GUN : RayCast2D
 @export var SOUTH_GUN : RayCast2D
 @export var EAST_GUN : RayCast2D
@@ -69,8 +69,12 @@ var snares = []
 var voxes = []
 var instruments = [] # ALL INSTRUMENTS
 
-@export var bg : Control 
+@export var bg : Control
+
+
 func _ready():
+	sprite.animation = 'default'
+	sprite.frame = 0
 	### HOLDS GUNS TO MAKE FIRING CODE EASIER ###
 	gun_arr = [NORTH_GUN,SOUTH_GUN,EAST_GUN,WEST_GUN]
 	### FOR RANDOM SOUNDS

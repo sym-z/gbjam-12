@@ -41,6 +41,8 @@ var total_spawns : int
 @export var path : Path2D
 
 @export var delta_spawn : float = 0.05 # Amount that spawn interval decreases every 10 kills 
+
+
 func _ready():
 	position_actors()
 	### HOLD MARKERS IN ARRAY ###
@@ -85,8 +87,10 @@ func spawn_enemy():
 	### SPAWN ENEMY ###
 	# Spawn enemy at random marker
 	var rand_mark: int = randi_range(0,total_spawns-1)
-	if dice_roll <= Globals.BASIC_ODDS:
+	
+	if dice_roll <= Globals.BASIC_ODDS and Globals.filled_gates[rand_mark] == 0:
 		var enemy_inst = enemy.instantiate()
+		enemy_inst.player = player
 		add_child(enemy_inst)
 		enemy_inst.position = spawn_arr[rand_mark].position
 		### MOVE THE ENEMY TOWARDS THE CENTER ###
@@ -95,21 +99,31 @@ func spawn_enemy():
 		match rand_mark:
 			DIR.NORTH:
 				enemy_inst.direction = Vector2.DOWN
+				Globals.filled_gates[DIR.NORTH] = 1
+				enemy_inst.gate = DIR.NORTH
 			DIR.SOUTH:
 				enemy_inst.direction = Vector2.UP
+				Globals.filled_gates[DIR.SOUTH] = 1
+				enemy_inst.gate = DIR.SOUTH
 			DIR.EAST:
 				enemy_inst.direction = Vector2.LEFT
+				Globals.filled_gates[DIR.EAST] = 1
+				enemy_inst.gate = DIR.EAST
 			DIR.WEST:
 				enemy_inst.direction = Vector2.RIGHT
+				Globals.filled_gates[DIR.WEST] = 1
+				enemy_inst.gate = DIR.WEST
 		enemy_inst.align_sprite()
 	else:
 		dice_roll -= Globals.BASIC_ODDS
-		if dice_roll <= Globals.SPECIAL_ODDS: # SPECIAL CASE
+		if dice_roll <= Globals.SPECIAL_ODDS or Globals.filled_gates[rand_mark] == 1: # SPECIAL CASE
 			var enemy_inst = enemy_pather.instantiate()
+			enemy_inst.player = player
 			# ATTACH TO PATH
 			path.add_child(enemy_inst)
 		else: # RARE CASE
 			var enemy_inst = enemy_radial.instantiate()
+			enemy_inst.player = player
 			add_child(enemy_inst)
 			# Could attach enemy to player here instead of using center of viewport
 

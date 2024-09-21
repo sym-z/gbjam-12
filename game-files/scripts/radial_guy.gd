@@ -33,8 +33,10 @@ extends Node2D
 @export var movement_distance : int = 45
 ## How often this enemy jumps
 @export var move_dur : float = 0.6
-## Reference to the child timer which controls the movement ticks
-@export var movement_tick : Timer
+
+## Reference to the player, hook up in scene
+@export var player: Node2D 
+
 func _ready():
 	# Start creep timer
 	#movement_tick.wait_time = move_dur
@@ -62,8 +64,9 @@ func _process(delta):
 	pass
 
 func move(delta):
-	rotation_degrees += speed * delta
-	sprite.rotation_degrees -= speed * delta
+	if !player.dead:
+		rotation_degrees += speed * delta
+		sprite.rotation_degrees -= speed * delta
 
 func destroy(killed):
 	if(killed):

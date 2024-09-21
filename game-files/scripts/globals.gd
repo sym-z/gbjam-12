@@ -15,6 +15,16 @@ var SPAWN_INCREASE : float = 1.0 # Decreases intervals between spawns
 
 var CAN_CHANGE : bool = true
 var timer
+
+
+### TO FIGURE OUT DIRECTION OF SPAWN ###
+enum DIR {NORTH, SOUTH, EAST, WEST}
+var filled_gates = {
+	DIR.NORTH : 0,
+	DIR.SOUTH : 0,
+	DIR.EAST  : 0,
+	DIR.WEST  : 0
+} 
 func _ready():
 	timer = Timer.new()
 	timer.wait_time =1.0

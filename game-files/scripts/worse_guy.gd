@@ -19,9 +19,10 @@ extends PathFollow2D
 @export var delta_score : int = 250 
 
 @export var sprite : AnimatedSprite2D 
-#@export var movement_tick : Timer
-#@export var move_dist : int = 1
-#@export var move_dur : float = 1.0
+
+## Reference to the player, hook up in scene
+@export var player: Node2D 
+
 
 func _ready():
 	#movement_tick.wait_time = move_dur
@@ -32,8 +33,8 @@ func _process(delta):
 	move(delta)
 
 func move(delta):
-	#progress += move_dist
-	progress += speed * delta 
+	if !player.dead:
+		progress += speed * delta 
 
 func destroy(killed):
 	if(killed):
