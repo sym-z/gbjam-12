@@ -1,7 +1,6 @@
 ### PATH FOLLOWING ENEMY ###
 # REQUIRES A PARENT PATH2D NODE
 # FOLLOWS GIVEN PATH
-# TODO: ATTACK PLAYER OR LEAVE
 
 extends PathFollow2D
 ## Speed of this guy
@@ -25,10 +24,8 @@ extends PathFollow2D
 
 
 func _ready():
-	#movement_tick.wait_time = move_dur
-	#movement_tick.start()
-	#progress = randi_range(0,80)
 	pass
+
 func _process(delta):
 	move(delta)
 
@@ -44,7 +41,6 @@ func destroy(killed):
 		Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		print("Score: ", Globals.SCORE)
 	queue_free()
-
 
 func hurt(dam):
 	health -= dam

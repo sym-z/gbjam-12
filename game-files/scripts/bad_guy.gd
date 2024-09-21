@@ -40,7 +40,6 @@ func destroy(killed):
 		Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		print("Score: ", Globals.SCORE)
 		Globals.filled_gates[gate] = 0
-		print(Globals.filled_gates)
 	queue_free()
 
 func hurt(dam):
@@ -59,10 +58,8 @@ func align_sprite():
 		Vector2.LEFT:
 			rotation_degrees = 270
 
-
 func _on_animated_sprite_2d_animation_finished():
 	if sprite.frame == 15:
 		sprite.play_backwards()
 	else:
 		sprite.play()
-	pass # Replace with function body.
