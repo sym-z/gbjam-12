@@ -90,7 +90,7 @@ body = NodePath("Guy")
 creep_clock = NodePath("Creep Timer")
 radial_creep = 10.0
 sprite = NodePath("Guy/AnimatedSprite2D")
-movement_tick = NodePath("Move Timer")
+movement_tick = NodePath("")
 
 [node name="Guy" type="Node2D" parent="."]
 
@@ -110,9 +110,4 @@ autostart = true
 [node name="Difficulty Bump" type="Timer" parent="."]
 one_shot = true
 
-[node name="Move Timer" type="Timer" parent="."]
-wait_time = 0.6
-one_shot = true
-
 [connection signal="timeout" from="Creep Timer" to="." method="_on_creep_timer_timeout"]
-[connection signal="timeout" from="Move Timer" to="." method="_on_move_timer_timeout"]

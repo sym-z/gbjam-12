@@ -9,19 +9,19 @@ extends Node2D
 @export var difficulty_tick : int = Globals.CHANGE_AT 
 ## Amount score changes every tick
 @export var delta_score : int = 250 
-@export var movement_tick : Timer
-@export var movement_distance : int = 10
-@export var move_dur : float = 0.6
+
+## Speed of guy
+@export var speed : float = 25
+
 
 func _ready():
-	movement_tick.wait_time = move_dur
-	movement_tick.start()
-	
-func _process(_delta):
 	pass
+	
+func _process(delta):
+	move(delta)
 
-func move():
-	position += movement_distance * direction 
+func move(delta):
+	position += ((speed * direction) * delta)
 
 func destroy(killed):
 	if(killed):
@@ -47,8 +47,3 @@ func align_sprite():
 			rotation_degrees = 90
 		Vector2.LEFT:
 			rotation_degrees = 270
-
-
-func _on_movement_tick_timeout():
-	move()
-	movement_tick.start()

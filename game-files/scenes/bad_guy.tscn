@@ -126,10 +126,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_nuiqs"]
 radius = 6.0
 
-[node name="Bad Guy" type="Node2D" node_paths=PackedStringArray("sprite", "movement_tick")]
+[node name="Bad Guy" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_qcadk")
 sprite = NodePath("AnimatedSprite2D")
-movement_tick = NodePath("Movement Tick")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 19)
@@ -143,9 +142,3 @@ shape = SubResource("CircleShape2D_nuiqs")
 
 [node name="Difficulty Bump" type="Timer" parent="."]
 one_shot = true
-
-[node name="Movement Tick" type="Timer" parent="."]
-wait_time = 0.6
-one_shot = true
-
-[connection signal="timeout" from="Movement Tick" to="." method="_on_movement_tick_timeout"]

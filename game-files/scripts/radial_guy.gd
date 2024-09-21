@@ -1,7 +1,7 @@
 extends Node2D
 ### CIRCLING ENEMY ###
 # FOLLOWS SET CIRCULAR PATH
-
+@export var speed : float = 45
 @export var damage : int = 1
 @export var health : int = 1
 ## How much score is awarded when killed
@@ -37,9 +37,9 @@ extends Node2D
 @export var movement_tick : Timer
 func _ready():
 	# Start creep timer
-	movement_tick.wait_time = move_dur
-	movement_tick.start()
-	creep_clock.wait_time = movement_tick.wait_time * 2
+	#movement_tick.wait_time = move_dur
+	#movement_tick.start()
+	creep_clock.wait_time = creep_time
 	creep_clock.start()
 	
 
@@ -57,14 +57,13 @@ func _ready():
 	rotation_degrees = init_rot
 	sprite.rotation_degrees -= init_rot
 	
-func _process(_delta):
+func _process(delta):
+	move(delta)
 	pass
 
-func move():
-
-	rotation_degrees += movement_distance 
-	sprite.rotation_degrees -= movement_distance
-
+func move(delta):
+	rotation_degrees += speed * delta
+	sprite.rotation_degrees -= speed * delta
 
 func destroy(killed):
 	if(killed):
@@ -74,7 +73,6 @@ func destroy(killed):
 		Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		print("Score: ", Globals.SCORE)
 	queue_free()
-
 
 func hurt(dam):
 	health -= dam
@@ -87,11 +85,3 @@ func _on_creep_timer_timeout():
 		body.position = Vector2.ZERO
 	else:
 		body.position -= Vector2(radial_creep,0)
-
-
-
-func _on_move_timer_timeout():
-	sprite.visible = false
-	move()
-	sprite.visible = true
-	movement_tick.start()
