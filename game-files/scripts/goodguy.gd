@@ -182,7 +182,7 @@ func die():
 		# RESTART LEVEL
 		#Globals.LIVES -= 1
 	print("LIVES: ", Globals.LIVES)
-	
+	print(owner)
 	call_deferred("restart_level")
 	#queue_free()
 

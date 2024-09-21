@@ -96,7 +96,7 @@ sprite = NodePath("Guy/AnimatedSprite2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Guy"]
 sprite_frames = SubResource("SpriteFrames_bipq6")
 autoplay = "default"
-frame_progress = 0.932212
+frame_progress = 0.227692
 
 [node name="Hit Box" type="Area2D" parent="Guy" groups=["Enemies"]]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgpjtt26hoyft"
-path="res://.godot/imported/hud_reference.png-f622465877f659a73315dac05aa83a1d.ctex"
+uid="uid://b7cr4mssud7j0"
+path="res://.godot/imported/life_can.png-31636642473ba94b308b19dd2cfef3e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/hud_reference.png"
-dest_files=["res://.godot/imported/hud_reference.png-f622465877f659a73315dac05aa83a1d.ctex"]
+source_file="res://sprites/life_can.png"
+dest_files=["res://.godot/imported/life_can.png-31636642473ba94b308b19dd2cfef3e6.ctex"]
 
 [params]
 
