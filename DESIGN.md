@@ -79,6 +79,7 @@
 - [x] Jumpy Movement Eyeball
 - [x] Jumpy Movement Fish Head
 - [x] Replace shot anim
+- [ ] High Score
 
 ## NEEDS TUNING
 - [ ] Fish Movement

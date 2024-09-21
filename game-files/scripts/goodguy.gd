@@ -71,8 +71,12 @@ var instruments = [] # ALL INSTRUMENTS
 
 @export var bg : Control
 
-
+## Node for score text
+@export var score_text : RichTextLabel
+## Node for high score text
+@export var h_score_text : RichTextLabel
 func _ready():
+	
 	sprite.animation = 'default'
 	sprite.frame = 0
 	### HOLDS GUNS TO MAKE FIRING CODE EASIER ###
@@ -171,6 +175,7 @@ func die():
 	if Globals.LIVES == 0:
 		# GAME OVER
 		Globals.reset_difficulty()
+		#Globals.HIGH_SCORE = 0
 	else:
 		# RESTART LEVEL
 		Globals.LIVES -= 1
@@ -223,16 +228,24 @@ func fire():
 				bg.shake(aim_dir)
 		### SEE WHAT IT HIT ###
 		var target = curr_gun.get_collider()
+## SOURCE: https://forum.godotengine.org/t/random-beginner-question-add-0-before-single-timer-digit/11688/3
 		if target and target.is_in_group("Enemies"):
 			# Damage Enemy
 			#print("Enemy Hit")
 			# Isolate the root node of the enemy, and apply damage to its health
 			Globals.KILLS += 1
 			target.owner.hurt(damage)
+			## CHANGE TEXT ON SCORE
+			score_text.text = "%010d" % Globals.SCORE
+			print(score_text.text)
+			## CHANGE TEXT ON HIGH SCORE
+			if Globals.SCORE > Globals.HIGH_SCORE:
+				Globals.HIGH_SCORE = Globals.SCORE
+			h_score_text.text = "%010d" % Globals.HIGH_SCORE
 			
 			#print(Globals.KILLS)
 		else:
-			#print("Enemy Miss")
+
 			pass
 
 func restart_level():

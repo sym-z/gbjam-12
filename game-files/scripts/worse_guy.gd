@@ -24,7 +24,8 @@ extends PathFollow2D
 
 
 func _ready():
-	pass
+	## Variance in starting position
+	progress = randi_range(0,250)
 
 func _process(delta):
 	move(delta)
@@ -38,12 +39,13 @@ func destroy(killed):
 		print(Globals.KILLS)
 		if Globals.KILLS % difficulty_tick == 0 and Globals.KILLS != 0 and Globals.CAN_CHANGE: # Every tenth kill, 
 			Globals.raise_difficulty(delta_score)
-		Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
+		#Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		print("Score: ", Globals.SCORE)
 	queue_free()
 
 func hurt(dam):
 	health -= dam
+	Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 	if health <= 0:
 		sprite.animation = 'death'
 		sprite.play()

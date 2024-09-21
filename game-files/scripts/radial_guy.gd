@@ -55,7 +55,7 @@ func _ready():
 	position = Vector2(CENTERX,CENTERY)
 	body.position = Vector2(radius, 0)
 
-	var init_rot = randi_range(0,60)
+	var init_rot = randi_range(0,250)
 	rotation_degrees = init_rot
 	sprite.rotation_degrees -= init_rot
 	

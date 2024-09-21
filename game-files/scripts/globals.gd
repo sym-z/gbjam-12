@@ -16,7 +16,7 @@ var SPAWN_INCREASE : float = 1.0 # Decreases intervals between spawns
 var CAN_CHANGE : bool = true
 var timer
 
-
+var HIGH_SCORE : int = 0
 ### TO FIGURE OUT DIRECTION OF SPAWN ###
 enum DIR {NORTH, SOUTH, EAST, WEST}
 var filled_gates = {

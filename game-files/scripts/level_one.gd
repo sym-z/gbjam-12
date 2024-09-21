@@ -42,12 +42,24 @@ var total_spawns : int
 
 @export var delta_spawn : float = 0.05 # Amount that spawn interval decreases every 10 kills 
 
+## Node for score text
+@export var score_text : RichTextLabel
+## Node for high score text
+@export var h_score_text : RichTextLabel
 
 func _ready():
 	position_actors()
 	### HOLD MARKERS IN ARRAY ###
 	spawn_arr = [Nmark, Smark, Emark, Wmark]
 	total_spawns = spawn_arr.size()
+	h_score_text.text = "%010d" % Globals.HIGH_SCORE
+	score_text.text = "%010d" % Globals.SCORE
+	Globals.filled_gates = {
+	DIR.NORTH : 0,
+	DIR.SOUTH : 0,
+	DIR.EAST  : 0,
+	DIR.WEST  : 0
+	}
 
 func _process(_delta):
 	pass
@@ -78,6 +90,10 @@ func position_actors():
 	# WEST SPAWNER #
 	Wmark.position.x = -spwn_offset + 16 #ALERT CHANGE THIS
 	Wmark.position.y = CENTERY
+	
+	## SET UP SCORE TEXT LINK BETWEEN PLAYER AND TEXT BOX
+	player.score_text = score_text
+	player.h_score_text = h_score_text
 
 func spawn_enemy():
 	# EVENTUALLY WILL DO RANDOM SPAWN AT RANDOM TIMES, WITH SPLINES FOR THE SPECIAL FAST ENEMIES

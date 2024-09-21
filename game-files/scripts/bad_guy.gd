@@ -1,8 +1,10 @@
 extends Node2D
+
 @export var sprite : AnimatedSprite2D 
 @export var direction : Vector2 = Vector2.ZERO
 @export var damage : int = 1
 @export var health : int = 1
+
 ## How much score is alloted for killing this enemy
 @export var score_value : int = 250
 ## How often difficulty tick happens
