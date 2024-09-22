@@ -11,36 +11,36 @@
 ## FINAL ART
 - [x] Character
 - [ ] ~~Icons for Health~~
-- [ ] Icons for Lives
+- [x] Icons for Lives
 - [x] Character Aiming in 4 Directions
 - [x] Character Firing Animation
 - [ ] ~~Character Hurt Animation~~
 - [x] Character Death Animation
 - [ ] ~~Enemy Hurt Animations~~
-- [ ] Enemy Death Animations
+- [x] Enemy Death Animations
 - [x] Enemy (Bad Guy (Linear Path Enemy))
 - [x] Enemy (Worse Guy (Custom Path Follower))
 - [x] Enemy (Radial Guy (Circle Path Enemy))
 - [x] Background 
 - [x] Projectile 
 - [ ] Main Menu 
-- [ ] Pause Menu 
+- [ ] ~~Pause Menu ~~
 - [ ] Controls or How to Play Menu 
 - [ ] Credits Menu 
-- [ ] Spooky Font? *Will find out file type*
+- [x] Spooky Font? *Will find out file type*
 - [ ] Inverted Color Versions of Character, Enemy and Background for flash frames
 
 ## AUDIO
 - [x] Fire Noise
-- [ ] Difficulty Increase Noise
-- [ ] Menu Select
-- [ ] Player Death
-- [ ] Level Music
-- [ ] Enemy Death
-- [ ] Start Music
-- [ ] Win Music
-- [ ] Death Music
-- [ ] Pause Music
+- [x] Difficulty Increase Noise
+- [x] Menu Select Noise
+- [x] Player Death
+- [x] Level Music *Bubbles?*
+- [x] Enemy Death
+- [x] Menu Music *Ambient Crowd Talking*
+- [ ] ~~Win Sting~~
+- [x] Game Over Sting
+- [ ] ~~Pause Music~~
 - [ ] ~~Next Level Jingle~~
 
 ## CODE
