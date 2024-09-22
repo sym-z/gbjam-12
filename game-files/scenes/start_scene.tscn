@@ -1,6 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1obfcxhn54mx"]
+[gd_scene load_steps=4 format=3 uid="uid://b1obfcxhn54mx"]
 
 [ext_resource type="Script" path="res://scripts/start_scene.gd" id="1_0uf1s"]
+[ext_resource type="Texture2D" path="res://sprites/title-background.png" id="2_ejq85"]
+[ext_resource type="Texture2D" path="res://sprites/title-scrollable.png" id="3_t7r4h"]
 
-[node name="Start Scene" type="Node2D"]
+[node name="Start Scene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_0uf1s")
+
+[node name="Background" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 144.0
+
+[node name="Image" type="TextureRect" parent="Background"]
+layout_mode = 2
+texture = ExtResource("2_ejq85")
+
+[node name="Foreground" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 304.0
+
+[node name="Image" type="TextureRect" parent="Foreground"]
+layout_mode = 2
+texture = ExtResource("3_t7r4h")
+
+[node name="HUD" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
