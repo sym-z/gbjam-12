@@ -1,8 +1,41 @@
-[gd_scene load_steps=65 format=3 uid="uid://0rxultecbvo7"]
+[gd_scene load_steps=74 format=3 uid="uid://0rxultecbvo7"]
 
 [ext_resource type="Script" path="res://scripts/worse_guy.gd" id="1_gvq31"]
+[ext_resource type="Texture2D" uid="uid://ph7o6phdqvs0" path="res://tilesets/eyeball_birth.png" id="2_h47ky"]
 [ext_resource type="Texture2D" uid="uid://c5awjik8e6j31" path="res://tilesets/worse_guy_death_spritesheet.png" id="2_is50l"]
 [ext_resource type="Texture2D" uid="uid://dhlhb5cq8emkq" path="res://tilesets/eyeball-sheet.png" id="3_471m1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjo41"]
+atlas = ExtResource("2_h47ky")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spbxa"]
+atlas = ExtResource("2_h47ky")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuaad"]
+atlas = ExtResource("2_h47ky")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3xul"]
+atlas = ExtResource("2_h47ky")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc0pc"]
+atlas = ExtResource("2_h47ky")
+region = Rect2(48, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2jgv"]
+atlas = ExtResource("2_h47ky")
+region = Rect2(60, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cc5x"]
+atlas = ExtResource("2_h47ky")
+region = Rect2(72, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8xjo"]
+atlas = ExtResource("2_h47ky")
+region = Rect2(84, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ecf61"]
 atlas = ExtResource("2_is50l")
@@ -244,6 +277,35 @@ region = Rect2(72, 48, 12, 12)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_fjo41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spbxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuaad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3xul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc0pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2jgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cc5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8xjo")
+}],
+"loop": false,
+"name": &"birth",
+"speed": 21.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ecf61")
 }, {
 "duration": 1.0,
@@ -440,7 +502,10 @@ sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pvh5r")
-autoplay = "default"
+animation = &"birth"
+autoplay = "birth"
+frame = 7
+frame_progress = 1.0
 
 [node name="Hit Box" type="Area2D" parent="." groups=["Enemies"]]
 

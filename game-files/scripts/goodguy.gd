@@ -160,11 +160,12 @@ func _on_hurtbox_area_entered(area):
 	if area.is_in_group("Enemies") and !dead:
 		# Owner grabs the root node of the tree.
 		var attacker = area.owner
-		health -= attacker.damage
-		if health <= 0:
-			die()
-		# Destroy the enemy last!
-		attacker.destroy(false)
+		if attacker.CAN_MOVE:
+			health -= attacker.damage
+			if health <= 0:
+				die()
+			# Destroy the enemy last!
+			attacker.destroy(false)
 
 func die():
 	print("YOU DIED")
@@ -234,7 +235,7 @@ func fire():
 		### SEE WHAT IT HIT ###
 		var target = curr_gun.get_collider()
 ## SOURCE: https://forum.godotengine.org/t/random-beginner-question-add-0-before-single-timer-digit/11688/3
-		if target and target.is_in_group("Enemies"):
+		if target and target.is_in_group("Enemies") and target.owner.CAN_MOVE:
 			# Damage Enemy
 			# Isolate the root node of the enemy, and apply damage to its health
 			Globals.KILLS += 1

@@ -37,6 +37,8 @@ extends Node2D
 ## Reference to the player, hook up in scene
 @export var player: Node2D 
 
+## HANDLES ENEMY BIRTH ANIM
+var CAN_MOVE : bool = false
 func _ready():
 	# Start creep timer
 	#movement_tick.wait_time = move_dur
@@ -60,22 +62,26 @@ func _ready():
 	sprite.rotation_degrees -= init_rot
 	
 func _process(delta):
-	move(delta)
-	pass
+	if !player.dead and CAN_MOVE:
+		move(delta)
+
 
 func move(delta):
-	if !player.dead:
-		rotation_degrees += speed * delta
-		sprite.rotation_degrees -= speed * delta
+	rotation_degrees += speed * delta
+	sprite.rotation_degrees -= speed * delta
 
 func destroy(killed):
-	if(killed):
+	if(killed) and CAN_MOVE:
+		CAN_MOVE = false
 		print(Globals.KILLS)
 		if Globals.KILLS % difficulty_tick == 0 and Globals.KILLS != 0 and Globals.CAN_CHANGE: # Every tenth kill, 
 			Globals.raise_difficulty(delta_score)
 		Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		print("Score: ", Globals.SCORE)
-	queue_free()
+		sprite.animation = 'death'
+		sprite.play()
+	elif !killed:
+		queue_free()
 
 func hurt(dam):
 	health -= dam
@@ -84,8 +90,21 @@ func hurt(dam):
 
 # The enemy creeps toward the center every second
 func _on_creep_timer_timeout():
-	if !player.dead:
+	if !player.dead and CAN_MOVE:
 		if body.position.x - radial_creep < 0:
 			body.position = Vector2.ZERO
 		else:
 			body.position -= Vector2(radial_creep,0)
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	match sprite.animation:
+		'default':
+			pass
+		'birth':
+			# TODO can_move = true
+			CAN_MOVE = true
+			sprite.animation = 'default'
+		'death':
+			# TODO allow sprite to delete
+			queue_free()

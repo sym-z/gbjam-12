@@ -261,7 +261,6 @@ sprite_frames = SubResource("SpriteFrames_v3ou4")
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-visible = false
 shape = SubResource("CircleShape2D_b0cfp")
 
 [node name="Firing Directions" type="Node2D" parent="."]

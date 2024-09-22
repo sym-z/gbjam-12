@@ -39,6 +39,7 @@ func move(delta):
 
 func destroy(killed):
 	if(killed) and CAN_MOVE:
+		CAN_MOVE = false
 		print(Globals.KILLS)
 		if Globals.KILLS % difficulty_tick == 0 and Globals.KILLS != 0 and Globals.CAN_CHANGE: # Every tenth kill, 
 			Globals.raise_difficulty(delta_score)
@@ -47,6 +48,8 @@ func destroy(killed):
 		Globals.filled_gates[gate] = 0
 		sprite.animation = 'death'
 		sprite.play()
+	elif !killed:
+		queue_free()
 
 
 func hurt(dam):

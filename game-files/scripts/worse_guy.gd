@@ -22,34 +22,47 @@ extends PathFollow2D
 ## Reference to the player, hook up in scene
 @export var player: Node2D 
 
-
+## HANDLES SPRITE BIRTH ANIM
+var CAN_MOVE : bool = false
 func _ready():
 	## Variance in starting position
 	progress = randi_range(0,250)
 
 func _process(delta):
-	move(delta)
+	if !player.dead and CAN_MOVE:
+		move(delta)
 
 func move(delta):
-	if !player.dead:
 		progress += speed * delta 
 
 func destroy(killed):
-	if(killed):
+	if(killed) and CAN_MOVE:
+		CAN_MOVE = false
 		print(Globals.KILLS)
 		if Globals.KILLS % difficulty_tick == 0 and Globals.KILLS != 0 and Globals.CAN_CHANGE: # Every tenth kill, 
 			Globals.raise_difficulty(delta_score)
+		Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		#Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		print("Score: ", Globals.SCORE)
-	queue_free()
+		sprite.animation = 'death'
+		sprite.play()
+	elif !killed:
+		queue_free()
 
 func hurt(dam):
 	health -= dam
-	Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 	if health <= 0:
-		sprite.animation = 'death'
-		sprite.play()
+		destroy(true)
 
 func _on_animated_sprite_2d_animation_finished():
-	if sprite.animation == 'death':
-		destroy(true)
+	match sprite.animation:
+		'default':
+			pass
+		'birth':
+			# TODO can_move = true
+			CAN_MOVE = true
+			sprite.animation = 'default'
+		'death':
+			# TODO allow sprite to delete
+			queue_free()
+	
