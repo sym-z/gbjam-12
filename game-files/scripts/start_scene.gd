@@ -1,5 +1,5 @@
 ### USED FOR MAIN MENU ***
-extends Node2D
+extends Control
 var change = false
 
 func _ready():
