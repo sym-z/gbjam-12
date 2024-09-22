@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1obfcxhn54mx"]
 
 [ext_resource type="Script" path="res://scripts/start_scene.gd" id="1_0uf1s"]
-[ext_resource type="Texture2D" path="res://sprites/title-background.png" id="2_ejq85"]
-[ext_resource type="Texture2D" path="res://sprites/title-scrollable.png" id="3_t7r4h"]
+[ext_resource type="Texture2D" uid="uid://bi823ox4itnyp" path="res://sprites/title-background.png" id="2_ejq85"]
+[ext_resource type="Texture2D" uid="uid://bn8ifhy1iyifq" path="res://sprites/title-scrollable.png" id="3_t7r4h"]
 
 [node name="Start Scene" type="Control"]
 layout_mode = 3
