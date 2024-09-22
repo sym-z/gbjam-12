@@ -1,13 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://c2ajpu1p3djgq"]
+[gd_scene load_steps=37 format=3 uid="uid://c2ajpu1p3djgq"]
 
 [ext_resource type="Script" path="res://scripts/radial_guy.gd" id="1_346tb"]
 [ext_resource type="Texture2D" uid="uid://rbm6lag82sgk" path="res://tilesets/fish_head.png" id="2_pm34y"]
 [ext_resource type="Texture2D" uid="uid://cvrktqn7j284k" path="res://tilesets/head_birth.png" id="2_saldj"]
 [ext_resource type="Texture2D" uid="uid://bhv8cgerdxbqp" path="res://tilesets/head_death.png" id="3_atsrv"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3pqb"]
-atlas = ExtResource("2_saldj")
-region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jofhj"]
 atlas = ExtResource("2_saldj")
@@ -132,9 +128,6 @@ region = Rect2(16, 32, 16, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_bipq6"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t3pqb")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jofhj")
 }, {
