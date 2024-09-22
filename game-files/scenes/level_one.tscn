@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d164o0t7vod04"]
+[gd_scene load_steps=12 format=3 uid="uid://d164o0t7vod04"]
 
 [ext_resource type="Script" path="res://scripts/level_one.gd" id="1_bmkg0"]
 [ext_resource type="Texture2D" uid="uid://b7cr4mssud7j0" path="res://sprites/life_can.png" id="2_5vfvv"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://ddp7ms5o882hh" path="res://tilesets/large.png" id="3_8oh36"]
 [ext_resource type="FontFile" uid="uid://c3ogr0b34lgr" path="res://tilesets/small.png" id="4_fbjmb"]
 [ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="5_cdm3v"]
+[ext_resource type="Texture2D" uid="uid://c4nehn781r68g" path="res://sprites/background_final.png" id="6_1ay0v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s2qrt"]
 animations = [{
@@ -125,7 +126,7 @@ tex = NodePath("TextureRect")
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 240.0
-texture = ExtResource("2_fo3mq")
+texture = ExtResource("6_1ay0v")
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 visible = false

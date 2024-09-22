@@ -84,6 +84,9 @@
 - [ ] Lives in Hud
 - [ ] Fishhead stop after player death
 - [ ] eyeball stop after player death
+- [ ] Game over screen
+- [ ] Menu Tweening
+- [ ] Menu hud
 
 
 ## NEEDS TUNING
