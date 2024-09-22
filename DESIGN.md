@@ -84,13 +84,15 @@
 - [x] Lives in Hud
 - [x] Fishhead stop after player death
 - [x] eyeball stop after player death
-- [ ] Game over screen
+- [x] Game over screen
 - [x] Menu Tweening
 - [ ] Menu hud buttons
 - [x] Menu selection code
 - [x] Intro anim 
 - [x] Title screen in load scene 
-- [ ] Game Over Scene 
+- [x] Game Over Scene 
+- [ ] Score and Highscore in Game Over Screen
+
 
 
 ## NEEDS TUNING
