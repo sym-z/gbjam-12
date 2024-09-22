@@ -24,25 +24,30 @@ enum DIR {NORTH, SOUTH, EAST, WEST}
 
 ## Which gate they spawn at
 var gate : int
+
+## Handles pause for spawn animation
+var CAN_MOVE : bool = false
 func _ready():
 	pass
 	
 func _process(delta):
-	move(delta)
+	if !player.dead and CAN_MOVE:
+		move(delta)
 
 func move(delta):
-	if !player.dead:
-		position += ((speed * direction) * delta)
+	position += ((speed * direction) * delta)
 
 func destroy(killed):
-	if(killed):
+	if(killed) and CAN_MOVE:
 		print(Globals.KILLS)
 		if Globals.KILLS % difficulty_tick == 0 and Globals.KILLS != 0 and Globals.CAN_CHANGE: # Every tenth kill, 
 			Globals.raise_difficulty(delta_score)
 		Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		print("Score: ", Globals.SCORE)
 		Globals.filled_gates[gate] = 0
-	queue_free()
+		sprite.animation = 'death'
+		sprite.play()
+
 
 func hurt(dam):
 	health -= dam
@@ -61,7 +66,17 @@ func align_sprite():
 			rotation_degrees = 270
 
 func _on_animated_sprite_2d_animation_finished():
-	if sprite.frame == 15:
-		sprite.play_backwards()
-	else:
-		sprite.play()
+	match sprite.animation:
+		'default':
+			if sprite.frame == 15:
+				sprite.play_backwards()
+			else:
+				sprite.play()
+		'birth':
+			# TODO can_move = true
+			CAN_MOVE = true
+			sprite.animation = 'default'
+		'death':
+			# TODO allow sprite to delete
+			queue_free()
+	
