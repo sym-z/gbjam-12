@@ -12,7 +12,7 @@ var KILLS : int = 0 # Actual number of enemies defeated
 var SPEED_MULT : float = 1.0 # How much to multiply the speed by as the difficulty increases
 var SCORE_BUFF : int = 0 # How many extra points are added because of difficulty
 var SPAWN_INCREASE : float = 1.0 # Decreases intervals between spawns
-
+var LAST_BUMP : int = 0 # Marks the last difficulty bump, prevents multiple bumps
 var CAN_CHANGE : bool = true
 var timer
 
@@ -25,6 +25,7 @@ var filled_gates = {
 	DIR.EAST  : 0,
 	DIR.WEST  : 0
 } 
+
 func _ready():
 	timer = Timer.new()
 	timer.wait_time =1.0
