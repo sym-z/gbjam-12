@@ -88,9 +88,9 @@
 - [x] Menu Tweening
 - [ ] Menu hud buttons
 - [x] Menu selection code
-- [ ] Intro anim
-- [ ] Title screen in load scene
-- [ ] Game Over Scene
+- [x] Intro anim 
+- [x] Title screen in load scene 
+- [ ] Game Over Scene 
 
 
 ## NEEDS TUNING
