@@ -77,25 +77,28 @@ func input_handler(DEBUG = false):
 		right = false
 	if Input.is_action_just_pressed("A"):
 		a_but = true
+		menu_choice()
 		if(DEBUG): 
 			print("A")
 	else:
 		a_but = false
 	if Input.is_action_just_pressed("B"):
 		b_but = true
+		menu_choice()
 		if(DEBUG): 
 			print("B")
 	else:
 		b_but = false
 	if Input.is_action_just_pressed("SELECT"):
 		sel_but = true
+		menu_move(MOVE.DOWN)
 		if(DEBUG): 
 			print("S E L E C T")
 	else:
 		sel_but = false
 	if Input.is_action_just_pressed("START"):
 		srt_but = true
-		get_tree().change_scene_to_file("res://scenes/level_one.tscn")
+		menu_choice()
 		if(DEBUG): 
 			print("S T A R T")
 	else:
@@ -131,5 +134,13 @@ func menu_move(input):
 				tween = create_tween()
 				tween.tween_property(moving_parts, "position", play_mark.position, dur)
 
-func menu_choice(input):
+func menu_choice():
+	match current_choice:
+		WINDOW.PLAY:
+			get_tree().change_scene_to_file("res://scenes/level_one.tscn")
+			pass
+		WINDOW.CONTROLS:
+			pass
+		WINDOW.CREDITS:
+			pass
 	pass

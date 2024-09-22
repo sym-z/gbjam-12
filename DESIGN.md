@@ -81,17 +81,21 @@
 - [x] Jumpy Movement Fish Head
 - [x] Replace shot anim
 - [x] High Score
-- [ ] Lives in Hud
-- [ ] Fishhead stop after player death
-- [ ] eyeball stop after player death
+- [x] Lives in Hud
+- [x] Fishhead stop after player death
+- [x] eyeball stop after player death
 - [ ] Game over screen
-- [ ] Menu Tweening
-- [ ] Menu hud
+- [x] Menu Tweening
+- [ ] Menu hud buttons
+- [x] Menu selection code
+- [ ] Intro anim
+- [ ] Title screen in load scene
+- [ ] Game Over Scene
 
 
 ## NEEDS TUNING
-- [ ] Fish Movement
-- [ ] Spawn timing difficulty scaling
+- [x] Fish Movement
+- [x] Spawn timing difficulty scaling
 - [x] Hud goes over Enemies
 - [x] FIX SHOOTING AFTER DEATH
 
