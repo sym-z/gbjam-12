@@ -76,8 +76,31 @@ var instruments = [] # ALL INSTRUMENTS
 @export var score_text : RichTextLabel
 ## Node for high score text
 @export var h_score_text : RichTextLabel
+
+## Handles game over change
+var game_over : bool = false
 func _ready():
-	
+	match Globals.LAST_DIR:
+		AIM.NORTH:
+			aim_dir = AIM.NORTH
+			sprite.rotation_degrees = 0
+			sprite.flip_v = true
+			pass
+		AIM.SOUTH:
+			aim_dir = AIM.SOUTH
+			sprite.flip_v = false
+			sprite.rotation_degrees = 0
+			pass
+		AIM.EAST:
+			aim_dir = AIM.EAST
+			sprite.rotation_degrees = 270
+			sprite.flip_v = false
+			pass
+		AIM.WEST:
+			aim_dir = AIM.WEST
+			sprite.rotation_degrees = 90
+			sprite.flip_v = false
+			pass
 	sprite.animation = 'default'
 	sprite.frame = 0
 	### HOLDS GUNS TO MAKE FIRING CODE EASIER ###
@@ -181,9 +204,12 @@ func die():
 	
 	if Globals.LIVES == 0:
 		# GAME OVER
+		game_over = true
 		Globals.reset_difficulty()
+		Globals.LAST_DIR = AIM.SOUTH
 		#Globals.HIGH_SCORE = 0
-	#else:
+	else:
+		Globals.LAST_DIR = aim_dir
 		# RESTART LEVEL
 		#Globals.LIVES -= 1
 	print("LIVES: ", Globals.LIVES)
@@ -255,7 +281,11 @@ func fire():
 func restart_level():
 	respawn_clock.start()
 func _on_respawn_timer_timeout():
-	owner.get_tree().reload_current_scene()
+	if !game_over:
+		owner.get_tree().reload_current_scene()
+	else:
+		owner.get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+
 func _on_north_anim_animation_finished():
 	north_anim.visible = false
 func _on_south_anim_animation_finished():

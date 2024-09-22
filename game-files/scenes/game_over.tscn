@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxgagyqbvaspe"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_d43ut"]
+[ext_resource type="Texture2D" uid="uid://du1xoafeel3xc" path="res://sprites/you_died.png" id="2_3dadm"]
+
+[node name="Game Over" type="Node2D"]
+script = ExtResource("1_d43ut")
+
+[node name="Image" type="Sprite2D" parent="."]
+texture = ExtResource("2_3dadm")
+offset = Vector2(80, 72)

@@ -79,6 +79,7 @@ func _on_animated_sprite_2d_animation_finished():
 			# TODO can_move = true
 			CAN_MOVE = true
 			sprite.animation = 'default'
+			sprite.play()
 		'death':
 			# TODO allow sprite to delete
 			queue_free()

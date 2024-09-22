@@ -17,6 +17,10 @@ var CAN_CHANGE : bool = true
 var timer
 
 var HIGH_SCORE : int = 0
+## For remembering last direction
+enum AIM {NORTH, SOUTH, EAST, WEST}
+var LAST_DIR : int = AIM.SOUTH
+
 ### TO FIGURE OUT DIRECTION OF SPAWN ###
 enum DIR {NORTH, SOUTH, EAST, WEST}
 var filled_gates = {
