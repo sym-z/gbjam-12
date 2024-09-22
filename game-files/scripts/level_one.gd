@@ -47,7 +47,11 @@ var total_spawns : int
 ## Node for high score text
 @export var h_score_text : RichTextLabel
 
+@export var LIFE_1 : TextureRect
+@export var LIFE_2 : TextureRect
+@export var LIFE_3 : TextureRect
 func _ready():
+	check_lives()
 	position_actors()
 	### HOLD MARKERS IN ARRAY ###
 	spawn_arr = [Nmark, Smark, Emark, Wmark]
@@ -141,8 +145,38 @@ func spawn_enemy():
 			add_child(enemy_inst)
 			# Could attach enemy to player here instead of using center of viewport
 func _on_spawn_timer_timeout():
+	print("No change in bump, currently = ", Globals.LAST_BUMP)
 	if(!player.dead):
 		spawn_enemy()
-		if Globals.KILLS % 10 == 0 and Globals.KILLS != 0:
+		#if Globals.KILLS % 10 == 0 and Globals.KILLS != 0 and Globals.LAST_BUMP != Globals.KILLS:
+		if Globals.KILLS % 10 == 0 and Globals.LAST_BUMP != Globals.KILLS:
+			Globals.LAST_BUMP = Globals.KILLS
+			print("Spawn time decrease")
+			print("Change in recent bump to: ", Globals.LAST_BUMP)
 			Globals.SPAWN_INCREASE -= delta_spawn # Less time between spawns every 10 kills
 		spawn_clock.wait_time = randf_range(min_spawn_time, max_spawn_time) * Globals.SPAWN_INCREASE
+
+
+func _on_good_guy_im_dead():
+	check_lives()
+
+
+func check_lives():
+	match Globals.LIVES:
+		3:
+			LIFE_1.visible = true
+			LIFE_2.visible = true
+			LIFE_3.visible = true
+		2:
+			LIFE_1.visible = true
+			LIFE_2.visible = true
+			LIFE_3.visible = false
+		1:
+			LIFE_1.visible = true
+			LIFE_2.visible = false
+			LIFE_3.visible = false
+		0:
+			LIFE_1.visible = false
+			LIFE_2.visible = false
+			LIFE_3.visible = false	
+	

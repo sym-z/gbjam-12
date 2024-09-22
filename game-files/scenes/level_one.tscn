@@ -26,7 +26,7 @@ _data = {
 }
 point_count = 86
 
-[node name="Level One" type="Node2D" node_paths=PackedStringArray("player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock", "path", "score_text", "h_score_text")]
+[node name="Level One" type="Node2D" node_paths=PackedStringArray("player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock", "path", "score_text", "h_score_text", "LIFE_1", "LIFE_2", "LIFE_3")]
 script = ExtResource("1_bmkg0")
 player = NodePath("Good Guy")
 Nmark = NodePath("Markers/NORTH")
@@ -39,24 +39,36 @@ path = NodePath("Worse Guy Path")
 delta_spawn = 0.1
 score_text = NodePath("HUD/Score/RichTextLabel")
 h_score_text = NodePath("HUD/High Score/RichTextLabel")
+LIFE_1 = NodePath("Life Icons/VBoxContainer/Life1")
+LIFE_2 = NodePath("Life Icons/VBoxContainer/Life2")
+LIFE_3 = NodePath("Life Icons/VBoxContainer/Life3")
 
 [node name="Life Icons" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Life Icons"]
 layout_mode = 0
-offset_right = 14.0
-offset_bottom = 11.0
+offset_left = 1.0
+offset_top = 107.78
+offset_right = 15.0
+offset_bottom = 142.78
+theme_override_constants/separation = 1
+alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="Life Icons/VBoxContainer"]
+[node name="Life3" type="TextureRect" parent="Life Icons/VBoxContainer"]
 z_index = 10
 texture_filter = 3
 layout_mode = 2
 texture = ExtResource("2_5vfvv")
 
-[node name="TextureRect2" type="TextureRect" parent="Life Icons/VBoxContainer"]
+[node name="Life2" type="TextureRect" parent="Life Icons/VBoxContainer"]
+z_index = 10
+texture_filter = 3
+layout_mode = 2
+texture = ExtResource("2_5vfvv")
+
+[node name="Life1" type="TextureRect" parent="Life Icons/VBoxContainer"]
 z_index = 10
 texture_filter = 3
 layout_mode = 2
@@ -163,4 +175,5 @@ position = Vector2(16, 4.466)
 scale = Vector2(1, 0.965648)
 curve = SubResource("Curve2D_bbhxf")
 
+[connection signal="im_dead" from="Good Guy" to="." method="_on_good_guy_im_dead"]
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]

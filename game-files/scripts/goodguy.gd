@@ -36,7 +36,8 @@ var gun_arr
 @export var sprite : AnimatedSprite2D
 ### FOR LEVEL RESPAWN ###
 var dead : bool = false
-
+## For the Life UI change
+signal im_dead 
 @export var respawn_clock : Timer
 
 ### Animations ###
@@ -168,6 +169,7 @@ func _on_hurtbox_area_entered(area):
 func die():
 	print("YOU DIED")
 	dead = true
+	im_dead.emit()
 	sprite.visible = false
 	# Reset animation
 	sprite.frame = 0
@@ -184,7 +186,6 @@ func die():
 		# RESTART LEVEL
 		#Globals.LIVES -= 1
 	print("LIVES: ", Globals.LIVES)
-	print(owner)
 	call_deferred("restart_level")
 	#queue_free()
 
