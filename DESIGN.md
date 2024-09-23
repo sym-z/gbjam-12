@@ -3,7 +3,7 @@
 # TO-DO
 
 ## IDEAS
-- [ ] Make an intro based off of the Gameboy's start up jingle that plays when the game starts.
+- [x] Make an intro based off of the Gameboy's start up jingle that plays when the game starts.
 
 ## PLACEHOLDER ART
 - [x] Projectile
@@ -23,9 +23,9 @@
 - [x] Enemy (Radial Guy (Circle Path Enemy))
 - [x] Background 
 - [x] Projectile 
-- [ ] Main Menu 
+- [x] Main Menu 
 - [ ] ~~Pause Menu ~~
-- [ ] Controls or How to Play Menu 
+- [x] Controls or How to Play Menu 
 - [ ] Credits Menu 
 - [x] Spooky Font? *Will find out file type*
 - [ ] Inverted Color Versions of Character, Enemy and Background for flash frames
@@ -59,7 +59,7 @@
 - [x] Shoot Projectile (Line-Trace Collide with Enemy)
 - [ ] Main Menu
 - [ ] Credits Menu Implemented
-- [ ] Controls Menu Implemented
+- [x] Controls Menu Implemented
 - [ ] Menu hud buttons
 - [x] Aim and Shoot 
 - [x] Spawn Enemy

@@ -7,6 +7,7 @@
 
  ## About the game
  - This game is a homage to an arcade game *Space Zap* by *Midway* in 1980
+ - Made in Godot 4.3
 
 ## How to play
 - Prevent the can in the center from being destroyed by attacking from four directions

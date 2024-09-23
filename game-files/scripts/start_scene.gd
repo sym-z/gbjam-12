@@ -13,7 +13,6 @@ var b_but : bool = false
 var sel_but : bool = false
 var srt_but : bool = false
 # # # # # # # # # # # #
-var change = false
 
 ## The moving parts of the menu
 @export var moving_parts : Control
@@ -28,7 +27,9 @@ var change = false
 @export var credits_mark : Marker2D
  
 enum MOVE {UP, DOWN}
+
 enum WINDOW {CREDITS, PLAY, CONTROLS}
+
 ## What the player is looking at
 var current_choice : int
 
@@ -41,19 +42,25 @@ var tween : Tween
 ## This noise plays when the player selects a new option in the main menu
 @export var menu_pick_noise : AudioStreamPlayer2D
 
+## The splash screen that reveals and disappears for controls
+@export var controls_splash : Sprite2D
+
+## The splash screen that reveals and disappears for credits
+@export var credits_splash : Sprite2D
+
+## Block hud in the menu
+@export var hud_image : TextureRect
+
+
 func _ready():
 	# Play bg noise
 	ambience.play()
 	current_choice = WINDOW.PLAY
 	moving_parts.position = play_mark.position
-	pass 
 
 func _process(_delta):
-	if !change:
-		change = true
-		#get_tree().change_scene_to_file("res://scenes/level_one.tscn")
 	input_handler()
-	pass
+	
 func input_handler(DEBUG = false):
 	if Input.is_action_just_pressed("DPAD-DOWN"):
 		down = true
@@ -147,9 +154,11 @@ func menu_choice():
 	match current_choice:
 		WINDOW.PLAY:
 			get_tree().change_scene_to_file("res://scenes/level_one.tscn")
-			pass
 		WINDOW.CONTROLS:
-			pass
+			menu_pick_noise.play()
+			controls_splash.visible = !controls_splash.visible
+			hud_image.visible = !hud_image.visible
 		WINDOW.CREDITS:
-			pass
-	pass
+			menu_pick_noise.play()
+			credits_splash.visible = !credits_splash.visible
+			hud_image.visible = !hud_image.visible
