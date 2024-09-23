@@ -60,6 +60,7 @@
 - [ ] Main Menu
 - [ ] Credits Menu Implemented
 - [ ] Controls Menu Implemented
+- [ ] Menu hud buttons
 - [x] Aim and Shoot 
 - [x] Spawn Enemy
 - [x] Kill Enemy
@@ -98,7 +99,6 @@
 - [x] eyeball stop after player death
 - [x] Game over screen
 - [x] Menu Tweening
-- [ ] Menu hud buttons
 - [x] Menu selection code
 - [x] Intro anim 
 - [x] Title screen in load scene 
@@ -112,8 +112,8 @@
 - [x] Spawn timing difficulty scaling
 - [x] Hud goes over Enemies
 - [x] FIX SHOOTING AFTER DEATH
-- [ ] Volume management
+- [x] Volume management
 
 
 ## STRETCH GOALS
-- [ ] Player can change the side the hud is on
+- [ ] ~~Player can change the side the hud is on~~
