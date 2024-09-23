@@ -17,6 +17,9 @@ var CAN_CHANGE : bool = true
 var timer
 var GAME_OVER_SCORE : int = 0
 var HIGH_SCORE : int = 0
+
+# To allow for kills during difficulty changes
+var CHANGING_DIFF : bool = false
 ## For remembering last direction
 enum AIM {NORTH, SOUTH, EAST, WEST}
 var LAST_DIR : int = AIM.SOUTH

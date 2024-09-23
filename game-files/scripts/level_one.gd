@@ -160,16 +160,8 @@ func _on_spawn_timer_timeout():
 	print("No change in bump, currently = ", Globals.LAST_BUMP)
 	if(!player.dead):
 		spawn_enemy()
-		#if Globals.KILLS % 10 == 0 and Globals.KILLS != 0 and Globals.LAST_BUMP != Globals.KILLS:
-		if Globals.KILLS % 10 == 0 and Globals.LAST_BUMP != Globals.KILLS:
-			Globals.LAST_BUMP = Globals.KILLS
-			print("Spawn time decrease")
-			print("Change in recent bump to: ", Globals.LAST_BUMP)
-			if delta_spawn >= 0:
-				Globals.SPAWN_INCREASE -= delta_spawn # Less time between spawns every 10 kills
-			elif max_spawn_time >= min_spawn_time:
-				max_spawn_time -= delta_spawn
 		spawn_clock.wait_time = randf_range(min_spawn_time, max_spawn_time) + Globals.SPAWN_INCREASE
+		
 
 
 func _on_good_guy_im_dead():
@@ -197,4 +189,13 @@ func check_lives():
 	
 func _on_enemy_inst_diff_bump():
 	difficulty_noise.play()
-	pass
+	Globals.LAST_BUMP = Globals.KILLS
+	print("Spawn time decrease")
+	print("Change in recent bump to: ", Globals.LAST_BUMP)
+	if Globals.SPAWN_INCREASE - delta_spawn >= 0:
+		Globals.SPAWN_INCREASE -= delta_spawn # Less time between spawns every 10 kills
+		print("taper decrease")
+	elif (max_spawn_time - delta_spawn) >= min_spawn_time + 0.2:
+		max_spawn_time -= delta_spawn
+		print("max decrease")
+		pass
