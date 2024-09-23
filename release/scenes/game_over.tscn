@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxgagyqbvaspe"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_d43ut"]
+[ext_resource type="Texture2D" uid="uid://du1xoafeel3xc" path="res://sprites/you_died.png" id="2_3dadm"]
+[ext_resource type="Texture2D" uid="uid://bif8gd3dblp0i" path="res://sprites/game_over_score_reference.png" id="2_tldfs"]
+[ext_resource type="AudioStream" uid="uid://dll7qcips64ba" path="res://audio/game_over.mp3" id="3_dojo6"]
+[ext_resource type="FontFile" uid="uid://ddp7ms5o882hh" path="res://tilesets/large.png" id="5_xvk1x"]
+[ext_resource type="FontFile" uid="uid://c3ogr0b34lgr" path="res://tilesets/small.png" id="6_droon"]
+
+[node name="Game Over" type="Node2D" node_paths=PackedStringArray("sting", "score_text", "h_score_text")]
+script = ExtResource("1_d43ut")
+sting = NodePath("Sting")
+score_text = NodePath("Scores/VBoxContainer/Score")
+h_score_text = NodePath("Scores/VBoxContainer/High Score")
+
+[node name="ref" type="Sprite2D" parent="."]
+visible = false
+z_index = 100
+texture = ExtResource("2_tldfs")
+centered = false
+
+[node name="Image" type="Sprite2D" parent="."]
+texture = ExtResource("2_3dadm")
+offset = Vector2(80, 72)
+
+[node name="Sting" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dojo6")
+
+[node name="Scores" type="Control" parent="."]
+z_index = 101
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scores"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 88.0
+offset_bottom = 45.0
+theme_override_constants/separation = 0
+
+[node name="Score" type="RichTextLabel" parent="Scores/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_xvk1x")
+theme_override_font_sizes/normal_font_size = 8
+text = "0123456789"
+fit_content = true
+
+[node name="High Score" type="RichTextLabel" parent="Scores/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("6_droon")
+theme_override_font_sizes/normal_font_size = 8
+text = "0123456789"
+fit_content = true

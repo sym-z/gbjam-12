@@ -1,0 +1,115 @@
+[gd_scene load_steps=13 format=3 uid="uid://b1obfcxhn54mx"]
+
+[ext_resource type="Script" path="res://scripts/start_scene.gd" id="1_0uf1s"]
+[ext_resource type="Texture2D" uid="uid://bi823ox4itnyp" path="res://sprites/title-background.png" id="2_ejq85"]
+[ext_resource type="Texture2D" uid="uid://causrv7nw1ykw" path="res://sprites/title-hud.png" id="3_ibp8q"]
+[ext_resource type="Texture2D" uid="uid://bn8ifhy1iyifq" path="res://sprites/title-scrollable.png" id="3_t7r4h"]
+[ext_resource type="Texture2D" uid="uid://cdbphsrepjgjn" path="res://sprites/creds_text.png" id="4_7cyu5"]
+[ext_resource type="Texture2D" uid="uid://bymj5f7m8ilf6" path="res://sprites/play_text.png" id="5_glbhl"]
+[ext_resource type="Texture2D" uid="uid://5p2ggiopbnrp" path="res://sprites/creds.png" id="5_najdx"]
+[ext_resource type="AudioStream" uid="uid://1vjrcpesge2t" path="res://audio/menu_music.mp3" id="5_qhdlg"]
+[ext_resource type="Texture2D" uid="uid://j6kod6nrscow" path="res://sprites/how_to_text.png" id="6_j014b"]
+[ext_resource type="AudioStream" uid="uid://cw5itur43545v" path="res://audio/menu_move.mp3" id="6_l0e3e"]
+[ext_resource type="Texture2D" uid="uid://c8jkbndmmnb8m" path="res://sprites/controls.png" id="6_p7dik"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k488e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7cyu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_glbhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j014b")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Start Scene" type="Control" node_paths=PackedStringArray("moving_parts", "play_mark", "controls_mark", "credits_mark", "ambience", "menu_pick_noise", "controls_splash", "credits_splash", "hud_image", "hud_text")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0uf1s")
+moving_parts = NodePath("Moving Parts")
+play_mark = NodePath("Play Mark")
+controls_mark = NodePath("Controls Mark")
+credits_mark = NodePath("Credits Mark")
+ambience = NodePath("Ambience")
+menu_pick_noise = NodePath("Menu Pick Noise")
+controls_splash = NodePath("Controls Mark/Controls")
+credits_splash = NodePath("Credits Mark/Credits")
+hud_image = NodePath("Moving Parts/HUD/Image")
+hud_text = NodePath("Moving Parts/HUD/Image/HUD Text")
+
+[node name="Moving Parts" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="VBoxContainer" parent="Moving Parts"]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 144.0
+
+[node name="Image" type="TextureRect" parent="Moving Parts/Background"]
+layout_mode = 2
+texture = ExtResource("2_ejq85")
+
+[node name="HUD" type="VBoxContainer" parent="Moving Parts"]
+z_index = 10
+layout_mode = 0
+offset_top = 112.0
+offset_right = 160.0
+offset_bottom = 152.0
+
+[node name="Image" type="TextureRect" parent="Moving Parts/HUD"]
+layout_mode = 2
+texture = ExtResource("3_ibp8q")
+
+[node name="HUD Text" type="AnimatedSprite2D" parent="Moving Parts/HUD/Image"]
+sprite_frames = SubResource("SpriteFrames_k488e")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="Moving Parts"]
+anchor_mode = 0
+
+[node name="Foreground" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = -76.0
+offset_right = 160.0
+offset_bottom = 228.0
+
+[node name="Image" type="TextureRect" parent="Foreground"]
+layout_mode = 2
+texture = ExtResource("3_t7r4h")
+
+[node name="Play Mark" type="Marker2D" parent="."]
+position = Vector2(0, 16)
+
+[node name="Credits Mark" type="Marker2D" parent="."]
+position = Vector2(0, -85)
+
+[node name="Credits" type="Sprite2D" parent="Credits Mark"]
+editor_description = "Shows a splash screen for the Credits"
+visible = false
+texture = ExtResource("5_najdx")
+centered = false
+
+[node name="Controls Mark" type="Marker2D" parent="."]
+position = Vector2(0, 115)
+
+[node name="Controls" type="Sprite2D" parent="Controls Mark"]
+visible = false
+texture = ExtResource("6_p7dik")
+centered = false
+
+[node name="Ambience" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("5_qhdlg")
+parameters/looping = true
+
+[node name="Menu Pick Noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_l0e3e")

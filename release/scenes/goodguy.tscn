@@ -1,0 +1,335 @@
+[gd_scene load_steps=39 format=3 uid="uid://cf6ar5dxqu7h2"]
+
+[ext_resource type="Script" path="res://scripts/goodguy.gd" id="1_q0ltr"]
+[ext_resource type="Texture2D" uid="uid://e7ikq0li4bug" path="res://tilesets/player_character_death.png" id="2_iq05d"]
+[ext_resource type="Texture2D" uid="uid://dnr4kijueocql" path="res://tilesets/player_character_shot.png" id="2_sf58l"]
+[ext_resource type="Texture2D" uid="uid://cf2p8tb3cae4f" path="res://tilesets/fish_shot.png" id="4_uugo7"]
+[ext_resource type="AudioStream" uid="uid://cbjb2to8gw7m7" path="res://audio/death_sound.mp3" id="5_qkhj2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf8ny"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xeuc"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssfux"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch0qj"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82fkk"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3wkf"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo4hf"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guwg7"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88htw"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc4ge"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a7er"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk3cn"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk01j"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v22at"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t7v6"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iiys"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4id5"]
+atlas = ExtResource("2_iq05d")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d66nm"]
+atlas = ExtResource("2_sf58l")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eif5"]
+atlas = ExtResource("2_sf58l")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be1ig"]
+atlas = ExtResource("2_sf58l")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1wj0"]
+atlas = ExtResource("2_sf58l")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htexw"]
+atlas = ExtResource("2_sf58l")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uriej"]
+atlas = ExtResource("2_sf58l")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7idxx"]
+atlas = ExtResource("2_sf58l")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v3ou4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf8ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xeuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssfux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch0qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82fkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3wkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo4hf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guwg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88htw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc4ge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6a7er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk3cn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk01j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v22at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t7v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1iiys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4id5")
+}],
+"loop": false,
+"name": &"death",
+"speed": 21.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d66nm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eif5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_be1ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1wj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htexw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uriej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7idxx")
+}],
+"loop": false,
+"name": &"default",
+"speed": 21.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b0cfp"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cktdb"]
+atlas = ExtResource("4_uugo7")
+region = Rect2(0, 0, 14, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8f0r"]
+atlas = ExtResource("4_uugo7")
+region = Rect2(14, 0, 14, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q648x"]
+atlas = ExtResource("4_uugo7")
+region = Rect2(28, 0, 14, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk1dh"]
+atlas = ExtResource("4_uugo7")
+region = Rect2(0, 42, 14, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0dr0"]
+atlas = ExtResource("4_uugo7")
+region = Rect2(14, 42, 14, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56i75"]
+atlas = ExtResource("4_uugo7")
+region = Rect2(28, 42, 14, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p7scc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cktdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8f0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q648x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk1dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0dr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56i75")
+}],
+"loop": false,
+"name": &"default",
+"speed": 21.0
+}]
+
+[node name="Good Guy" type="Node2D" node_paths=PackedStringArray("NORTH_GUN", "SOUTH_GUN", "EAST_GUN", "WEST_GUN", "hurtbox", "sprite", "respawn_clock", "north_anim", "south_anim", "east_anim", "west_anim", "speaker", "death_sound")]
+script = ExtResource("1_q0ltr")
+NORTH_GUN = NodePath("Firing Directions/NORTH")
+SOUTH_GUN = NodePath("Firing Directions/SOUTH")
+EAST_GUN = NodePath("Firing Directions/EAST")
+WEST_GUN = NodePath("Firing Directions/WEST")
+health = 1
+hurtbox = NodePath("Hurtbox")
+sprite = NodePath("AnimatedSprite2D")
+respawn_clock = NodePath("Respawn Timer")
+north_anim = NodePath("Gun Animations/North Anim")
+south_anim = NodePath("Gun Animations/South Anim")
+east_anim = NodePath("Gun Animations/East Anim")
+west_anim = NodePath("Gun Animations/West Anim")
+speaker = NodePath("Fire Sound")
+death_sound = NodePath("Death Sound")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v3ou4")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_b0cfp")
+
+[node name="Firing Directions" type="Node2D" parent="."]
+
+[node name="NORTH" type="RayCast2D" parent="Firing Directions"]
+rotation = 3.14159
+target_position = Vector2(0, 80)
+collide_with_areas = true
+
+[node name="SOUTH" type="RayCast2D" parent="Firing Directions"]
+target_position = Vector2(0, 80)
+collide_with_areas = true
+
+[node name="EAST" type="RayCast2D" parent="Firing Directions"]
+rotation = 4.71239
+target_position = Vector2(0, 80)
+collide_with_areas = true
+
+[node name="WEST" type="RayCast2D" parent="Firing Directions"]
+rotation = 1.5708
+target_position = Vector2(0, 80)
+collide_with_areas = true
+
+[node name="Respawn Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Gun Animations" type="Node2D" parent="."]
+
+[node name="North Anim" type="AnimatedSprite2D" parent="Gun Animations"]
+visible = false
+position = Vector2(0, -39)
+sprite_frames = SubResource("SpriteFrames_p7scc")
+frame_progress = 1.0
+
+[node name="South Anim" type="AnimatedSprite2D" parent="Gun Animations"]
+visible = false
+position = Vector2(0, 39)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_p7scc")
+frame_progress = 1.0
+
+[node name="East Anim" type="AnimatedSprite2D" parent="Gun Animations"]
+visible = false
+position = Vector2(39, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_p7scc")
+frame_progress = 1.0
+
+[node name="West Anim" type="AnimatedSprite2D" parent="Gun Animations"]
+visible = false
+position = Vector2(-39, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_p7scc")
+frame_progress = 1.0
+flip_v = true
+
+[node name="Fire Sound" type="AudioStreamPlayer2D" parent="."]
+volume_db = -16.0
+
+[node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qkhj2")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Respawn Timer" to="." method="_on_respawn_timer_timeout"]
+[connection signal="animation_finished" from="Gun Animations/North Anim" to="." method="_on_north_anim_animation_finished"]
+[connection signal="animation_finished" from="Gun Animations/South Anim" to="." method="_on_south_anim_animation_finished"]
+[connection signal="animation_finished" from="Gun Animations/East Anim" to="." method="_on_east_anim_animation_finished"]
+[connection signal="animation_finished" from="Gun Animations/West Anim" to="." method="_on_west_anim_animation_finished"]

@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://ddp7ms5o882hh"
+path="res://.godot/imported/large.png-70d699269a0cc089cead1e341da1ac4b.fontdata"
+
+[deps]
+
+source_file="res://tilesets/large.png"
+dest_files=["res://.godot/imported/large.png-70d699269a0cc089cead1e341da1ac4b.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("\'0\'", "\'1\'-\'9\'")
+kerning_pairs=PackedStringArray()
+columns=1
+rows=10
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2
