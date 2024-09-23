@@ -206,10 +206,12 @@ func die():
 	Globals.LIVES -= 1
 	
 	if Globals.LIVES == 0:
+		Globals.GAME_OVER_SCORE = Globals.SCORE
 		# GAME OVER
 		game_over = true
 		Globals.reset_difficulty()
 		Globals.LAST_DIR = AIM.SOUTH
+
 		#Globals.HIGH_SCORE = 0
 	else:
 		Globals.LAST_DIR = aim_dir

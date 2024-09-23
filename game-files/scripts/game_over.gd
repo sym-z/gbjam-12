@@ -23,7 +23,7 @@ var srt_but : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	score_text.text = "%010d" % Globals.SCORE
+	score_text.text = "%010d" % Globals.GAME_OVER_SCORE
 	h_score_text.text = "%010d" % Globals.HIGH_SCORE
 	sting.play()
 

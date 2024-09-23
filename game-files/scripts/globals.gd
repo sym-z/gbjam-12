@@ -11,11 +11,11 @@ var KILLS : int = 0 # Actual number of enemies defeated
 #var INCREASED_HEALTH : int = 0 # How many extra hits are required because of the difficulty
 var SPEED_MULT : float = 1.0 # How much to multiply the speed by as the difficulty increases
 var SCORE_BUFF : int = 0 # How many extra points are added because of difficulty
-var SPAWN_INCREASE : float = 1.0 # Decreases intervals between spawns
+var SPAWN_INCREASE : float = 0.9 # An assist that slowly tapers off
 var LAST_BUMP : int = 0 # Marks the last difficulty bump, prevents multiple bumps
 var CAN_CHANGE : bool = true
 var timer
-
+var GAME_OVER_SCORE : int = 0
 var HIGH_SCORE : int = 0
 ## For remembering last direction
 enum AIM {NORTH, SOUTH, EAST, WEST}

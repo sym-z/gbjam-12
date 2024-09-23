@@ -40,7 +40,7 @@ var total_spawns : int
 ### PATH FOR SPAWNING WORSE GUY ###
 @export var path : Path2D
 
-@export var delta_spawn : float = 0.05 # Amount that spawn interval decreases every 10 kills 
+@export var delta_spawn : float = 0.15 # Amount that spawn interval decreases every 10 kills 
 
 ## Node for score text
 @export var score_text : RichTextLabel
@@ -165,8 +165,11 @@ func _on_spawn_timer_timeout():
 			Globals.LAST_BUMP = Globals.KILLS
 			print("Spawn time decrease")
 			print("Change in recent bump to: ", Globals.LAST_BUMP)
-			Globals.SPAWN_INCREASE -= delta_spawn # Less time between spawns every 10 kills
-		spawn_clock.wait_time = randf_range(min_spawn_time, max_spawn_time) * Globals.SPAWN_INCREASE
+			if delta_spawn >= 0:
+				Globals.SPAWN_INCREASE -= delta_spawn # Less time between spawns every 10 kills
+			elif max_spawn_time >= min_spawn_time:
+				max_spawn_time -= delta_spawn
+		spawn_clock.wait_time = randf_range(min_spawn_time, max_spawn_time) + Globals.SPAWN_INCREASE
 
 
 func _on_good_guy_im_dead():
