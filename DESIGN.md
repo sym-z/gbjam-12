@@ -43,6 +43,18 @@
 - [ ] ~~Pause Music~~
 - [ ] ~~Next Level Jingle~~
 
+## AUDIO TO IMPLEMENT
+- [x] Fire Noise
+- [x] Difficulty Increase Noise
+- [x] Menu Select Noise
+- [x] Player Death
+- [x] Level Music *Bubbles?*
+- [x] Tentacle Death
+- [x] Eyeball Death
+- [x] Fish Head Death
+- [x] Menu Music *Ambient Crowd Talking*
+- [x] Game Over Sting
+
 ## CODE
 - [x] Shoot Projectile (Line-Trace Collide with Enemy)
 - [ ] Main Menu
@@ -100,6 +112,8 @@
 - [x] Spawn timing difficulty scaling
 - [x] Hud goes over Enemies
 - [x] FIX SHOOTING AFTER DEATH
+- [ ] Volume management
+
 
 ## STRETCH GOALS
 - [ ] Player can change the side the hud is on

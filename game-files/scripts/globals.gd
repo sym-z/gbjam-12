@@ -23,6 +23,9 @@ var LAST_DIR : int = AIM.SOUTH
 
 ### TO FIGURE OUT DIRECTION OF SPAWN ###
 enum DIR {NORTH, SOUTH, EAST, WEST}
+
+
+
 var filled_gates = {
 	DIR.NORTH : 0,
 	DIR.SOUTH : 0,

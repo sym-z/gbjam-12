@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d164o0t7vod04"]
+[gd_scene load_steps=14 format=3 uid="uid://d164o0t7vod04"]
 
 [ext_resource type="Script" path="res://scripts/level_one.gd" id="1_bmkg0"]
 [ext_resource type="Texture2D" uid="uid://b7cr4mssud7j0" path="res://sprites/life_can.png" id="2_5vfvv"]
@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://c3ogr0b34lgr" path="res://tilesets/small.png" id="4_fbjmb"]
 [ext_resource type="Texture2D" uid="uid://drss4k4hdm2rj" path="res://sprites/dummy-enemy.png" id="5_cdm3v"]
 [ext_resource type="Texture2D" uid="uid://c4nehn781r68g" path="res://sprites/background_final.png" id="6_1ay0v"]
+[ext_resource type="AudioStream" uid="uid://spjloutlnuj4" path="res://audio/difficulty_raise.mp3" id="10_5e1y1"]
+[ext_resource type="AudioStream" uid="uid://ct0u1emj07ow7" path="res://audio/level_music.mp3" id="11_tx4yw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s2qrt"]
 animations = [{
@@ -27,7 +29,7 @@ _data = {
 }
 point_count = 86
 
-[node name="Level One" type="Node2D" node_paths=PackedStringArray("player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock", "path", "score_text", "h_score_text", "LIFE_1", "LIFE_2", "LIFE_3")]
+[node name="Level One" type="Node2D" node_paths=PackedStringArray("player", "Nmark", "Smark", "Emark", "Wmark", "spawn_clock", "path", "score_text", "h_score_text", "LIFE_1", "LIFE_2", "LIFE_3", "difficulty_noise", "music")]
 script = ExtResource("1_bmkg0")
 player = NodePath("Good Guy")
 Nmark = NodePath("Markers/NORTH")
@@ -43,6 +45,8 @@ h_score_text = NodePath("HUD/High Score/RichTextLabel")
 LIFE_1 = NodePath("Life Icons/VBoxContainer/Life1")
 LIFE_2 = NodePath("Life Icons/VBoxContainer/Life2")
 LIFE_3 = NodePath("Life Icons/VBoxContainer/Life3")
+difficulty_noise = NodePath("Difficulty Bump")
+music = NodePath("Music")
 
 [node name="Life Icons" type="Control" parent="."]
 layout_mode = 3
@@ -175,6 +179,15 @@ autostart = true
 position = Vector2(16, 4.466)
 scale = Vector2(1, 0.965648)
 curve = SubResource("Curve2D_bbhxf")
+
+[node name="Difficulty Bump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_5e1y1")
+volume_db = -12.0
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_tx4yw")
+volume_db = -3.0
+parameters/looping = true
 
 [connection signal="im_dead" from="Good Guy" to="." method="_on_good_guy_im_dead"]
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]

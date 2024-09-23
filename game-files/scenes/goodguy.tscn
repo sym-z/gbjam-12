@@ -1,9 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://cf6ar5dxqu7h2"]
+[gd_scene load_steps=39 format=3 uid="uid://cf6ar5dxqu7h2"]
 
 [ext_resource type="Script" path="res://scripts/goodguy.gd" id="1_q0ltr"]
 [ext_resource type="Texture2D" uid="uid://e7ikq0li4bug" path="res://tilesets/player_character_death.png" id="2_iq05d"]
 [ext_resource type="Texture2D" uid="uid://dnr4kijueocql" path="res://tilesets/player_character_shot.png" id="2_sf58l"]
 [ext_resource type="Texture2D" uid="uid://cf2p8tb3cae4f" path="res://tilesets/fish_shot.png" id="4_uugo7"]
+[ext_resource type="AudioStream" uid="uid://cbjb2to8gw7m7" path="res://audio/death_sound.mp3" id="5_qkhj2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lf8ny"]
 atlas = ExtResource("2_iq05d")
@@ -239,7 +240,7 @@ animations = [{
 "speed": 21.0
 }]
 
-[node name="Good Guy" type="Node2D" node_paths=PackedStringArray("NORTH_GUN", "SOUTH_GUN", "EAST_GUN", "WEST_GUN", "hurtbox", "sprite", "respawn_clock", "north_anim", "south_anim", "east_anim", "west_anim", "speaker")]
+[node name="Good Guy" type="Node2D" node_paths=PackedStringArray("NORTH_GUN", "SOUTH_GUN", "EAST_GUN", "WEST_GUN", "hurtbox", "sprite", "respawn_clock", "north_anim", "south_anim", "east_anim", "west_anim", "speaker", "death_sound")]
 script = ExtResource("1_q0ltr")
 NORTH_GUN = NodePath("Firing Directions/NORTH")
 SOUTH_GUN = NodePath("Firing Directions/SOUTH")
@@ -253,7 +254,8 @@ north_anim = NodePath("Gun Animations/North Anim")
 south_anim = NodePath("Gun Animations/South Anim")
 east_anim = NodePath("Gun Animations/East Anim")
 west_anim = NodePath("Gun Animations/West Anim")
-speaker = NodePath("AudioStreamPlayer2D")
+speaker = NodePath("Fire Sound")
+death_sound = NodePath("Death Sound")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v3ou4")
@@ -318,7 +320,11 @@ sprite_frames = SubResource("SpriteFrames_p7scc")
 frame_progress = 1.0
 flip_v = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Fire Sound" type="AudioStreamPlayer2D" parent="."]
+volume_db = -16.0
+
+[node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qkhj2")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

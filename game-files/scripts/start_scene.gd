@@ -35,7 +35,15 @@ var current_choice : int
 var tween : Tween
 @export var dur : float = 0.1
 
+## Ambience Sound
+@export var ambience : AudioStreamPlayer2D
+
+## This noise plays when the player selects a new option in the main menu
+@export var menu_pick_noise : AudioStreamPlayer2D
+
 func _ready():
+	# Play bg noise
+	ambience.play()
 	current_choice = WINDOW.PLAY
 	moving_parts.position = play_mark.position
 	pass 
@@ -105,6 +113,7 @@ func input_handler(DEBUG = false):
 		srt_but = false
 
 func menu_move(input):
+	menu_pick_noise.play()
 	match current_choice:
 		WINDOW.PLAY:
 			if input == MOVE.DOWN:

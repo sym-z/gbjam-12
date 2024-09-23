@@ -1,9 +1,10 @@
-[gd_scene load_steps=74 format=3 uid="uid://0rxultecbvo7"]
+[gd_scene load_steps=75 format=3 uid="uid://0rxultecbvo7"]
 
 [ext_resource type="Script" path="res://scripts/worse_guy.gd" id="1_gvq31"]
 [ext_resource type="Texture2D" uid="uid://ph7o6phdqvs0" path="res://tilesets/eyeball_birth.png" id="2_h47ky"]
 [ext_resource type="Texture2D" uid="uid://c5awjik8e6j31" path="res://tilesets/worse_guy_death_spritesheet.png" id="2_is50l"]
 [ext_resource type="Texture2D" uid="uid://dhlhb5cq8emkq" path="res://tilesets/eyeball-sheet.png" id="3_471m1"]
+[ext_resource type="AudioStream" uid="uid://ephgokp0jetk" path="res://audio/eyeball_death.mp3" id="5_2hr2o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjo41"]
 atlas = ExtResource("2_h47ky")
@@ -495,10 +496,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaq4j"]
 size = Vector2(22, 22)
 
-[node name="Worse Guy" type="PathFollow2D" node_paths=PackedStringArray("sprite")]
+[node name="Worse Guy" type="PathFollow2D" node_paths=PackedStringArray("sprite", "death_sound")]
 rotates = false
 script = ExtResource("1_gvq31")
 sprite = NodePath("AnimatedSprite2D")
+death_sound = NodePath("Death Sound")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pvh5r")
@@ -514,5 +516,9 @@ shape = SubResource("RectangleShape2D_xaq4j")
 
 [node name="Difficulty Bump" type="Timer" parent="."]
 one_shot = true
+
+[node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2hr2o")
+volume_db = -3.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -63,6 +63,8 @@ var vox2 : AudioStream = preload("res://audio/vox2.mp3")
 var vox3 : AudioStream = preload("res://audio/vox3.mp3")
 
 @export var speaker : AudioStreamPlayer2D 
+## Plays when the character dies
+@export var death_sound : AudioStreamPlayer2D
 
 var basses = []
 var hihats = []
@@ -72,9 +74,9 @@ var instruments = [] # ALL INSTRUMENTS
 
 @export var bg : Control
 
-## Node for score text
+## Node for score text hooks up in scene
 @export var score_text : RichTextLabel
-## Node for high score text
+## Node for high score text hooks up in scene
 @export var h_score_text : RichTextLabel
 
 ## Handles game over change
@@ -186,6 +188,7 @@ func _on_hurtbox_area_entered(area):
 		if attacker.CAN_MOVE:
 			health -= attacker.damage
 			if health <= 0:
+				death_sound.play()
 				die()
 			# Destroy the enemy last!
 			attacker.destroy(false)

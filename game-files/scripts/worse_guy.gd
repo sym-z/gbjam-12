@@ -24,6 +24,13 @@ extends PathFollow2D
 
 ## HANDLES SPRITE BIRTH ANIM
 var CAN_MOVE : bool = false
+
+## Holds Death Sound
+@export var death_sound : AudioStreamPlayer2D
+
+## For sound, connected to level
+signal diff_bump
+
 func _ready():
 	## Variance in starting position
 	progress = randi_range(0,250)
@@ -41,6 +48,7 @@ func destroy(killed):
 		print(Globals.KILLS)
 		if Globals.KILLS % difficulty_tick == 0 and Globals.KILLS != 0 and Globals.CAN_CHANGE: # Every tenth kill, 
 			Globals.raise_difficulty(delta_score)
+			diff_bump.emit()
 		Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		#Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		print("Score: ", Globals.SCORE)
@@ -52,6 +60,7 @@ func destroy(killed):
 func hurt(dam):
 	health -= dam
 	if health <= 0:
+		death_sound.play()
 		destroy(true)
 
 func _on_animated_sprite_2d_animation_finished():

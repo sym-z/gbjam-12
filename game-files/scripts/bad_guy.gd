@@ -27,6 +27,13 @@ var gate : int
 
 ## Handles pause for spawn animation
 var CAN_MOVE : bool = false
+
+## Holds Death Sound
+@export var death_sound : AudioStreamPlayer2D
+
+## For sound, connected to level
+signal diff_bump
+
 func _ready():
 	pass
 	
@@ -43,6 +50,7 @@ func destroy(killed):
 		print(Globals.KILLS)
 		if Globals.KILLS % difficulty_tick == 0 and Globals.KILLS != 0 and Globals.CAN_CHANGE: # Every tenth kill, 
 			Globals.raise_difficulty(delta_score)
+			diff_bump.emit()
 		Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		print("Score: ", Globals.SCORE)
 		Globals.filled_gates[gate] = 0
@@ -55,6 +63,7 @@ func destroy(killed):
 func hurt(dam):
 	health -= dam
 	if health <= 0:
+		death_sound.play()
 		destroy(true)
 
 func align_sprite():

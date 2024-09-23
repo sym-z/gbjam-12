@@ -1,9 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://c2ajpu1p3djgq"]
+[gd_scene load_steps=38 format=3 uid="uid://c2ajpu1p3djgq"]
 
 [ext_resource type="Script" path="res://scripts/radial_guy.gd" id="1_346tb"]
 [ext_resource type="Texture2D" uid="uid://rbm6lag82sgk" path="res://tilesets/fish_head.png" id="2_pm34y"]
 [ext_resource type="Texture2D" uid="uid://cvrktqn7j284k" path="res://tilesets/head_birth.png" id="2_saldj"]
 [ext_resource type="Texture2D" uid="uid://bhv8cgerdxbqp" path="res://tilesets/head_death.png" id="3_atsrv"]
+[ext_resource type="AudioStream" uid="uid://dpuujpiaemnr6" path="res://audio/fish_head_death.mp3" id="5_iddop"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jofhj"]
 atlas = ExtResource("2_saldj")
@@ -235,13 +236,14 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojjiy"]
 
-[node name="Radial Guy" type="Node2D" node_paths=PackedStringArray("body", "creep_clock", "sprite")]
+[node name="Radial Guy" type="Node2D" node_paths=PackedStringArray("body", "creep_clock", "sprite", "death_sound")]
 script = ExtResource("1_346tb")
 radius = 65
 body = NodePath("Guy")
 creep_clock = NodePath("Creep Timer")
 radial_creep = 10.0
 sprite = NodePath("Guy/AnimatedSprite2D")
+death_sound = NodePath("Death Sound")
 
 [node name="Guy" type="Node2D" parent="."]
 
@@ -260,6 +262,10 @@ autostart = true
 
 [node name="Difficulty Bump" type="Timer" parent="."]
 one_shot = true
+
+[node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_iddop")
+volume_db = -3.0
 
 [connection signal="animation_finished" from="Guy/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Creep Timer" to="." method="_on_creep_timer_timeout"]

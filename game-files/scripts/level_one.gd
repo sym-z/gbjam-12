@@ -50,7 +50,15 @@ var total_spawns : int
 @export var LIFE_1 : TextureRect
 @export var LIFE_2 : TextureRect
 @export var LIFE_3 : TextureRect
+
+## For catching difficulty signal, and playing a noise when the difficulty goes up
+@export var difficulty_noise : AudioStreamPlayer2D
+
+## The music that plays in the level
+@export var music : AudioStreamPlayer2D
+
 func _ready():
+	music.play()
 	check_lives()
 	position_actors()
 	### HOLD MARKERS IN ARRAY ###
@@ -106,11 +114,13 @@ func spawn_enemy():
 	# Spawn enemy at random marker
 	var rand_mark: int = randi_range(0,total_spawns-1)
 	
+	## Tentacle Spawn
 	if dice_roll <= Globals.BASIC_ODDS and Globals.filled_gates[rand_mark] == 0:
 		var enemy_inst = enemy.instantiate()
 		enemy_inst.player = player
 		add_child(enemy_inst)
 		enemy_inst.position = spawn_arr[rand_mark].position
+		enemy_inst.diff_bump.connect(_on_enemy_inst_diff_bump)
 		### MOVE THE ENEMY TOWARDS THE CENTER ###
 		# SPAWN ENEMY AT RANDOM INDEX, MOVE THEM IN THE CORRECT DIRECTION, WILL NEED TO REFACTOR FOR SPECIAL
 		# ENEMIES
@@ -134,15 +144,17 @@ func spawn_enemy():
 		enemy_inst.align_sprite()
 	else:
 		dice_roll -= Globals.BASIC_ODDS
-		if dice_roll <= Globals.SPECIAL_ODDS or Globals.filled_gates[rand_mark] == 1: # SPECIAL CASE
+		if dice_roll <= Globals.SPECIAL_ODDS or Globals.filled_gates[rand_mark] == 1: # EYEBALL SPAWN
 			var enemy_inst = enemy_pather.instantiate()
 			enemy_inst.player = player
 			# ATTACH TO PATH
 			path.add_child(enemy_inst)
-		else: # RARE CASE
+			enemy_inst.diff_bump.connect(_on_enemy_inst_diff_bump)
+		else: # RARE CASE FISH HEAD SPAWN
 			var enemy_inst = enemy_radial.instantiate()
 			enemy_inst.player = player
 			add_child(enemy_inst)
+			enemy_inst.diff_bump.connect(_on_enemy_inst_diff_bump)
 			# Could attach enemy to player here instead of using center of viewport
 func _on_spawn_timer_timeout():
 	print("No change in bump, currently = ", Globals.LAST_BUMP)
@@ -180,3 +192,6 @@ func check_lives():
 			LIFE_2.visible = false
 			LIFE_3.visible = false	
 	
+func _on_enemy_inst_diff_bump():
+	difficulty_noise.play()
+	pass

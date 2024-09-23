@@ -1,9 +1,10 @@
-[gd_scene load_steps=48 format=3 uid="uid://d2dk6axl8a5gy"]
+[gd_scene load_steps=49 format=3 uid="uid://d2dk6axl8a5gy"]
 
 [ext_resource type="Script" path="res://scripts/bad_guy.gd" id="1_qcadk"]
 [ext_resource type="Texture2D" uid="uid://bdhxihbqpf0bw" path="res://tilesets/tentacle.png" id="2_gbfrf"]
 [ext_resource type="Texture2D" uid="uid://c7ks6jjguvf0a" path="res://tilesets/tentacle_birth.png" id="2_u4yxi"]
 [ext_resource type="Texture2D" uid="uid://dgieawg6xejc3" path="res://tilesets/tentacle_death.png" id="3_ehc4u"]
+[ext_resource type="AudioStream" uid="uid://c5bp06h262wvg" path="res://audio/tentacle_death.mp3" id="5_p01r8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3sulf"]
 atlas = ExtResource("2_u4yxi")
@@ -313,9 +314,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_nuiqs"]
 radius = 6.0
 
-[node name="Bad Guy" type="Node2D" node_paths=PackedStringArray("sprite")]
+[node name="Bad Guy" type="Node2D" node_paths=PackedStringArray("sprite", "death_sound")]
 script = ExtResource("1_qcadk")
 sprite = NodePath("AnimatedSprite2D")
+death_sound = NodePath("Death Sound")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 35)
@@ -330,5 +332,9 @@ shape = SubResource("CircleShape2D_nuiqs")
 
 [node name="Difficulty Bump" type="Timer" parent="."]
 one_shot = true
+
+[node name="Death Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_p01r8")
+volume_db = -3.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

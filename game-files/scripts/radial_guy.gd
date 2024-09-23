@@ -37,8 +37,14 @@ extends Node2D
 ## Reference to the player, hook up in scene
 @export var player: Node2D 
 
+## Holds Death Sound
+@export var death_sound : AudioStreamPlayer2D
+
+## For sound, connected to level
+signal diff_bump
 ## HANDLES ENEMY BIRTH ANIM
 var CAN_MOVE : bool = false
+
 func _ready():
 	# Start creep timer
 	#movement_tick.wait_time = move_dur
@@ -76,6 +82,7 @@ func destroy(killed):
 		print(Globals.KILLS)
 		if Globals.KILLS % difficulty_tick == 0 and Globals.KILLS != 0 and Globals.CAN_CHANGE: # Every tenth kill, 
 			Globals.raise_difficulty(delta_score)
+			diff_bump.emit()
 		Globals.SCORE = Globals.SCORE + score_value + Globals.SCORE_BUFF
 		print("Score: ", Globals.SCORE)
 		sprite.animation = 'death'
@@ -86,6 +93,7 @@ func destroy(killed):
 func hurt(dam):
 	health -= dam
 	if health <= 0:
+		death_sound.play()
 		destroy(true)
 
 # The enemy creeps toward the center every second
@@ -102,10 +110,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		'default':
 			pass
 		'birth':
-			# TODO can_move = true
 			CAN_MOVE = true
 			sprite.animation = 'default'
 			sprite.play()
 		'death':
-			# TODO allow sprite to delete
 			queue_free()

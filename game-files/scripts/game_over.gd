@@ -12,8 +12,13 @@ var b_but : bool = false
 var sel_but : bool = false
 var srt_but : bool = false
 # # # # # # # # # # # #
+
+## Holds the sound that plays when this scene starts
+@export var sting : AudioStreamPlayer2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	sting.play()
 	pass # Replace with function body.
 
 

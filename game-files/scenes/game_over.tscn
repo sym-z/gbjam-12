@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxgagyqbvaspe"]
+[gd_scene load_steps=4 format=3 uid="uid://bxgagyqbvaspe"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_d43ut"]
 [ext_resource type="Texture2D" uid="uid://du1xoafeel3xc" path="res://sprites/you_died.png" id="2_3dadm"]
+[ext_resource type="AudioStream" uid="uid://dll7qcips64ba" path="res://audio/game_over.mp3" id="3_dojo6"]
 
-[node name="Game Over" type="Node2D"]
+[node name="Game Over" type="Node2D" node_paths=PackedStringArray("sting")]
 script = ExtResource("1_d43ut")
+sting = NodePath("Sting")
 
 [node name="Image" type="Sprite2D" parent="."]
 texture = ExtResource("2_3dadm")
 offset = Vector2(80, 72)
+
+[node name="Sting" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dojo6")
