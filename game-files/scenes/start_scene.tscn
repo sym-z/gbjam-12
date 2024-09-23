@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1obfcxhn54mx"]
+[gd_scene load_steps=10 format=3 uid="uid://b1obfcxhn54mx"]
 
 [ext_resource type="Script" path="res://scripts/start_scene.gd" id="1_0uf1s"]
 [ext_resource type="Texture2D" uid="uid://bi823ox4itnyp" path="res://sprites/title-background.png" id="2_ejq85"]
 [ext_resource type="Texture2D" uid="uid://causrv7nw1ykw" path="res://sprites/title-hud.png" id="3_ibp8q"]
 [ext_resource type="Texture2D" uid="uid://bn8ifhy1iyifq" path="res://sprites/title-scrollable.png" id="3_t7r4h"]
 [ext_resource type="Texture2D" uid="uid://dbjtsw2l2f2xk" path="res://sprites/control.png" id="5_i6ril"]
+[ext_resource type="Texture2D" uid="uid://5p2ggiopbnrp" path="res://sprites/creds.png" id="5_najdx"]
 [ext_resource type="AudioStream" uid="uid://1vjrcpesge2t" path="res://audio/menu_music.mp3" id="5_qhdlg"]
 [ext_resource type="AudioStream" uid="uid://cw5itur43545v" path="res://audio/menu_move.mp3" id="6_l0e3e"]
 
@@ -27,7 +28,7 @@ credits_mark = NodePath("Credits Mark")
 ambience = NodePath("Ambience")
 menu_pick_noise = NodePath("Menu Pick Noise")
 controls_splash = NodePath("Controls Mark/Controls")
-credits_splash = NodePath("Credits")
+credits_splash = NodePath("Credits Mark/Credits")
 hud_image = NodePath("Moving Parts/HUD/Image")
 
 [node name="Moving Parts" type="Control" parent="."]
@@ -77,6 +78,12 @@ position = Vector2(0, 16)
 [node name="Credits Mark" type="Marker2D" parent="."]
 position = Vector2(0, -85)
 
+[node name="Credits" type="Sprite2D" parent="Credits Mark"]
+editor_description = "Shows a splash screen for the Credits"
+visible = false
+texture = ExtResource("5_najdx")
+centered = false
+
 [node name="Controls Mark" type="Marker2D" parent="."]
 position = Vector2(0, 115)
 
@@ -91,5 +98,3 @@ parameters/looping = true
 
 [node name="Menu Pick Noise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_l0e3e")
-
-[node name="Credits" type="Sprite2D" parent="."]

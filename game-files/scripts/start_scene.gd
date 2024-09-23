@@ -51,6 +51,8 @@ var tween : Tween
 ## Block hud in the menu
 @export var hud_image : TextureRect
 
+## Turns true when viewing menu
+var VIEWING : bool = false
 
 func _ready():
 	# Play bg noise
@@ -120,35 +122,36 @@ func input_handler(DEBUG = false):
 		srt_but = false
 
 func menu_move(input):
-	menu_pick_noise.play()
-	match current_choice:
-		WINDOW.PLAY:
-			if input == MOVE.DOWN:
-				current_choice = WINDOW.CONTROLS
-				tween = create_tween()
-				tween.tween_property(moving_parts, "position", controls_mark.position, dur)
-			elif input == MOVE.UP:
-				current_choice = WINDOW.CREDITS
-				tween = create_tween()
-				tween.tween_property(moving_parts, "position", credits_mark.position, dur)
-		WINDOW.CREDITS:
-			if input == MOVE.DOWN:
-				current_choice = WINDOW.PLAY
-				tween = create_tween()
-				tween.tween_property(moving_parts, "position", play_mark.position, dur)
-			elif input == MOVE.UP:
-				current_choice = WINDOW.CONTROLS
-				tween = create_tween()
-				tween.tween_property(moving_parts, "position", controls_mark.position, dur)
-		WINDOW.CONTROLS:
-			if input == MOVE.DOWN:
-				current_choice = WINDOW.CREDITS
-				tween = create_tween()
-				tween.tween_property(moving_parts, "position", credits_mark.position, dur)
-			elif input == MOVE.UP:
-				current_choice = WINDOW.PLAY
-				tween = create_tween()
-				tween.tween_property(moving_parts, "position", play_mark.position, dur)
+	if !VIEWING:
+		menu_pick_noise.play()
+		match current_choice:
+			WINDOW.PLAY:
+				if input == MOVE.DOWN:
+					current_choice = WINDOW.CONTROLS
+					tween = create_tween()
+					tween.tween_property(moving_parts, "position", controls_mark.position, dur)
+				elif input == MOVE.UP:
+					current_choice = WINDOW.CREDITS
+					tween = create_tween()
+					tween.tween_property(moving_parts, "position", credits_mark.position, dur)
+			WINDOW.CREDITS:
+				if input == MOVE.DOWN:
+					current_choice = WINDOW.PLAY
+					tween = create_tween()
+					tween.tween_property(moving_parts, "position", play_mark.position, dur)
+				elif input == MOVE.UP:
+					current_choice = WINDOW.CONTROLS
+					tween = create_tween()
+					tween.tween_property(moving_parts, "position", controls_mark.position, dur)
+			WINDOW.CONTROLS:
+				if input == MOVE.DOWN:
+					current_choice = WINDOW.CREDITS
+					tween = create_tween()
+					tween.tween_property(moving_parts, "position", credits_mark.position, dur)
+				elif input == MOVE.UP:
+					current_choice = WINDOW.PLAY
+					tween = create_tween()
+					tween.tween_property(moving_parts, "position", play_mark.position, dur)
 
 func menu_choice():
 	match current_choice:
@@ -158,7 +161,9 @@ func menu_choice():
 			menu_pick_noise.play()
 			controls_splash.visible = !controls_splash.visible
 			hud_image.visible = !hud_image.visible
+			VIEWING = controls_splash.visible
 		WINDOW.CREDITS:
 			menu_pick_noise.play()
 			credits_splash.visible = !credits_splash.visible
 			hud_image.visible = !hud_image.visible
+			VIEWING = controls_splash.visible
