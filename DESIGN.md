@@ -103,7 +103,7 @@
 - [x] Intro anim 
 - [x] Title screen in load scene 
 - [x] Game Over Scene 
-- [ ] Score and Highscore in Game Over Screen
+- [x] Score and Highscore in Game Over Screen
 
 
 
