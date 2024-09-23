@@ -31,7 +31,7 @@ enum MOVE {UP, DOWN}
 enum WINDOW {CREDITS, PLAY, CONTROLS}
 
 ## What the player is looking at
-var current_choice : int
+var current_choice : int = WINDOW.PLAY
 
 var tween : Tween
 @export var dur : float = 0.1
@@ -60,6 +60,7 @@ var VIEWING : bool = false
 
 func _ready():
 	# Play bg noise
+	hud_text.frame = current_choice
 	ambience.play()
 	current_choice = WINDOW.PLAY
 	moving_parts.position = play_mark.position
