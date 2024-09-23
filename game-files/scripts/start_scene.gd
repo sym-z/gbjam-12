@@ -54,6 +54,10 @@ var tween : Tween
 ## Turns true when viewing menu
 var VIEWING : bool = false
 
+## Text image overlays for the hud
+@export var hud_text : AnimatedSprite2D
+
+
 func _ready():
 	# Play bg noise
 	ambience.play()
@@ -152,6 +156,8 @@ func menu_move(input):
 					current_choice = WINDOW.PLAY
 					tween = create_tween()
 					tween.tween_property(moving_parts, "position", play_mark.position, dur)
+		# Use enum and correct frame order for clean code
+		hud_text.frame = current_choice
 
 func menu_choice():
 	match current_choice:
@@ -166,4 +172,4 @@ func menu_choice():
 			menu_pick_noise.play()
 			credits_splash.visible = !credits_splash.visible
 			hud_image.visible = !hud_image.visible
-			VIEWING = controls_splash.visible
+			VIEWING = credits_splash.visible
